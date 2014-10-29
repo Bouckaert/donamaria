@@ -1,0 +1,28 @@
+<%= flash[:notice] %>
+
+<h1>Loaded receita</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Sequencial Candidato</th>
+      <th>Recibo</th>
+      <th>Doador</th>
+      <th>valor</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @receita.each do |receita| %>
+      <tr>
+        <td><%= receita.id %></td>
+        <td><%= receita.sequencial_candidato %></td>
+        <td><%= receita.numero_recibo_eleitoral %></td>
+        <td><%= receita.nome_doador %></td>
+        <td><%= receita.valor_receita %></td>
+        <td><%= receita.descricao_da_receita %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

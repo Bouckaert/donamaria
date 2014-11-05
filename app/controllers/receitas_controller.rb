@@ -1,10 +1,7 @@
 class ReceitasController < ApplicationController
-  def index
-    @receita = Receita.all
-  end
 
-  def create
-    @receita = Receita.new(receita)
+  def index
+    @receitas = Receita.page(params[:page]).per(10)
   end
 
   def import

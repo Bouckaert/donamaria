@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'despesas/import'
+
   get 'candidaturas/import'
 
   get 'receitas/import'
 
   resources :receitas do
    collection { post :import }
- end
+  end
+
   resources :candidaturas   do
+    collection {post :import}
+  end
+
+    resources :despesas   do
     collection {post :import}
   end
 

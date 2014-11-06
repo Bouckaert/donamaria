@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031182646) do
+ActiveRecord::Schema.define(version: 20141106132637) do
 
   create_table "candidaturas", force: true do |t|
     t.string   "sequencial_candidato"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20141031182646) do
     t.string   "sigla_partido"
     t.string   "composicao_legenda"
     t.string   "desc_sit_tot_turno"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "despesas", force: true do |t|
+    t.string   "sequencial_candidato"
+    t.string   "nome_fornecedor"
+    t.decimal  "valor_despesa",        precision: 10, scale: 2
+    t.string   "descricao_despesa"
+    t.integer  "candidatura_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

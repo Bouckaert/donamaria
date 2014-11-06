@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sequencial_candidato: MyString
+  detalhe_bem: MyString
+  valor_bem: 9.99
+  candidatura_id: 
+
+two:
+  sequencial_candidato: MyString
+  detalhe_bem: MyString
+  valor_bem: 9.99
+  candidatura_id: 

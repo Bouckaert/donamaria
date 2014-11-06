@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106132637) do
+ActiveRecord::Schema.define(version: 20141106181255) do
 
   create_table "candidaturas", force: true do |t|
     t.string   "sequencial_candidato"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20141106132637) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "patrimonios", force: true do |t|
+    t.string   "sequencial_candidato"
+    t.string   "detalhe_bem"
+    t.decimal  "valor_bem",            precision: 10, scale: 2
+    t.integer  "candidatura_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patrimonios", ["candidatura_id"], name: "index_patrimonios_on_candidatura_id"
 
   create_table "receita", force: true do |t|
     t.string   "sequencial_candidato"

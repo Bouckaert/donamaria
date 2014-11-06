@@ -1,5 +1,4 @@
 class ReceitasController < ApplicationController
-
   def index
     @receitas = Receita.page(params[:page]).per(10)
   end

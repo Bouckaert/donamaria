@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'patrimonios/import'
+
   get 'despesas/import'
 
   get 'candidaturas/import'
 
   get 'receitas/import'
 
-  resources :receitas do
-   collection { post :import }
-  end
-
   resources :candidaturas   do
     collection {post :import}
   end
 
+  resources :receitas do
+   collection { post :import }
+  end
+
     resources :despesas   do
     collection {post :import}
+  end
+
+  resources :patrimonios do
+   collection { post :import }
   end
 
   root to: "candidaturas#index"

@@ -32,7 +32,8 @@
             <td><%= candidatura.composicao_legenda %></td>
             <td><%= candidatura.desc_sit_tot_turno %></td>
             <td><%= link_to candidatura.receita_total, "#Receita-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></td>
-            <td><%= link_to candidatura.receita_total, "#Despesa-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></td>
+            <td><%= link_to candidatura.despesa_total, "#Despesa-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></td>
+            <td><%= link_to candidatura.patrimonio_total, "#Patrimonio-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></td>
           </tr>
       </tbody>
     </table>
@@ -108,6 +109,43 @@
         </div>
       </div>
     </div>   <!-- Modal Despesa -->
+<!-- Modal Patrimonio -->
+    <div class="modal bs-example-modal-lg" id="Patrimonio-<%= candidatura.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Detalhamento de Bens da candidatura</h4>
+          </div>
+          <div class="modal-body">
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidato</th>
+                  <th>Valor do bem</th>
+                  <th>Descrição do bem</th>
+                </tr>
+              </thead>
+              <% candidatura.patrimonios.each do |patrimonio| %>
+                <% if patrimonio.sequencial_candidato == candidatura.sequencial_candidato %>
+                  <tbody>
+                    <tr>
+                      <td><%= patrimonio.sequencial_candidato %></td>
+                      <td><%= patrimonio.valor_bem %></td>
+                      <td><%= patrimonio.detalhe_bem %></td>
+                    </tr>
+                  </tbody>
+                <%end%>
+              <%end%>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>   <!-- Modal Patrimonio -->
+
   <%end%>
 </div>
 <%= paginate @candidaturas %>

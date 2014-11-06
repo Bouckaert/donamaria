@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029172731) do
+ActiveRecord::Schema.define(version: 20141031182646) do
+
+  create_table "candidaturas", force: true do |t|
+    t.string   "sequencial_candidato"
+    t.integer  "ano_eleicao"
+    t.string   "descricao_eleicao"
+    t.string   "sigla_UF"
+    t.string   "descricao_UE"
+    t.string   "descricao_cargo"
+    t.string   "numero_candidato"
+    t.string   "sigla_partido"
+    t.string   "composicao_legenda"
+    t.string   "desc_sit_tot_turno"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "receita", force: true do |t|
     t.string   "sequencial_candidato"

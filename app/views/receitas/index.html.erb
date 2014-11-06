@@ -11,10 +11,11 @@
       <th>Doador</th>
       <th>valor</th>
       <th>Descrição</th>
+      <th>Candidatura</th>
     </tr>
   </thead>
   <tbody>
-    <% @receita.each do |receita| %>
+    <% @receitas.each do |receita| %>
       <tr>
         <td><%= receita.id %></td>
         <td><%= receita.sequencial_candidato %></td>
@@ -22,7 +23,9 @@
         <td><%= receita.nome_doador %></td>
         <td><%= receita.valor_receita %></td>
         <td><%= receita.descricao_da_receita %></td>
+        <td><%= receita.candidatura.id %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @receitas %>

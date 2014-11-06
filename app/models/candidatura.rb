@@ -1,6 +1,7 @@
 class Candidatura < ActiveRecord::Base
   belongs_to :candidato
   has_many :receitas
+  has_many :despesas
 
   require 'csv'
 
@@ -24,4 +25,8 @@ class Candidatura < ActiveRecord::Base
     return @receita_total
   end
 
+  def despesa_total
+    @despesa_total ||= self.despesas.inject(0) {|sum, a| sum += a.valor_despesa }
+    return @despesa_total
+  end
 end

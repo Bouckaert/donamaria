@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sequencial_candidato: MyString
+  nome_fornecedor: MyString
+  valor_despesa: 9.99
+  descricao_despesa: MyString
+
+two:
+  sequencial_candidato: MyString
+  nome_fornecedor: MyString
+  valor_despesa: 9.99
+  descricao_despesa: MyString

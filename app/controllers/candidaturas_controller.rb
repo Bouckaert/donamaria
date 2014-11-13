@@ -1,6 +1,8 @@
 class CandidaturasController < ApplicationController
   def index
     @candidaturas = Candidatura.page(params[:page]).per(10)
+    @cnd= Candidatura.new.patrimonio_por_genero("MASCULINO")
+    @cnf= Candidatura.new.patrimonio_por_genero("FEMININO")
   end
 
   def new

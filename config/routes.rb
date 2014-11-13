@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'candidatos/index'
+
+  get 'candidatos/import'
+
   get 'patrimonios/import'
 
   get 'despesas/import'
@@ -7,6 +11,10 @@ Rails.application.routes.draw do
   get 'candidaturas/import'
 
   get 'receitas/import'
+
+  resources :candidatos   do
+    collection {post :import}
+  end
 
   resources :candidaturas   do
     collection {post :import}

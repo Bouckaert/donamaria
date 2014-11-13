@@ -1,0 +1,44 @@
+<%= form_tag candidatos_path, :method => 'get' do %>
+  <div class="form-group searchForm">
+    <div class="input-group navbar-form">
+      <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
+      <%= radio_button_tag(:gender, "Masculino", params[:gender].eql?("Masculino")) %> Masculino
+      <%= radio_button_tag(:gender, "Feminino", params[:gender].eql?("Feminino")) %> Feminino
+
+      <div class="input-group-btn">
+        <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= @candidatos.total_count%>
+
+  <% for candidato in @candidatos %>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nome do Candidato</th>
+          <th>Ocupação</th>
+          <th>Sexo</th>
+          <th>T</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= candidato.nome_candidato %></td>
+            <td><%= candidato.descricao_ocupacao %></td>
+            <td><%= candidato.descricao_sexo %></td>
+            <td><%= candidato.numero_titulo_eleitor %></td>
+          </tr>
+      </tbody>
+    </table>
+    <%= render partial: "candidatura", locals: {candidato: candidato} %>
+  <%end%>
+
+  <%= paginate @candidatos %>
+
+
+

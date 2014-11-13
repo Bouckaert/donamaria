@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106181255) do
+ActiveRecord::Schema.define(version: 20141109221143) do
+
+  create_table "candidatos", force: true do |t|
+    t.string   "nome_candidato"
+    t.string   "descricao_ocupacao"
+    t.string   "descricao_sexo"
+    t.string   "numero_titulo_eleitor"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "candidaturas", force: true do |t|
     t.string   "sequencial_candidato"
@@ -24,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141106181255) do
     t.string   "sigla_partido"
     t.string   "composicao_legenda"
     t.string   "desc_sit_tot_turno"
+    t.integer  "candidato_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -12,6 +12,8 @@ class CreateCandidaturas < ActiveRecord::Migration
       t.string :composicao_legenda
       t.string :desc_sit_tot_turno
 
+      t.references :candidato
+
       t.timestamps
     end
   end

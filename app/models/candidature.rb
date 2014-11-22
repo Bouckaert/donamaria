@@ -1,10 +1,10 @@
-class Candidatura < ActiveRecord::Base
-  belongs_to :candidato
-  has_many :receitas
-  has_many :despesas
-  has_many :patrimonios
+class Candidature < ActiveRecord::Base
+  belongs_to :candidate
+  has_many :revenues
+  has_many :expenditures
+  has_many :patrimonies
 
-#  scope :ano_2012, -> { where(ano_eleicao: "2012")}
+#  scope :ano_2012, -> { where(election_year: "2012")}
 
   require 'csv'
 
@@ -23,47 +23,47 @@ class Candidatura < ActiveRecord::Base
     return @patrimonio_total
   end
 
-  def patrimonio_por_genero(sexo)
-    candidato_masculino = Candidato.all.with_sexo(sexo)
-    @patrimonio_por_genero = 0
+  def patrimony_by_gender(gender)
+    candidato_masculino = Candidate.all.with_gender(gender)
+    @patrimony_by_gender = 0
     puts candidato_masculino.count
     candidato_masculino.each do |cm|
-      cm.candidaturas.each do |cc|
-        cc.patrimonios.each do |pp|
-          @patrimonio_por_genero = @patrimonio_por_genero + pp.valor_bem
+      cm.candidatures.each do |cc|
+        cc.patrimonies.each do |pp|
+          @patrimony_by_gender = @patrimony_by_gender + pp.price
         end
       end
     end
-    return @patrimonio_por_genero
+    return @patrimony_by_gender
   end
 
   def self.import
-  candidatura_hash = Array.new
+  candidature_hash = Array.new
   CSV.foreach("public/consulta_cand_2010/consulta_cand_2010_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-    candidatura_hash = row[11]
-    candidatura = Candidatura.where(sequencial_candidato: candidatura_hash)
-    @candidato = Candidato.where(numero_titulo_eleitor: row[26])
+    candidature_hash = row[11]
+    candidature = Candidature.where(sequencial_candidato: candidature_hash)
+    @candidate = Candidate.where(voter_registration: row[26])
 
-    if candidatura.count == 1
-    candidatura.first.update_attributes(:ano_eleicao => row[2],:descricao_eleicao => row[4], :sigla_UF => row[5], :descricao_UE => row[7], :descricao_cargo => row[9], :numero_candidato => row[12], :sequencial_candidato => row[11], :sigla_partido => row[17], :composicao_legenda => row[21], :desc_sit_tot_turno => row[41], :candidato_id => @candidato.first.id)
+    if candidature.count == 1
+    candidature.first.update_attributes(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :desc_sit_tot_turno => row[41], :candidate_id => @candidate.first.id)
     else
-    Candidatura.create!(:ano_eleicao => row[2],:descricao_eleicao => row[4], :sigla_UF => row[5], :descricao_UE => row[7], :descricao_cargo => row[9], :numero_candidato => row[12], :sequencial_candidato => row[11], :sigla_partido => row[17], :composicao_legenda => row[21], :desc_sit_tot_turno => row[41], :candidato_id => @candidato.first.id)
-    end # end if !candidatura.nil?
+    Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :desc_sit_tot_turno => row[41], :candidate_id => @candidate.first.id)
+    end # end if !candidature.nil?
 
     end
 
  CSV.foreach("public/consulta_cand_2012/consulta_cand_2012_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-   candidatura_hash = row[11]
-   @candidato = Candidato.where(numero_titulo_eleitor: row[26])
+   candidature_hash = row[11]
+   @candidate = Candidate.where(voter_registration: row[26])
 
-   Candidatura.create!(:ano_eleicao => row[2],:descricao_eleicao => row[4], :sigla_UF => row[5], :descricao_UE => row[7], :descricao_cargo => row[9], :numero_candidato => row[12], :sequencial_candidato => row[11], :sigla_partido => row[17], :composicao_legenda => row[21], :desc_sit_tot_turno => row[41], :candidato_id => @candidato.first.id)
+   Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :desc_sit_tot_turno => row[41], :candidate_id => @candidate.first.id)
    end
 
   CSV.foreach("public/consulta_cand_2014/consulta_cand_2014_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-    candidatura_hash = row[11]
-    @candidato = Candidato.where(numero_titulo_eleitor: row[26])
+    candidature_hash = row[11]
+    @candidate = Candidate.where(voter_registration: row[26])
 
-    Candidatura.create!(:ano_eleicao => row[2],:descricao_eleicao => row[4], :sigla_UF => row[5], :descricao_UE => row[7], :descricao_cargo => row[9], :numero_candidato => row[12], :sequencial_candidato => row[11], :sigla_partido => row[17], :composicao_legenda => row[21], :desc_sit_tot_turno => row[42], :candidato_id => @candidato.first.id)
+    Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :desc_sit_tot_turno => row[42], :candidate_id => @candidate.first.id)
     end
 
   end

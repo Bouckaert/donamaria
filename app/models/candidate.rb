@@ -1,45 +1,45 @@
-class Candidato < ActiveRecord::Base
-  has_many :candidaturas
+class Candidate < ActiveRecord::Base
+  has_many :candidatures
   belongs_to :user
 
-  scope :with_nome, -> (nome) { where("nome_candidato like ?", "%#{nome}%")}
-  scope :with_sexo, -> (sexo) { where("descricao_sexo like ?", "%#{sexo}%")}
+  scope :with_name, -> (name) { where("name like ?", "%#{name}%")}
+  scope :with_gender, -> (gender) { where("gender like ?", "%#{gender}%")}
 
   require 'csv'
 
   def self.import
-    candidato_hash = Array.new
+    candidate_hash = Array.new
    CSV.foreach("public/consulta_cand_2010/consulta_cand_2010_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-     candidato_hash = row[26]
-     candidato = Candidato.where(numero_titulo_eleitor: candidato_hash)
+     candidate_hash = row[26]
+     candidate = Candidate.where(voter_registration: candidate_hash)
 
-     if candidato.count == 1
-     candidato.first.update_attributes(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
+     if candidate.count == 1
+     candidate.first.update_attributes(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
      else
-     Candidato.create!(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
-     end # end if !candidato.nil?
+     Candidate.create!(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
+     end # end if !candidate.nil?
    end
 
    CSV.foreach("public/consulta_cand_2012/consulta_cand_2012_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-     candidato_hash = row[26]
-     candidato = Candidato.where(numero_titulo_eleitor: candidato_hash)
+     candidate_hash = row[26]
+     candidate = Candidate.where(voter_registration: candidate_hash)
 
-     if candidato.count == 1
-     candidato.first.update_attributes(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
+     if candidate.count == 1
+     candidate.first.update_attributes(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
      else
-     Candidato.create!(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
-     end # end if !candidato.nil?
+     Candidate.create!(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
+     end # end if !candidate.nil?
    end
 
     CSV.foreach("public/consulta_cand_2014/consulta_cand_2014_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|
-      candidato_hash = row[26]
-      candidato = Candidato.where(numero_titulo_eleitor: candidato_hash)
+      candidate_hash = row[26]
+      candidate = Candidate.where(voter_registration: candidate_hash)
 
-      if candidato.count == 1
-      candidato.first.update_attributes(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
+      if candidate.count == 1
+      candidate.first.update_attributes(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
       else
-      Candidato.create!(:descricao_ocupacao => row[24],:numero_titulo_eleitor => row[26], :nome_candidato => row[10], :descricao_sexo => row[29])
-      end # end if !candidato.nil?
+      Candidate.create!(:occupation => row[24],:voter_registration => row[26], :name => row[10], :gender => row[29])
+      end # end if !candidate.nil?
     end
 
   end

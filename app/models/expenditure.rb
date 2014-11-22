@@ -1,5 +1,5 @@
-class Despesa < ActiveRecord::Base
-  belongs_to :candidatura
+class Expenditure < ActiveRecord::Base
+  belongs_to :candidature
 
   require 'csv'
 
@@ -7,11 +7,11 @@ class Despesa < ActiveRecord::Base
 # def self.import
 #   CSV.foreach("public/prestacao_contas_2010/candidato/PE/DespesasCandidatos.txt",:encoding => 'windows-1252:utf-8', headers: true, :col_sep => ';' ) do |row|
 
-#     despesa_hash = row.to_hash
-#     @candidatura = Candidatura.where(ano_eleicao: "2010", numero_candidato: row["Número candidato"])
+#     expenditure_hash = row.to_hash
+#     @candidature = Candidature.where(election_year: "2010", numero_candidato: row["Número candidato"])
 #     puts row["Número candidato"]
 #     sleep(1)
-#     Despesa.create!(:sequencial_candidato => row["Número candidato"],:nome_fornecedor => row["Nome do fornecedor"], :valor_despesa => row["Valor despesa"].gsub(',', '.').to_d, :descricao_despesa => row["Descricao da despesa"],:candidatura_id => @candidatura.first.id)
+#     Expenditure.create!(:sequencial_candidato => row["Número candidato"],:seller => row["Nome do fornecedor"], :price => row["Valor despesa"].gsub(',', '.').to_d, :description => row["Descricao da despesa"],:candidature_id => @candidature.first.id)
 
 #   end # end CSV.foreach
 # end # end self.import(file)
@@ -19,17 +19,17 @@ class Despesa < ActiveRecord::Base
  def self.import
   CSV.foreach("public/prestacao_contas_2012/candidato/PE/DespesasCandidatos.txt",:encoding => 'latin1:utf-8', headers: true, :col_sep => ';' ) do |row|
 
-    despesa_hash = row.to_hash
-    @candidatura = Candidatura.where(ano_eleicao: "2012", sequencial_candidato: row["Sequencial Candidato"])
-    Despesa.create!(:sequencial_candidato => row["Sequencial Candidato"],:nome_fornecedor => row["Nome do fornecedor"], :valor_despesa => row["Valor despesa"].gsub(',', '.').to_d, :descricao_despesa => row["Descricao da despesa"],:candidatura_id => @candidatura.first.id)
+    expenditure_hash = row.to_hash
+    @candidature = Candidature.where(election_year: "2012", sequencial_candidato: row["Sequencial Candidato"])
+    Expenditure.create!(:sequencial_candidato => row["Sequencial Candidato"],:seller => row["Nome do fornecedor"], :price => row["Valor despesa"].gsub(',', '.').to_d, :description => row["Descricao da despesa"],:candidature_id => @candidature.first.id)
 
   end # end CSV.foreach
 
    CSV.foreach("public/prestacao_contas_2014/candidato/PE/despesas_candidatos_2014_PE.txt",:encoding => 'windows-1252:utf-8', headers: true, :col_sep => ';' ) do |row|
 
-     despesa_hash = row.to_hash
-     @candidatura = Candidatura.where(ano_eleicao: "2014", sequencial_candidato: row["Sequencial Candidato"])
-     Despesa.create!(:sequencial_candidato => row["Sequencial Candidato"],:nome_fornecedor => row["Nome do fornecedor"], :valor_despesa => row["Valor despesa"].gsub(',', '.').to_d, :descricao_despesa => row["Descriçao da despesa"],:candidatura_id => @candidatura.first.id)
+     expenditure_hash = row.to_hash
+     @candidature = Candidature.where(election_year: "2014", sequencial_candidato: row["Sequencial Candidato"])
+     Expenditure.create!(:sequencial_candidato => row["Sequencial Candidato"],:seller => row["Nome do fornecedor"], :price => row["Valor despesa"].gsub(',', '.').to_d, :description => row["Descriçao da despesa"],:candidature_id => @candidature.first.id)
 
    end # end CSV.foreach
 

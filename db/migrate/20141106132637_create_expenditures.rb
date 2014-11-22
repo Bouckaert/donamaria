@@ -1,11 +1,11 @@
-class CreateDespesas < ActiveRecord::Migration
+class CreateExpenditures < ActiveRecord::Migration
   def change
-    create_table :despesas do |t|
+    create_table :expenditures do |t|
       t.string :sequencial_candidato
-      t.string :nome_fornecedor
-      t.decimal :valor_despesa, precision: 10, scale: 2
-      t.string :descricao_despesa
-      t.references :candidatura
+      t.string :seller
+      t.decimal :price, precision: 10, scale: 2
+      t.string :description
+      t.references :candidature
 
       t.timestamps
     end

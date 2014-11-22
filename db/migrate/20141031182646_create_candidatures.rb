@@ -1,18 +1,18 @@
-class CreateCandidaturas < ActiveRecord::Migration
+class CreateCandidatures < ActiveRecord::Migration
   def change
-    create_table :candidaturas do |t|
+    create_table :candidatures do |t|
       t.string :sequencial_candidato
-      t.integer :ano_eleicao
-      t.string :descricao_eleicao
-      t.string :sigla_UF
-      t.string :descricao_UE
-      t.string :descricao_cargo
-      t.string :numero_candidato
-      t.string :sigla_partido
-      t.string :composicao_legenda
+      t.integer :election_year
+      t.string :election_description
+      t.string :federative_unit_symbol
+      t.string :federative_unit_description
+      t.string :job_title
+      t.string :candidate_number
+      t.string :political_party_symbol
+      t.string :political_caption
       t.string :desc_sit_tot_turno
 
-      t.references :candidato
+      t.references :candidate
 
       t.timestamps
     end

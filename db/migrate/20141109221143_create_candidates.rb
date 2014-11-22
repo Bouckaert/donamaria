@@ -1,12 +1,12 @@
-class CreateCandidatos < ActiveRecord::Migration
+class CreateCandidates < ActiveRecord::Migration
   def change
-    create_table :candidatos do |t|
-      t.string :nome_candidato
-      t.string :descricao_ocupacao
-      t.string :descricao_sexo
-      t.string :numero_titulo_eleitor
+    create_table :candidates do |t|
+      t.string :name
+      t.string :occupation
+      t.string :gender
+      t.string :voter_registration
 
-       t.references :user
+      t.references :user
 
       t.timestamps
     end

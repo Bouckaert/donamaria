@@ -1,42 +1,54 @@
-<%= form_tag candidatos_path, :method => 'get' do %>
-  <div class="form-group searchForm">
-    <div class="input-group navbar-form">
-      <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
-      <%= radio_button_tag(:gender, "Masculino", params[:gender].eql?("Masculino")) %> Masculino
-      <%= radio_button_tag(:gender, "Feminino", params[:gender].eql?("Feminino")) %> Feminino
-
-      <div class="input-group-btn">
-        <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>
-          <i class="fa fa-search"></i>
-        <% end %>
-      </div>
+  <div class='container'>
+    <div class="row infobox">
+        <div class=' col-md-4'>
+          <!-- <%=@patrimonio_masculino%> --> <label>Patrimonio Masculino</label> <b>R$ 1.918.003.634,98</b>
+          <!-- <%=@patrimonio_feminino%> --> <label>Patrimonio Feminino</label> <b>R$ 172.719.217,91</b>
+        </div>
+        <div class=' col-md-4'>
+          <!--<%=@receita_masculino%> --> <label>Receita Masculino</label> <b>R$ 124.690.971,72</b>
+          <!--<%=@receita_feminino%> --> <label>Receita Feminino</label> <b>R$ 15.372.761,6</b>
+        </div>
+        <div class=' col-md-4'>
+          <!--<%=@despesa_masculino%> --> <label>Despesa Masculino</label> <b>R$ 124.518.658,34</b>
+          <!--<%=@despesa_feminino%> --> <label>Despesa Feminino</label> <b>R$ 14.467.072,91</b>
+        </div>
     </div>
   </div>
-<% end %>
-
 <%= @candidatos.total_count%>
-
-  <% for candidato in @candidatos %>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Nome do Candidato</th>
-          <th>Ocupação</th>
-          <th>Sexo</th>
-          <th>T</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td><%= candidato.nome_candidato %></td>
-            <td><%= candidato.descricao_ocupacao %></td>
-            <td><%= candidato.descricao_sexo %></td>
-            <td><%= candidato.numero_titulo_eleitor %></td>
-          </tr>
-      </tbody>
-    </table>
-    <%= render partial: "candidatura", locals: {candidato: candidato} %>
-  <%end%>
+  <div class='container'>
+    <% for candidato in @candidatos %>
+      <div class="row box">
+        <div class=' col-md-4 candidato'>
+          <div class='row'>
+            <div class= 'col-md-6'>
+              <b><%= candidato.nome_candidato %></b>
+              <b><%= candidato.id %></b>
+              <%= image_tag("politico.png", size: "100x100") %>
+              <label><%= candidato.descricao_ocupacao %> <%= candidato.descricao_sexo %></label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu<%= "#{(candidato.id)}" %>" data-toggle="dropdown" aria-expanded="true">Ano Eleitoral
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu<%= "#{(candidato.id)}" %>">
+                  <% candidato.candidaturas.each do |candidatura| %>
+                    <li role="presentation"><%= link_to candidatura.ano_eleicao, "#AnoEleição-#{(candidatura.id)}", id: candidatura.id, :class => "btn" %></li>
+                  <%end%>
+                </ul>
+              </div>
+            </div>
+            <% candidato.candidaturas.each do |candidatura| %>
+              <div id='<%= "candidatura-#{(candidatura.id)}" %>' class= 'col-md-6 hide candidatura'>
+                <%= render partial: "candidatura", locals: {candidatura: candidatura} %>
+              </div>
+            <%end%>
+          </div>
+        </div>
+        <div class='col-md-7 proposta'>
+            <label><%= candidato.nome_candidato %></label>
+        </div>
+      </div>
+    <%end%>
+  </div>
 
   <%= paginate @candidatos %>
 

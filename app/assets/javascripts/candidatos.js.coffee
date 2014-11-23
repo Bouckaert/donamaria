@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  $('.candidatura:last-child').removeClass "hide"
+
+$(document).on "click", ".dropdown-menu li a", ->
+  candidatura_id = this.id
+  $(this).parents(".row").find(".candidatura").addClass "hide"
+  $("#candidatura-"+candidatura_id).removeClass "hide"
+
+
+$(document).on "click", ".dropdown-menu li a", ->
+  $(this).parents(".dropdown").find(".btn:first").text($(this).text())
+  $(this).parents(".dropdown").find(".btn:first").val($(this).data("value"))

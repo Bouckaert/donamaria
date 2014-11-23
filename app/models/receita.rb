@@ -15,12 +15,12 @@ class Receita < ActiveRecord::Base
 #     Receita.create!(:sequencial_candidato => row["Sequencial Candidato"],:numero_recibo_eleitoral => row["Numero Recibo Eleitoral"], :nome_doador => row["Nome do doador"], :valor_receita => row["Valor receita"].gsub(',', '.').to_d, :descricao_da_receita => row["Descricao da receita"],:candidatura_id => @candidatura.first.id)
 #   end # end CSV.foreach
 
-#    CSV.foreach("public/prestacao_contas_2012/candidato/PE/ReceitasCandidatos.txt", :encoding => 'latin1:utf-8', headers: true, :col_sep => '#;' ) do |row|
-#
-#      @candidatura = Candidatura.where(sequencial_candidato: row["Sequencial Candidato"])
-#
-#      Receita.create!(:sequencial_candidato => row["Sequencial Candidato"],:numero_recibo_eleitoral => row["Numero Recibo Eleitoral"], :#nome_doador => row["Nome do doador"], :valor_receita => row["Valor receita"].gsub(',', '.').to_d, :descricao_da_receita => row["#Descricao da receita"],:candidatura_id => @candidatura.first.id)
-#    end # end CSV.foreach
+    CSV.foreach("public/prestacao_contas_2012/candidato/PE/ReceitasCandidatos.txt", :encoding => 'latin1:utf-8', headers: true, :col_sep => ';' ) do |row|
+
+      @candidatura = Candidatura.where(sequencial_candidato: row["Sequencial Candidato"])
+
+      Receita.create!(:sequencial_candidato => row["Sequencial Candidato"],:numero_recibo_eleitoral => row["Numero Recibo Eleitoral"], :nome_doador => row["Nome do doador"], :valor_receita => row["Valor receita"].gsub(',', '.').to_d, :descricao_da_receita => row["#Descricao da receita"],:candidatura_id => @candidatura.first.id)
+    end # end CSV.foreach
 
     CSV.foreach("public/prestacao_contas_2014/candidato/PE/receitas_candidatos_2014_PE.txt", :encoding => 'windows-1252:utf-8', headers: true, :col_sep => ';' ) do |row|
 

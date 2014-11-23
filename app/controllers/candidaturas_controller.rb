@@ -1,8 +1,11 @@
 class CandidaturasController < ApplicationController
   def index
     @candidaturas = Candidatura.page(params[:page]).per(10)
-    @cnd= Candidatura.new.patrimonio_por_genero("MASCULINO")
-    @cnf= Candidatura.new.patrimonio_por_genero("FEMININO")
+
+    if params[:ano].present?
+      @candidaturas= Candidatura.ano_candidatura(params[:ano])
+    end
+
   end
 
   def new

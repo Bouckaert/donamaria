@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   get 'candidatos/index'
 
   get 'candidatos/import'
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
    collection { post :import }
   end
 
-  root to: "candidaturas#index"
+  root to: "welcome#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

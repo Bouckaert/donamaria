@@ -1,38 +1,38 @@
 Rails.application.routes.draw do
 
-  get 'candidatos/index'
+  get 'candidates/index'
 
-  get 'candidatos/import'
+  get 'candidates/import'
 
-  get 'patrimonios/import'
+  get 'patrimonies/import'
 
-  get 'despesas/import'
+  get 'expenditures/import'
 
-  get 'candidaturas/import'
+  get 'candidatures/import'
 
-  get 'receitas/import'
+  get 'revenues/import'
 
-  resources :candidatos   do
+  resources :candidates   do
     collection {post :import}
   end
 
-  resources :candidaturas   do
+  resources :candidatures   do
     collection {post :import}
   end
 
-  resources :receitas do
+  resources :revenues do
    collection { post :import }
   end
 
-    resources :despesas   do
+  resources :expenditures do
     collection {post :import}
   end
 
-  resources :patrimonios do
+  resources :patrimonies do
    collection { post :import }
   end
 
-  root to: "candidaturas#index"
+  root to: "candidatures#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

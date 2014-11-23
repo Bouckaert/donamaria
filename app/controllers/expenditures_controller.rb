@@ -1,16 +1,16 @@
-class DespesasController < ApplicationController
+class ExpendituresController < ApplicationController
   def index
-    @despesas = Despesa.page(params[:page]).per(10)
+    @expenditures = Expenditure.page(params[:page]).per(10)
   end
 
   def import
-    Despesa.import
-    redirect_to despesas_path
+    Expenditure.import
+    redirect_to expenditures_path
   end
 
   private
-  def despesa_params
-    params.require(:despesa).permit(:sequencial_candidato, :nome_fornecedor, :valor_despesa, :descricao_despesa)
+  def expenditure_params
+    params.require(:expenditure).permit(:sequencial_candidato, :seller, :price, :description)
   end
 
 end

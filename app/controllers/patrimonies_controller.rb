@@ -1,16 +1,16 @@
-class PatrimoniosController < ApplicationController
+class PatrimoniesController < ApplicationController
   def index
-    @patrimonios = Patrimonio.page(params[:page]).per(10)
+    @patrimonies = Patrimony.page(params[:page]).per(10)
   end
 
   def import
-    Patrimonio.import
-    redirect_to patrimonios_path
+    Patrimony.import
+    redirect_to patrimonies_path
   end
 
   private
   def patrimonio_params
-    params.require(:patrimonio).permit(:sequencial_candidato, :detalhe_bem, :valor_bem)
+    params.require(:patrimony).permit(:sequencial_candidato, :description, :price)
   end
 
 end

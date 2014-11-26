@@ -3,6 +3,7 @@ class Candidatura < ActiveRecord::Base
   has_many :receitas
   has_many :despesas
   has_many :patrimonios
+  has_many :proposals, dependent: :destroy
 
   scope :ano_candidatura, -> (ano) { where("ano_eleicao like ?" "%#{ano}%")}
 

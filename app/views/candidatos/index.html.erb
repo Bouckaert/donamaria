@@ -43,8 +43,25 @@
             <%end%>
           </div>
         </div>
-        <div class='col-md-7 proposta'>
-            <label><%= candidato.nome_candidato %></label>
+        <div class='col-md-7 canvas-proposta'>
+          <% candidato.candidaturas.each do |candidatura| %>
+            <% candidatura.proposals.each do |proposal| %>
+          <div class='row proposta'>
+              <div class='col-md-9'>
+                <%= proposal.description %>
+              </div>
+              <div class='col-md-1'>
+              <%= image_tag("talk_balloon.png", size: "30x30") %><label>13</label>
+              </div>
+              <div class='col-md-1'>
+              <%= image_tag("flag.png", size: "30x30") %><label>3.500</label>
+              </div>
+              <div class='col-md-1'>
+              <%= image_tag("Dollar.png", size: "30x30") %><label>R$700</label>
+              </div>
+          </div>
+            <%end%>
+          <%end%>
         </div>
       </div>
     <%end%>

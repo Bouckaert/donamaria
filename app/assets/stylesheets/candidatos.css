@@ -16,7 +16,7 @@ body div .candidato{
 
 .box {
 /*Degrade*/
-  background: -moz-linear-gradient(#0b333f, #235954) no-repeat scroll 0 0 transparent;
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
 /*cantos arredondados*/
   border-radius: 5px 5px 5px 5px;
 /*Sobreamente*/
@@ -27,7 +27,7 @@ body div .candidato{
 }
 .infobox {
 /*Degrade*/
-  background: -moz-linear-gradient(#839331, #21541C) no-repeat scroll 0 0 transparent;
+  background: -moz-linear-gradient(#4E6B73, #90A2A8) no-repeat scroll 0 0 transparent;
 /*cantos arredondados*/
   border-radius: 5px 5px 5px 5px;
 /*Sobreamente*/
@@ -36,6 +36,7 @@ body div .candidato{
   /*overflow: hidden;*/
   margin-bottom: 10px;
 }
+
 
 .collapse {
   display: block;

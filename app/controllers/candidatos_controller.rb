@@ -17,6 +17,10 @@ class CandidatosController < ApplicationController
 
   end
 
+  def show
+    @candidato = Candidato.find(params[:id])
+  end
+
   def import
     Candidato.import
     redirect_to candidatos_path

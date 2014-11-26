@@ -2,36 +2,26 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'candidatos/index'
+  resources :proposals
 
-  get 'candidatos/import'
-
-  get 'patrimonios/import'
-
-  get 'despesas/import'
-
-  get 'candidaturas/import'
-
-  get 'receitas/import'
-
-  resources :candidatos   do
-    collection {post :import}
+  resources :candidatos do
+    collection {get :import}
   end
 
-  resources :candidaturas   do
-    collection {post :import}
+  resources :candidaturas do
+    collection {get :import}
   end
 
   resources :receitas do
-   collection { post :import }
+   collection { get :import }
   end
 
-    resources :despesas   do
-    collection {post :import}
+    resources :despesas do
+    collection {get :import}
   end
 
   resources :patrimonios do
-   collection { post :import }
+   collection { get :import }
   end
 
   root to: "welcome#index"

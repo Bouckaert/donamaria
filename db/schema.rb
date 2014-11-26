@@ -61,8 +61,9 @@ ActiveRecord::Schema.define(version: 20141123201433) do
   add_index "patrimonies", ["candidature_id"], name: "index_patrimonies_on_candidature_id"
 
   create_table "proposals", force: true do |t|
+    t.string   "title"
     t.string   "description"
-    t.integer  "candidatura_id"
+    t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

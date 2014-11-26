@@ -4,7 +4,7 @@ class Candidatura < ActiveRecord::Base
   has_many :despesas
   has_many :patrimonios
 
-#  scope :ano_2012, -> { where(ano_eleicao: "2012")}
+  scope :ano_candidatura, -> (ano) { where("ano_eleicao like ?" "%#{ano}%")}
 
   require 'csv'
 
@@ -23,18 +23,44 @@ class Candidatura < ActiveRecord::Base
     return @patrimonio_total
   end
 
+#Total gambiarra... Péssimo Desempenho
   def patrimonio_por_genero(sexo)
-    candidato_masculino = Candidato.all.with_sexo(sexo)
+    candidato_genero = Candidato.all.with_sexo(sexo)
     @patrimonio_por_genero = 0
-    puts candidato_masculino.count
-    candidato_masculino.each do |cm|
-      cm.candidaturas.each do |cc|
-        cc.patrimonios.each do |pp|
-          @patrimonio_por_genero = @patrimonio_por_genero + pp.valor_bem
+    candidato_genero.each do |cg|
+      cg.candidaturas.each do |c|
+        c.patrimonios.each do |p|
+          @patrimonio_por_genero = @patrimonio_por_genero + p.valor_bem
         end
       end
     end
     return @patrimonio_por_genero
+  end
+
+  def receita_por_genero(sexo)
+    receita_genero = Candidato.all.with_sexo(sexo)
+    @receita_por_genero = 0
+    receita_genero.each do |rg|
+      rg.candidaturas.each do |c|
+        c.receitas.each do |r|
+          @receita_por_genero = @receita_por_genero + r.valor_receita
+        end
+      end
+    end
+    return @receita_por_genero
+  end
+
+    def despesa_por_genero(sexo)
+    despesa_genero = Candidato.all.with_sexo(sexo)
+    @despesa_por_genero = 0
+    despesa_genero.each do |dg|
+      dg.candidaturas.each do |c|
+        c.despesas.each do |d|
+          @despesa_por_genero = @despesa_por_genero + d.valor_despesa
+        end
+      end
+    end
+    return @despesa_por_genero
   end
 
   def self.import

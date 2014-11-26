@@ -1,4 +1,4 @@
-<%= form_tag candidatos_path, :method => 'get' do %>
+<%= form_tag candidates_path, :method => 'get' do %>
   <div class="form-group searchForm">
     <div class="input-group navbar-form">
       <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
@@ -14,9 +14,9 @@
   </div>
 <% end %>
 
-<%= @candidatos.total_count%>
+<%= @candidates.total_count%>
 
-  <% for candidato in @candidatos %>
+  <% for candidate in @candidates %>
     <table border="1">
       <thead>
         <tr>
@@ -28,17 +28,17 @@
       </thead>
       <tbody>
           <tr>
-            <td><%= candidato.nome_candidato %></td>
-            <td><%= candidato.descricao_ocupacao %></td>
-            <td><%= candidato.descricao_sexo %></td>
-            <td><%= candidato.numero_titulo_eleitor %></td>
+            <td><%= candidate.name %></td>
+            <td><%= candidate.occupation %></td>
+            <td><%= candidate.gender %></td>
+            <td><%= candidate.voter_registration %></td>
           </tr>
       </tbody>
     </table>
-    <%= render partial: "candidatura", locals: {candidato: candidato} %>
+    <%= render partial: "candidature", locals: {candidate: candidate} %>
   <%end%>
 
-  <%= paginate @candidatos %>
+  <%= paginate @candidates %>
 
 
 

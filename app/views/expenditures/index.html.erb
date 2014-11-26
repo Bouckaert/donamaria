@@ -14,16 +14,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @despesas.each do |despesa| %>
+    <% @expenditures.each do |expenditure| %>
       <tr>
-        <td><%= despesa.id %></td>
-        <td><%= despesa.sequencial_candidato %></td>
-        <td><%= despesa.nome_fornecedor %></td>
-        <td><%= despesa.valor_despesa %></td>
-        <td><%= despesa.descricao_despesa %></td>
-        <td><%= despesa.candidatura.id %></td>
+        <td><%= expenditure.id %></td>
+        <td><%= expenditure.sequencial_candidato %></td>
+        <td><%= expenditure.seller %></td>
+        <td><%= expenditure.price %></td>
+        <td><%= expenditure.description %></td>
+        <td><%= expenditure.candidature.id %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @despesas %>
+<%= paginate @expenditures %>

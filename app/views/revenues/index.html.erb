@@ -14,17 +14,17 @@
     </tr>
   </thead>
   <tbody>
-    <% @receitas.each do |receita| %>
+    <% @revenues.each do |revenue| %>
       <tr>
-        <td><%= receita.id %></td>
-        <td><%= receita.sequencial_candidato %></td>
-        <td><%= receita.numero_recibo_eleitoral %></td>
-        <td><%= receita.nome_doador %></td>
-        <td><%= receita.valor_receita %></td>
-        <td><%= receita.descricao_da_receita %></td>
-        <td><%= receita.candidatura.id %></td>
+        <td><%= revenue.id %></td>
+        <td><%= revenue.sequencial_candidato %></td>
+        <td><%= revenue.receipt_title %></td>
+        <td><%= revenue.donator %></td>
+        <td><%= revenue.price %></td>
+        <td><%= revenue.description %></td>
+        <td><%= revenue.candidature.id %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @receitas %>
+<%= paginate @revenues %>

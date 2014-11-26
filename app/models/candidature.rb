@@ -8,19 +8,19 @@ class Candidature < ActiveRecord::Base
 
   require 'csv'
 
-  def receita_total
-    @receita_total ||= self.receitas.inject(0) {|sum, a| sum += a.valor_receita }
-    return @receita_total
+  def total_revenue
+    @total_revenue ||= self.revenues.inject(0) {|sum, a| sum += a.price }
+    return @total_revenue
   end
 
-  def despesa_total
-    @despesa_total ||= self.despesas.inject(0) {|sum, a| sum += a.valor_despesa }
-    return @despesa_total
+  def total_expenditure
+    @total_expenditure ||= self.expenditures.inject(0) {|sum, a| sum += a.price }
+    return @total_expenditure
   end
 
-  def patrimonio_total
-    @patrimonio_total ||= self.patrimonios.inject(0) {|sum, a| sum += a.valor_bem }
-    return @patrimonio_total
+  def total_patrimony
+    @total_patrimony ||= self.patrimonies.inject(0) {|sum, a| sum += a.price }
+    return @total_patrimony
   end
 
   def patrimony_by_gender(gender)

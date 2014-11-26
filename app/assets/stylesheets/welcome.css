@@ -1177,7 +1177,7 @@ body{
   padding-left: 80px;
 }
 
-.proposta{
+.proposal{
   background:#f0f0f0;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -1187,11 +1187,11 @@ body{
   overflow: hidden;
 }
 
-.canvas-proposta{
+.canvas-proposal{
   overflow: scroll;
 }
 
-.box-proposta{
+.box-proposal{
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
 /*cantos arredondados*/
   border-radius: 5px 5px 5px 5px;

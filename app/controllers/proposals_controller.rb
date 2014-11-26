@@ -42,9 +42,8 @@ class ProposalsController < ApplicationController
   end
 
   private
-    def proposal_params
-      params.require(:proposal).permit(:description, :candidatura_id)
-    end
 
-
+  def proposal_params
+    params.require(:proposal).permit(:description, :candidatura_id)
+  end
 end

@@ -1,0 +1,30 @@
+<%= flash[:notice] %>
+
+<h1>Loaded receita</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Sequencial Candidato</th>
+      <th>Recibo</th>
+      <th>Doador</th>
+      <th>valor</th>
+      <th>Descrição</th>
+      <th>Candidatura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @revenues.each do |revenue| %>
+      <tr>
+        <td><%= revenue.id %></td>
+        <td><%= revenue.sequencial_candidato %></td>
+        <td><%= revenue.receipt_title %></td>
+        <td><%= revenue.donator %></td>
+        <td><%= revenue.price %></td>
+        <td><%= revenue.description %></td>
+        <td><%= revenue.candidature.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @revenues %>

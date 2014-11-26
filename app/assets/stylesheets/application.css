@@ -13,7 +13,7 @@
  *= require bootstrap_and_overrides
  *= require bootstrap
  *= require welcome
- *= require candidatos.css
+ *= require candidates.css
  *= require prettyPhoto
  *= require fontello
  *= require fontello-ie7

@@ -4,24 +4,24 @@ Rails.application.routes.draw do
 
   resources :proposals
 
-  resources :candidatos do
-    collection {get :import}
+  resources :candidates   do
+    collection {post :import}
   end
 
-  resources :candidaturas do
-    collection {get :import}
+  resources :candidatures   do
+    collection {post :import}
   end
 
-  resources :receitas do
-   collection { get :import }
+  resources :revenues do
+   collection { post :import }
   end
 
-    resources :despesas do
-    collection {get :import}
+  resources :expenditures do
+    collection {post :import}
   end
 
-  resources :patrimonios do
-   collection { get :import }
+  resources :patrimonies do
+   collection { post :import }
   end
 
   root to: "welcome#index"

@@ -205,7 +205,7 @@
         <div id="participe-row" class="row">
           <div class="span4">
             <div class="inside">
-              <%= form_tag candidatos_path, class: 'input-group', :method => 'get' do %>
+              <%= form_tag candidates_path, class: 'input-group', :method => 'get' do %>
                 <div class="form-group">
                   <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
                   <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>
@@ -219,7 +219,7 @@
           <!-- /.span4 -->
           <div class="span4">
             <div class="inside">
-              <%= form_tag candidatos_path, class: 'input-group', :method => 'get' do %>
+              <%= form_tag candidates_path, class: 'input-group', :method => 'get' do %>
                 <div class="form-group">
                   <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Proposta", class: "form-control" %>
                   <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>
@@ -234,7 +234,7 @@
         </div>
         <!-- /.row -->
         <div class="row">
-          <%= link_to "Candidat@s", candidatos_path, class: 'btn', data: { no_turbolink: true } %>
+          <%= link_to "Candidat@s", candidates_path, class: 'btn', data: { no_turbolink: true } %>
         </div>
       </div>
       <!-- /.container -->

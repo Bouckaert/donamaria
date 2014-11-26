@@ -1,0 +1,23 @@
+<%= flash[:notice] %>
+
+<h1>Loaded Patrimonios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sequencial Candidato</th>
+      <th>Valor do Bem</th>
+      <th>Descrição do Bem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patrimonies.each do |patrimony| %>
+      <tr>
+        <td><%= patrimony.sequencial_candidato %></td>
+        <td><%= patrimony.price %></td>
+        <td><%= patrimony.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @patrimonies %>

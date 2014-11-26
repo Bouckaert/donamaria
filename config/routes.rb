@@ -5,23 +5,23 @@ Rails.application.routes.draw do
   resources :proposals
 
   resources :candidates   do
-    collection {post :import}
+    collection { get :import }
   end
 
   resources :candidatures   do
-    collection {post :import}
+    collection { get :import }
   end
 
   resources :revenues do
-   collection { post :import }
+   collection { get :import }
   end
 
   resources :expenditures do
-    collection {post :import}
+    collection { get :import }
   end
 
   resources :patrimonies do
-   collection { post :import }
+   collection { get :import }
   end
 
   root to: "welcome#index"

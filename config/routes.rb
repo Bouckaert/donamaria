@@ -2,17 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'candidates/index'
-
-  get 'candidates/import'
-
-  get 'patrimonies/import'
-
-  get 'expenditures/import'
-
-  get 'candidatures/import'
-
-  get 'revenues/import'
+  resources :proposals
 
   resources :candidates   do
     collection {post :import}

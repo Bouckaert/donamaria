@@ -522,7 +522,6 @@ article.post {
 article .inside {
   margin: 18px 24px 24px;
   padding-top: 1em;
-  background: url("dot-row-2.png") repeat-x scroll 0 0 transparent !important;
 }
 .post-date {
   color: #A5A5A2;
@@ -682,7 +681,6 @@ hr.featurette-divider {
   margin: 3em 0;
   border-width: 0;
   height: 9px;
-  background: url("dot-row-3-lt.png") repeat-x;
 }
 /* ----------------------------------------------------------------------------------------------------------
 06 Footer ------------------------------------------------------------
@@ -1175,4 +1173,29 @@ body{
 
 #representacao-row{
   padding-left: 80px;
+}
+
+.proposal{
+  background:#f0f0f0;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin: 5px;
+  height: 70px;
+  overflow: hidden;
+}
+
+.canvas-proposal{
+  overflow: scroll;
+}
+
+.box-proposal{
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
+/*cantos arredondados*/
+  border-radius: 5px 5px 5px 5px;
+/*Sobreamente*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-height: 300px;
+  /*overflow: hidden;*/
+  margin: 10px;
 }

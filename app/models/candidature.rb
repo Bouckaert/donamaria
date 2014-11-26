@@ -3,6 +3,7 @@ class Candidature < ActiveRecord::Base
   has_many :revenues
   has_many :expenditures
   has_many :patrimonies
+  has_many :proposals, dependent: :destroy
 
 #  scope :ano_2012, -> { where(election_year: "2012")}
 

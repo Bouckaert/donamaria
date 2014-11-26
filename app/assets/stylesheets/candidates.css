@@ -1,0 +1,46 @@
+body div .candidate .modal {
+  display: none;
+  color: #312A1E;
+  overflow: visible;
+  background-color: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+body div .candidate{
+  color: #FFF;
+  font-size: 100%;
+  font-family: 'Quattrocento', serif;
+  margin:20px;
+}
+
+.box {
+/*Degrade*/
+  background: -moz-linear-gradient(#0b333f, #235954) no-repeat scroll 0 0 transparent;
+/*cantos arredondados*/
+  border-radius: 5px 5px 5px 5px;
+/*Sobreamente*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-height: 300px;
+  /*overflow: hidden;*/
+  margin-bottom: 10px;
+}
+.infobox {
+/*Degrade*/
+  background: -moz-linear-gradient(#839331, #21541C) no-repeat scroll 0 0 transparent;
+/*cantos arredondados*/
+  border-radius: 5px 5px 5px 5px;
+/*Sobreamente*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-height: 300px;
+  /*overflow: hidden;*/
+  margin-bottom: 10px;
+}
+
+.collapse {
+  display: block;
+}
+
+body div .candidate .btn{
+  margin: 0px;
+}

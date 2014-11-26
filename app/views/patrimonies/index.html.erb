@@ -11,13 +11,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @patrimony.each do |patrimony| %>
+    <% @patrimonies.each do |patrimony| %>
       <tr>
         <td><%= patrimony.sequencial_candidato %></td>
-        <td><%= patrimony.valor_bem %></td>
-        <td><%= patrimony.detalhe_bem %></td>
+        <td><%= patrimony.price %></td>
+        <td><%= patrimony.description %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @patrimony %>
+<%= paginate @patrimonies %>

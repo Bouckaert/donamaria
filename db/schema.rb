@@ -13,60 +13,60 @@
 
 ActiveRecord::Schema.define(version: 20141118003232) do
 
-  create_table "candidatos", force: true do |t|
-    t.string   "nome_candidato"
-    t.string   "descricao_ocupacao"
-    t.string   "descricao_sexo"
-    t.string   "numero_titulo_eleitor"
+  create_table "candidates", force: true do |t|
+    t.string   "name"
+    t.string   "occupation"
+    t.string   "gender"
+    t.string   "voter_registration"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "candidaturas", force: true do |t|
+  create_table "candidatures", force: true do |t|
     t.string   "sequencial_candidato"
-    t.integer  "ano_eleicao"
-    t.string   "descricao_eleicao"
-    t.string   "sigla_UF"
-    t.string   "descricao_UE"
-    t.string   "descricao_cargo"
-    t.string   "numero_candidato"
-    t.string   "sigla_partido"
-    t.string   "composicao_legenda"
+    t.integer  "election_year"
+    t.string   "election_description"
+    t.string   "federative_unit_symbol"
+    t.string   "federative_unit_description"
+    t.string   "job_title"
+    t.string   "candidate_number"
+    t.string   "political_party_symbol"
+    t.string   "political_caption"
     t.string   "desc_sit_tot_turno"
-    t.integer  "candidato_id"
+    t.integer  "candidate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "despesas", force: true do |t|
+  create_table "expenditures", force: true do |t|
     t.string   "sequencial_candidato"
-    t.string   "nome_fornecedor"
-    t.decimal  "valor_despesa",        precision: 10, scale: 2
-    t.string   "descricao_despesa"
-    t.integer  "candidatura_id"
+    t.string   "seller"
+    t.decimal  "price",                precision: 10, scale: 2
+    t.string   "description"
+    t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "patrimonios", force: true do |t|
+  create_table "patrimonies", force: true do |t|
     t.string   "sequencial_candidato"
-    t.string   "detalhe_bem"
-    t.decimal  "valor_bem",            precision: 10, scale: 2
-    t.integer  "candidatura_id"
+    t.string   "description"
+    t.decimal  "price",                precision: 10, scale: 2
+    t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "patrimonios", ["candidatura_id"], name: "index_patrimonios_on_candidatura_id"
+  add_index "patrimonies", ["candidature_id"], name: "index_patrimonies_on_candidature_id"
 
-  create_table "receita", force: true do |t|
+  create_table "revenues", force: true do |t|
     t.string   "sequencial_candidato"
-    t.string   "numero_recibo_eleitoral"
-    t.string   "nome_doador"
-    t.decimal  "valor_receita",           precision: 10, scale: 2
-    t.string   "descricao_da_receita"
-    t.integer  "candidatura_id"
+    t.string   "receipt_title"
+    t.string   "donator"
+    t.decimal  "price",                precision: 10, scale: 2
+    t.string   "description"
+    t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

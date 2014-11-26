@@ -10,7 +10,7 @@
             <nav class="pull-right nav-collapse collapse">
               <ul id="menu-main" class="nav landing">
                 <li>
-                  <%= form_tag candidatos_path, class: 'navbar-form', :method => 'get' do %>
+                  <%= form_tag candidates_path, class: 'navbar-form', :method => 'get' do %>
                     <div class="form-group">
                       <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
                       <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>

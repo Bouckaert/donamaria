@@ -1,18 +1,18 @@
-      <label><%= candidatura.descricao_UE %></label>
-      <label><%= candidatura.descricao_cargo %></label>
-      <label><%= candidatura.sigla_partido %></label>
-      <label><%= candidatura.composicao_legenda %></label>
-      <label><%= link_to candidatura.receita_total, "#Receita-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></label>
-      <label><%= link_to candidatura.despesa_total, "#Despesa-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></label>
-      <label><%= link_to candidatura.patrimonio_total, "#Patrimonio-#{(candidatura.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label><%= candidature.federative_unit_description %></label>
+      <label><%= candidature.job_title %></label>
+      <label><%= candidature.political_party_symbol %></label>
+      <label><%= candidature.political_caption %></label>
+      <label><%= link_to candidature.total_revenue, "#revenue-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label><%= link_to candidature.total_expenditure, "#expenditure-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label><%= link_to candidature.total_patrimony, "#patrimony-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
 
 <!-- Modal Receita -->
-    <div class="modal bs-example-modal-lg" id="Receita-<%= candidatura.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal bs-example-modal-lg" id="revenue-<%= candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Detalhamento de receitas da candidatura</h4>
+            <h4 class="modal-title" id="myModalLabel">Detalhamento de receitas da candidature</h4>
           </div>
           <div class="modal-body">
             <table>
@@ -23,13 +23,13 @@
                   <th>Descrição</th>
                 </tr>
               </thead>
-              <% candidatura.receitas.each do |receita| %>
-                <% if receita.sequencial_candidato == candidatura.sequencial_candidato %>
+              <% candidature.revenues.each do |revenue| %>
+                <% if revenue.sequencial_candidato == candidature.sequencial_candidato %>
                   <tbody>
                     <tr>
-                      <td><%= receita.nome_doador %></td>
-                      <td><%= receita.valor_receita %></td>
-                      <td><%= receita.descricao_da_receita %></td>
+                      <td><%= revenue.donator %></td>
+                      <td><%= revenue.price %></td>
+                      <td><%= revenue.description %></td>
                     </tr>
                   </tbody>
                 <%end%>
@@ -43,12 +43,12 @@
       </div>
     </div>   <!-- Modal Receita -->
 <!-- Modal Despesa -->
-    <div class="modal bs-example-modal-lg" id="Despesa-<%= candidatura.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal bs-example-modal-lg" id="expenditure-<%= candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Detalhamento de Despesas da candidatura</h4>
+            <h4 class="modal-title" id="myModalLabel">Detalhamento de Despesas da candidature</h4>
           </div>
           <div class="modal-body">
             <table>
@@ -59,13 +59,13 @@
                   <th>Descrição</th>
                 </tr>
               </thead>
-              <% candidatura.despesas.each do |despesa| %>
-                <% if despesa.sequencial_candidato == candidatura.sequencial_candidato %>
+              <% candidature.expenditures.each do |expenditure| %>
+                <% if expenditure.sequencial_candidato == candidature.sequencial_candidato %>
                   <tbody>
                     <tr>
-                      <td><%= despesa.nome_fornecedor %></td>
-                      <td><%= despesa.valor_despesa %></td>
-                      <td><%= despesa.descricao_despesa %></td>
+                      <td><%= expenditure.seller %></td>
+                      <td><%= expenditure.price %></td>
+                      <td><%= expenditure.description %></td>
                     </tr>
                   </tbody>
                 <%end%>
@@ -79,12 +79,12 @@
       </div>
     </div>   <!-- Modal Despesa -->
 <!-- Modal Patrimonio -->
-    <div class="modal bs-example-modal-lg" id="Patrimonio-<%= candidatura.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal bs-example-modal-lg" id="patrimony-<%= candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Detalhamento de Bens da candidatura</h4>
+            <h4 class="modal-title" id="myModalLabel">Detalhamento de Bens da candidature</h4>
           </div>
           <div class="modal-body">
             <table>
@@ -95,13 +95,13 @@
                   <th>Descrição do bem</th>
                 </tr>
               </thead>
-              <% candidatura.patrimonios.each do |patrimonio| %>
-                <% if patrimonio.sequencial_candidato == candidatura.sequencial_candidato %>
+              <% candidature.patrimonies.each do |patrimony| %>
+                <% if patrimony.sequencial_candidato == candidature.sequencial_candidato %>
                   <tbody>
                     <tr>
-                      <td><%= patrimonio.sequencial_candidato %></td>
-                      <td><%= patrimonio.valor_bem %></td>
-                      <td><%= patrimonio.detalhe_bem %></td>
+                      <td><%= patrimony.sequencial_candidato %></td>
+                      <td><%= patrimony.price %></td>
+                      <td><%= patrimony.description %></td>
                     </tr>
                   </tbody>
                 <%end%>

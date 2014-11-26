@@ -1,4 +1,4 @@
-body div .candidato .modal {
+body div .candidate .modal {
   display: none;
   color: #312A1E;
   overflow: visible;
@@ -7,7 +7,7 @@ body div .candidato .modal {
   box-shadow: none;
 }
 
-body div .candidato{
+body div .candidate{
   color: #FFF;
   font-size: 100%;
   font-family: 'Quattrocento', serif;
@@ -41,6 +41,6 @@ body div .candidato{
   display: block;
 }
 
-body div .candidato .btn{
+body div .candidate .btn{
   margin: 0px;
 }

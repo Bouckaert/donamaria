@@ -1,10 +1,10 @@
 $(document).ready ->
-  $('.candidatura:last-child').removeClass "hide"
+  $('.candidature:last-child').removeClass "hide"
 
 $(document).on "click", ".dropdown-menu li a", ->
-  candidatura_id = this.id
-  $(this).parents(".row").find(".candidatura").addClass "hide"
-  $("#candidatura-"+candidatura_id).removeClass "hide"
+  candidature_id = this.id
+  $(this).parents(".row").find(".candidature").addClass "hide"
+  $("#candidature-"+candidature_id).removeClass "hide"
 
 
 $(document).on "click", ".dropdown-menu li a", ->

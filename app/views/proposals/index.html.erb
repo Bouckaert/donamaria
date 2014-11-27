@@ -1,8 +1,11 @@
 <div class='container'>
-<% for proposal in @proposals %>
-<div class='box-proposal'>
-  <%= proposal.description %>
-  </div>
-<%end%>
-  </div>
+  <% @proposals.each do |proposal| %>
+    <div class='box-proposal'>
+      <%= proposal.candidature_id %><br>
+      <%= proposal.description %>
+      <%= proposal.score%>
+      <%=link_to "upvote", like_proposal_path(proposal), method: :put%>
+      <%=link_to "downvote", dislike_proposal_path(proposal), method: :put %>
+    </div>
+  <%end%>
 </div>

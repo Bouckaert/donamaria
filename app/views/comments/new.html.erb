@@ -1,0 +1,20 @@
+<%= form_for @comment do |f| %>
+  <div class="row">
+      <div class="large-1 columns">
+          <%#=image_tag current_user.photo %>
+      </div>
+
+      <div class="large-11 columns text-left">
+
+              <%=f.text_area :comment, placeholder: "Write a comment..."%>
+              <%=f.hidden_field :commentable_type, :value => resource.class.to_s%>
+              <%=f.hidden_field :commentable_id, :value => resource.id%>
+
+          <div class="text-right">
+
+              <%=f.submit "Send",  :class=>"pure-button pure-button-xsmall pure-button-primary" %>
+          </div>
+
+      </div>
+  </div>
+<% end %>

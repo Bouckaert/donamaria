@@ -1,0 +1,55 @@
+  <div class='container'>
+    <div class="row box">
+      <div class=' col-md-4 candidate'>
+        <div class='row'>
+          <div class= 'col-md-6'>
+            <b><%= @candidate.name %></b>
+            <b><%= @candidate.id %></b>
+            <%= image_tag("politico.png", size: "100x100") %>
+            <label><%= @candidate.occupation %> <%= @candidate.gender %></label>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu<%= "#{(@candidate.id)}" %>" data-toggle="dropdown" aria-expanded="true">Ano Eleitoral
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu<%= "#{(@candidate.id)}" %>">
+                <% @candidate.candidatures.each do |candidature| %>
+                  <li role="presentation"><%= link_to candidature.election_year, "#AnoEleição-#{(candidature.id)}", id: candidature.id, :class => "btn" %></li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+          <% @candidate.candidatures.each do |candidature| %>
+            <div id='<%= "candidature-#{(candidature.id)}" %>' class= 'col-md-6 hide candidature'>
+              <%= render partial: "candidature", locals: {candidature: candidature} %>
+            </div>
+          <%end%>
+        </div>
+      </div>
+      <div class='col-md-7'>
+        <%= render partial: "create", locals: {proposal: Proposal.new} %>
+      </div>
+    </div>
+</div>
+<div class='container'>
+  <% @candidate.candidatures.each do |candidature| %>
+    <% candidature.proposals.each do |proposal| %>
+      <div class='col-md-5 proposal'>
+        <div class='row proposal'>
+          <div class='col-md-9'>
+            <b><%= proposal.title %></b>
+            <label><%= proposal.description %></label>
+          </div>
+          <div class='col-md-1'>
+            <%= image_tag("talk_balloon.png", size: "30x30") %><label></label>
+          </div>
+          <div class='col-md-1'>
+            <%= image_tag("flag.png", size: "30x30") %><label><%= proposal.score%></label>
+          </div>
+          <div class='col-md-1'>
+            <%= image_tag("Dollar.png", size: "30x30") %><label>R$700</label>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

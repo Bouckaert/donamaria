@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :proposals
+  resources :proposals do
+    resources :comments
+    member do
+      put "like", to: "proposals#upvote"
+      put "dislike", to: "proposals#downvote"
+    end
+  end
 
   resources :candidates   do
     collection { get :import }

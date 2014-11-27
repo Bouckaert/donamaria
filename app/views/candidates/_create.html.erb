@@ -1,0 +1,10 @@
+<div>
+  <%= form_for proposal do |p| %>
+    <%= p.label :Titulo %>
+    <%= p.text_field :title, placeholder: "Titulo" %>
+    <%= p.label :Descrição %>
+    <%= p.text_area :description, :rows => "6", placeholder: "Descreva sua proposta",
+    class: "form-control" %>
+    <%= p.submit "Concluir", class: "btn btn-success" %>
+    <%end%>
+</div>

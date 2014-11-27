@@ -45,3 +45,7 @@ body div .candidate{
 body div .candidate .btn{
   margin: 0px;
 }
+
+#proposal_title{
+  height: auto;
+}

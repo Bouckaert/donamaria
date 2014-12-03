@@ -1181,21 +1181,43 @@ body{
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   margin: 5px;
-  height: 70px;
+  height: 80px;
+  width: 750px;
   overflow: hidden;
 }
 
 .canvas-proposal{
-  overflow: scroll;
+  margin-top: 15px;
+  overflow-y: scroll;
+  max-height: 270px;
 }
 
 .box-proposal{
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
 /*cantos arredondados*/
   border-radius: 5px 5px 5px 5px;
-/*Sobreamente*/
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  max-height: 300px;
   /*overflow: hidden;*/
   margin: 10px;
+  overflow-x: hidden;
+}
+
+.box-proposal .col-md-9{
+padding-right: 0px;}
+
+.box-proposal .col-md-12{
+  overflow:hidden;
+    white-space:nowrap;
+}
+
+
+.box-proposal .col-md-1 .row{
+  margin-left: 0px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.comment{
+    max-height: 200px;
+/*  overflow: hidden;*/
+
 }

@@ -1,6 +1,11 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.all
+    if params[:search].present?
+      @proposals = Proposal.search(params[:search]).page(params[:page]).per(10)
+    else
+      @proposals = Proposal.all.page(params[:page]).per(10)
+    end
+
   end
 
   def new
@@ -44,15 +49,25 @@ class ProposalsController < ApplicationController
   end
 
   def upvote
-    @proposal = Proposal.find(params[:id])
-    @proposal.upvote_by current_user
-    redirect_to proposals_path
+    if user_signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposal.upvote_by current_user
+      redirect_to proposals_path
+    else
+      redirect_to '/users/sign_in'
+      flash[:alert] = 'Favor efetuar login'
+    end
   end
 
   def downvote
-    @proposal = Proposal.find(params[:id])
-    @proposal.downvote_from current_user
-    redirect_to proposals_path
+    if user_signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposal.downvote_from current_user
+      redirect_to proposals_path
+    else
+      redirect_to '/users/sign_in'
+      flash[:alert] = 'Favor efetuar login'
+    end
   end
 
   private

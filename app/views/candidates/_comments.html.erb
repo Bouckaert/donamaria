@@ -1,0 +1,8 @@
+  <% comments.each do |c| %>
+    <div class='row'>
+      <label><%= c.user.email %></label>
+      <i class="fa fa-user"></i>
+      <%= c.body %>
+    </div>
+
+  <% end %>

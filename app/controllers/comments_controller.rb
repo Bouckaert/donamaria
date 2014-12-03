@@ -4,8 +4,7 @@ def index
   @proposal = Proposal.find(params[:proposal_id])
   @user = current_user
   @comments = @proposal.comments.all
- # @comments = User.find(current_user).comments.all
- # @p = User.find(current_user).comments.proposals.all
+  @candidature = Candidature.find(@proposal.candidature_id)
 end
 
 def new
@@ -15,36 +14,29 @@ end
 
 def create
   @proposal = Proposal.find(params[:proposal_id])
+  @user = current_user
+  @comment=Comment.new(comment_params)
+  @comment.user_id = @user.id
+  @comment.proposal_id = @proposal.id
+  if @comment.save
+    redirect_to candidates_path
+    flash[:success] = "comment cadastrada com sucesso!"
+  else
+        redirect_to candidates_path
 
-  @comment = @proposal.comments.create(comment_params)
+      flash[:error] = @comment.errors.full_messages_for(@comment.errors.first.first)
+  end
+
 # @commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
 # @comment.commentable = @commentable
-# @user = current_user
-# @comment.user = @user
-# @comment.proposal = @proposal
-
-# if @comment.save
-# redirect_to '/proposals'
-# flash[:success] = "Proposta cadastrada com sucesso!"
-# else
-#   flash[:error] = @proposal.errors.full_messages_for(@proposal.errors.first.first)
-# end
-
-
-# puts @comment.inspect
-
-
-
-# redirect_to '/proposals'
-
-  #redirect_to [commentable.user, commentable]
+# redirect_to [commentable.user, commentable]
 end
 
 
 private
 
 def comment_params
-    params.require(:comment).permit!
+    params.require(:comment).permit(:body, :proposal_id, :user_id)
 end
 
 end

@@ -1,18 +1,15 @@
 class CandidatesController < ApplicationController
   def index
-    @candidates = Candidate.page(params[:page]).per(10)
-
-    if params[:search].present?
-      @candidates = Candidate.with_name(params[:search]).page(params[:page]).per(10)
+    if params[:search]
+      @candidates = Candidate.search(params[:search]).page(params[:page]).per(10)
+    else
+      @candidates = Candidate.all.with_gender("FEMININO").page(params[:page]).per(10)
     end
-    if params[:gender].present?
-      @candidates = Candidate.with_gender(params[:gender]).page(params[:page]).per(10)
-    end
-
   end
 
   def show
     @candidate = Candidate.find(params[:id])
+    @proposals = @candidate.candidatures.first.proposals
   end
 
   def import

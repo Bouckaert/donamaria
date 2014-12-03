@@ -7,6 +7,10 @@ class Candidate < ActiveRecord::Base
 
   require 'csv'
 
+  def self.search(name)
+    where("name like ?", "%#{name}%")
+  end
+
   def self.import
     candidate_hash = Array.new
    CSV.foreach("public/consulta_cand_2010/consulta_cand_2010_PE.txt",:encoding => 'windows-1252:utf-8', headers: false ,:col_sep => ';' ) do |row|

@@ -8,10 +8,14 @@ body div .candidate .modal {
 }
 
 body div .candidate{
-  color: #FFF;
+  color: #312A1E;
   font-size: 100%;
   font-family: 'Quattrocento', serif;
   margin:20px;
+}
+
+#candidate_number{
+
 }
 
 .box {
@@ -24,6 +28,8 @@ body div .candidate{
   max-height: 300px;
   /*overflow: hidden;*/
   margin-bottom: 10px;
+  overflow-y: hidden;
+
 }
 .infobox {
 /*Degrade*/
@@ -44,4 +50,52 @@ body div .candidate{
 
 body div .candidate .btn{
   margin: 0px;
+}
+
+#proposal_title{
+  height: auto;
+  margin-left: 0px;
+}
+
+#new_proposal .btn{
+  margin: 10px;
+  margin-left: 0px;
+  padding: 5px;
+  padding-bottom: 25px;
+  width: 20%;
+}
+
+#proposal_description{
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.box-proposal form {
+    width: 100%;
+    height: 70%;
+    margin-left: 5px;
+}
+
+.box-proposal .btn{
+  margin: 10px;
+  margin-left: 0px;
+  padding: 5px;
+  padding-bottom: 25px;
+  width: 100%;
+
+}
+
+.box-proposal .comment .row{
+  margin-left: 15px;
+}
+
+.box-proposal .comment .row label{
+    width:55px;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+
+.box-proposal .col-md-12 textarea{
+  margin-left: 5px;
 }

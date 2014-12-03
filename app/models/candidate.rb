@@ -7,12 +7,9 @@ class Candidate < ActiveRecord::Base
 
   require 'csv'
 
-
-
-def self.search(name)
-  where("name like ?", "%#{name}%")
-end
-
+  def self.search(name)
+    where("name like ?", "%#{name}%")
+  end
 
   def self.import
     candidate_hash = Array.new

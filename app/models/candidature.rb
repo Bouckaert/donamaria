@@ -53,19 +53,19 @@ class Candidature < ActiveRecord::Base
 
     end
 
- #CSV.foreach("public/consulta_cand_2012/consulta_cand_2012_PE.txt",:encoding => 'windows-1252:utf-8', #headers: false ,:col_sep => ';' ) do |row|
- #  candidature_hash = row[11]
- #  @candidate = Candidate.where(voter_registration: row[26])
-#
- #  Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => #row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :#sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :#desc_sit_tot_turno => row[41], :candidate_id => @candidate.first.id)
- #  end
-#
- # CSV.foreach("public/consulta_cand_2014/consulta_cand_2014_PE.txt",:encoding => 'windows-1252:utf-8', #headers: false ,:col_sep => ';' ) do |row|
- #   candidature_hash = row[11]
- #   @candidate = Candidate.where(voter_registration: row[26])
-#
- #   Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol =># row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :#sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :#desc_sit_tot_turno => row[42], :candidate_id => @candidate.first.id)
- #   end
+  # CSV.foreach("public/consulta_cand_2012/consulta_cand_2012_PE.txt",:encoding => 'windows-1252:utf-8', #headers: false ,:col_sep => ';' ) do |row|
+  # candidature_hash = row[11]
+  # @candidate = Candidate.where(voter_registration: row[26])
+
+  # Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol => #row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :#sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :#desc_sit_tot_turno => row[41], :candidate_id => @candidate.first.id)
+  # end
+
+  # CSV.foreach("public/consulta_cand_2014/consulta_cand_2014_PE.txt",:encoding => 'windows-1252:utf-8', #headers: false ,:col_sep => ';' ) do |row|
+  # candidature_hash = row[11]
+  # @candidate = Candidate.where(voter_registration: row[26])
+
+  # Candidature.create!(:election_year => row[2],:election_description => row[4], :federative_unit_symbol =># row[5], :federative_unit_description => row[7], :job_title => row[9], :candidate_number => row[12], :#sequencial_candidato => row[11], :political_party_symbol => row[17], :political_caption => row[21], :#desc_sit_tot_turno => row[42], :candidate_id => @candidate.first.id)
+  # end
 
   end
 

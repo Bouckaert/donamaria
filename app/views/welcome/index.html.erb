@@ -219,7 +219,7 @@
           <!-- /.span4 -->
           <div class="span4">
             <div class="inside">
-              <%= form_tag candidates_path, class: 'input-group', :method => 'get' do %>
+              <%= form_tag proposals_path, class: 'input-group', :method => 'get' do %>
                 <div class="form-group">
                   <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Proposta", class: "form-control" %>
                   <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>

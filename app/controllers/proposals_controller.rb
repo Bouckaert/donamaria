@@ -1,6 +1,11 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.all
+    if params[:search].present?
+      @proposals = Proposal.search(params[:search]).page(params[:page]).per(10)
+    else
+      @proposals = Proposal.all.page(params[:page]).per(10)
+    end
+
   end
 
   def new
@@ -9,11 +14,13 @@ class ProposalsController < ApplicationController
 
   def create
     if user_signed_in?
-      @candidato = Candidato.where(user_id: current_user.id)
-      @candidatura = @candidato.candidatura.first
+      @candidate = Candidate.where(user_id: current_user.id).first
+      @candidature = Candidature.where(candidate_id: @candidate.id).first
       @proposal = Proposal.new(proposal_params)
+      @proposal.candidature_id = @candidature.id
       if @proposal.save
-        flash[:success] = "Proposta cadastrada com sucesso!"
+      redirect_to '/proposals'
+      flash[:success] = "Proposta cadastrada com sucesso!"
       else
         flash[:error] = @proposal.errors.full_messages_for(@proposal.errors.first.first)
       end
@@ -41,9 +48,31 @@ class ProposalsController < ApplicationController
     @proposal.destroy
   end
 
+  def upvote
+    if user_signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposal.upvote_by current_user
+      redirect_to proposals_path
+    else
+      redirect_to '/users/sign_in'
+      flash[:alert] = 'Favor efetuar login'
+    end
+  end
+
+  def downvote
+    if user_signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposal.downvote_from current_user
+      redirect_to proposals_path
+    else
+      redirect_to '/users/sign_in'
+      flash[:alert] = 'Favor efetuar login'
+    end
+  end
+
   private
 
   def proposal_params
-    params.require(:proposal).permit(:description, :candidatura_id)
+    params.require(:proposal).permit(:title, :description, :candidatura_id)
   end
 end

@@ -2,9 +2,9 @@
       <label><%= candidature.job_title %></label>
       <label><%= candidature.political_party_symbol %></label>
       <label><%= candidature.political_caption %></label>
-      <label><%= link_to candidature.total_revenue, "#revenue-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
-      <label><%= link_to candidature.total_expenditure, "#expenditure-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
-      <label><%= link_to candidature.total_patrimony, "#patrimony-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label>Receitas<%= link_to candidature.total_revenue, "#revenue-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label>Despesas<%= link_to candidature.total_expenditure, "#expenditure-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
+      <label>Patrimonio<%= link_to candidature.total_patrimony, "#patrimony-#{(candidature.id)}", :class => "btn", "data-toggle" => "modal" %></label>
 
 <!-- Modal Receita -->
     <div class="modal bs-example-modal-lg" id="revenue-<%= candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

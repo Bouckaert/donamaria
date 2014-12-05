@@ -1,0 +1,10 @@
+  <% @comments.each do |c| %>
+    <div class='box'>
+      <%= c.body %>
+      <%= c.user.email %>
+      <%= c.proposal.id %>
+      <%= @user.email %>
+      <%= @candidature.sequencial_candidato %>
+    </div>
+
+  <% end %>

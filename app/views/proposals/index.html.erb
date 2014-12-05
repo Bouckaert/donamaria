@@ -1,8 +1,55 @@
 <div class='container'>
-<% for proposal in @proposals %>
-<div class='box-proposal'>
-  <%= proposal.description %>
-  </div>
-<%end%>
-  </div>
+  <% @proposals.each do |proposal| %>
+<div class='row box-proposal'>
+      <div class='col-md-12 '>
+        <div class='col-md-9'>
+          <div class='col-md-12'>
+            <b> <%= proposal.title %></b>
+            <label> <%= proposal.description %></label>
+          </div>
+        </div><!-- col-md-10 -->
+        <div class=' col-md-1 pull-right'>
+          <div class='row'>
+            <%=link_to '<i class="fa fa-usd"></i>'.html_safe, 'https://pagseguro.uol.com.br/registration/activate.jhtml', method: :put%>
+          </div>
+          <div class='row'>
+            <b><%= number_to_currency(rand(10..1000), precision: 2, unit: "R$", separator: ",") %></b>
+          </div>
+        </div><!-- Financiamento -->
+        <div class=' col-md-1'>
+          <div class='row'>
+            <%=link_to '<i class="fa fa-comment"></i>'.html_safe, proposal_comments_path(proposal)%>
+          </div>
+          <div class='row'>
+            <b><%= proposal.comments.count%></b>
+          </div>
+        </div><!-- Comentarios -->
+        <div class=' col-md-1'>
+          <div class='row'>
+            <%=link_to '<i class="fa fa-chevron-up"></i> '.html_safe, like_proposal_path(proposal), method: :put%>
+          </div>
+          <div class='row'>
+            <b><%= proposal.score%></b>
+          </div>
+          <div class='row'>
+            <%=link_to '<i class="fa fa-chevron-down"></i>'.html_safe, dislike_proposal_path(proposal), method: :put%>
+          </div>
+        </div><!-- Votos -->
+      </div><!-- col-md-12 -->
+      <div class ='col-md-12 comment'>
+        <%= render partial: "candidates/comments", locals: {proposal: proposal , comments: proposal.comments} %>
+      </div>
+      <div class='col-md-12'>
+        <% if user_signed_in? %>
+          <%= render partial: "candidates/new_comment", locals: {proposal: proposal ,comments: proposal.comments} %>
+        <%else%>
+          <textarea>
+          <%=flash[:notice] = 'Faça Login para comentar'%>
+          </textarea>
+        <%end%>
+      </div>
+
+</div><!-- row box-proposal -->
+
+  <%end%>
 </div>

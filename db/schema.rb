@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126214700) do
+ActiveRecord::Schema.define(version: 20141205113954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,10 +74,10 @@ ActiveRecord::Schema.define(version: 20141126214700) do
   create_table "patrimonies", force: true do |t|
     t.string   "sequencial_candidato"
     t.string   "description"
-    t.decimal  "price",                precision: 10, scale: 2
     t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price"
   end
 
   add_index "patrimonies", ["candidature_id"], name: "index_patrimonies_on_candidature_id", using: :btree
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 20141126214700) do
     t.string   "sequencial_candidato"
     t.string   "receipt_title"
     t.string   "donator"
-    t.decimal  "price",                precision: 10, scale: 2
     t.string   "description"
     t.integer  "candidature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price"
   end
 
   create_table "users", force: true do |t|

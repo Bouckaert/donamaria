@@ -34,6 +34,12 @@ gem 'devise'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
+gem 'rest-client'
+
+gem 'byebug'
+
+gem 'roar-rails'
+
 gem 'acts_as_commentable_with_threading'
 
 gem 'pg'

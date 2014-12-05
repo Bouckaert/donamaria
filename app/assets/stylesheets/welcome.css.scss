@@ -257,7 +257,7 @@ ul#menu-main > li > a:hover {
 ---------------------------------------------------------------------------------------------------------- */
 #headerwrap {
   width: 100%;
-  background: url(top-bg.jpg) #0b333f no-repeat center center fixed;
+  background: image-url("top-bg.jpg") #0b333f no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -350,7 +350,7 @@ section.single-page h1 {
   font-size: 2.25em; /* 36px */
 }
 #feature {
-  background: url("yellow.png") repeat-x 0 0;
+  background: image-url("yellow.png") repeat-x 0 0;
   height: 406px;
   z-index: 500;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
@@ -475,7 +475,7 @@ section#services .span3:hover {
 
 section#testimonials {
   height:  647px;
-  background: url("yellow_testimonial.png") repeat-x 0 0;
+  background: image-url("yellow_testimonial.png") repeat-x 0 0;
   padding: 0;
   color: #e4e5e2;
   z-index: 500;
@@ -918,9 +918,6 @@ footer p {
  margin-top:1em;
  width: 135px;
 }
- .container {
-1px solid yellow;
-}
  #team .team-thumb {
  margin-right: auto;
  margin-left: auto;
@@ -1151,7 +1148,7 @@ ul#user-log > li > a:hover {
 }
 
 body{
-  background: url(background-mixed.jpg) #0b333f no-repeat center center fixed;
+  background: image-url("background-mixed.jpg") #0b333f no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

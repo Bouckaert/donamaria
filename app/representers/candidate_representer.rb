@@ -1,5 +1,5 @@
 class CandidateRepresenter < BaseDecorator
-  property :id
+  property :voter_registration, as: :id
   property :name, as: :nomeCompleto
   property :gender, as: :sexo
   property :occupation, as: :nomeOcupacao

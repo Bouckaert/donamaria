@@ -33,7 +33,7 @@ namespace :consume do
   desc 'Populate patrimonies'
   task patrimonies: :environment do
     Candidate.all.each do |candidate|
-      patrimonies = RestClient.get( "http://www.meucongressonacional.com/api/001/candidato/2014/#{candidate.id}/bens")
+      patrimonies = RestClient.get( "http://www.meucongressonacional.com/api/001/candidato/2014/#{candidate.voter_registration}/bens")
       patrimonies = "{\"patrimonies\":#{patrimonies}}"
       patrimonies = PatrimoniesRepresenter.new(Representable::Patrimony.new).from_json patrimonies
       patrimonies.to_a.each do |patrimony|
@@ -46,7 +46,7 @@ namespace :consume do
   desc 'Populate revenues'
   task revenues: :environment do
     Candidate.all.each do |candidate|
-      revenues = RestClient.get( "http://www.meucongressonacional.com/api/001/candidato/2014/#{candidate.id}/doacoes")
+      revenues = RestClient.get( "http://www.meucongressonacional.com/api/001/candidato/2014/#{candidate.voter_registration}/doacoes")
       revenues = "{\"revenues\":#{revenues}}"
       revenues = RevenuesRepresenter.new(Representable::Revenue.new).from_json revenues
       revenues.to_a.try(:each) do |revenue|

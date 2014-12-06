@@ -37,6 +37,113 @@
       });
     </script>
 
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     16676],
+          ['Mulheres',      7654]
+        ]);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'}
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_candidatos'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     1404],
+          ['Mulheres',      171]
+        ]);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'}
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_eleitos'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Patrimônio total dos Homens',     14980600670.33],
+          ['Patrimônio total das Mulheres',      1267967077.89]
+        ]);
+
+      var formatter = new google.visualization.NumberFormat(
+        {prefix: 'R$'});
+        formatter.format(data, 1);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'},
+                pieSliceText: 'value'
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_patrimonio'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     124690971.72],
+          ['Mulheres',      15372761.6]
+        ]);
+
+        var formatter = new google.visualization.NumberFormat(
+          {prefix: 'R$'});
+          formatter.format(data, 1);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'},
+                pieSliceText: 'value'
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_recursos'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 <body>
   <%= render 'layouts/header' %>

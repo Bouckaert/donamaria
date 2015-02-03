@@ -1,0 +1,11 @@
+<div class='panel'>
+    <div class="container">
+  <div class="row">
+    <h1>Hi, I'm a <%= @representative.type %>.</h1>
+<p>My name is <%= @representative.name %></p>
+            <b><%= @representative.id %></b><br>
+            <b><%= @representative.user_id %></b><br>
+            <b><%=current_user.id%></b>
+            <td><%= link_to 'Show', sti_representative_path(representative.type, representative) %></td>
+  </div></div>
+</div>

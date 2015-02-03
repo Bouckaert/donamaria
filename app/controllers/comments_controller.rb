@@ -19,10 +19,10 @@ def create
   @comment.user_id = @user.id
   @comment.proposal_id = @proposal.id
   if @comment.save
-    redirect_to candidates_path
+    redirect_to :controller => 'representatives', :action => 'show', :id => @proposal.representative_id
     flash[:success] = "comment cadastrada com sucesso!"
   else
-        redirect_to candidates_path
+        redirect_to current_user_path
 
       flash[:error] = @comment.errors.full_messages_for(@comment.errors.first.first)
   end

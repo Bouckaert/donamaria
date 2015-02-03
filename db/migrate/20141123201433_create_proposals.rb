@@ -3,7 +3,7 @@ class CreateProposals < ActiveRecord::Migration
     create_table :proposals do |t|
       t.string :title
       t.string :description
-      t.references :candidature
+      t.references :representative
 
       t.timestamps
     end

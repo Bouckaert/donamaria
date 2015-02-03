@@ -14,32 +14,41 @@
       </div>
   </div>
 </div>
-<%= @candidates.all.count%>
+<%= @representatives.all.count%>
 <div class='container'>
-  <% @candidates.each do |candidate| %>
+  <% @representatives.each do |representative| %>
     <div class="row box">
-      <div class=' col-md-4 candidate'>
+      <div class=' col-md-4 representative'>
         <div class='row'>
           <div class= 'col-md-6'>
-            <b><%= candidate.name %></b>
-            <!-- BUG::: <b><%#= candidate.candidatures.first.candidate_number %></b> -->
-            <% candidate.candidatures.each do |candidature| %>
+            <b><%= representative.name %></b>
+            <!-- BUG::: <b><%#= representative.candidatures.first.candidate_number %></b> -->
+            <% representative.candidatures.each do |candidature| %>
               <b><%= candidature.candidate_number %></b>
             <%end%>
-            <%= link_to (image_tag("politica.png",size: "100x100")), candidate_path(candidate.id)%>
-            <label><%= candidate.occupation %> <%= candidate.gender %></label>
+
+<%= link_to (image_tag("politica.png",size: "100x100")),representative_path(representative.id)%>
+
+<!--            <%= link_to (image_tag("politica.png",size: "100x100")), representatives_path(representative.type, representative) %> -->
+
+
+
+<!--            representative_path(representative.id)%> -->
+
+
+            <label><%= representative.occupation %> <%= representative.gender %></label>
             <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu<%= "#{(candidate.id)}" %>" data-toggle="dropdown" aria-expanded="true">Ano Eleitoral
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu<%= "#{(representative.id)}" %>" data-toggle="dropdown" aria-expanded="true">Ano Eleitoral
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu<%= "#{(candidate.id)}" %>">
-                <% candidate.candidatures.each do |candidature| %>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu<%= "#{(representative.id)}" %>">
+                <% representative.candidatures.each do |candidature| %>
                   <li role="presentation"><%= link_to candidature.election_year, "#AnoEleição-#{(candidature.id)}", id: candidature.id, :class => "btn" %></li>
                 <%end%>
               </ul>
             </div>
           </div>
-          <% candidate.candidatures.each do |candidature| %>
+          <% representative.candidatures.each do |candidature| %>
             <div id='<%= "candidature-#{(candidature.id)}" %>' class= 'col-md-6 hide candidature'>
               <%= render partial: "candidature", locals: {candidature: candidature} %>
             </div>
@@ -47,17 +56,16 @@
         </div>
       </div>
       <div class='col-md-7 canvas-proposal'>
-        <% candidate.candidatures.each do |candidature| %>
-          <% candidature.proposals.each do |proposal| %>
-              <%= render partial: "proposal", locals: {proposal: proposal} %>
-          <% end %>
+        <% representative.proposals.each do |proposal| %>
+            <%= render partial: "proposal", locals: {proposal: proposal} %>
         <% end %>
       </div>
     </div>
   <%end%>
 </div>
 
-<%= paginate @candidates %>
 
+<%= paginate @representatives %>
 
+<td><%= link_to "See all #{representative.type.pluralize}", sti_representative_path(representative.type) %></td>
 

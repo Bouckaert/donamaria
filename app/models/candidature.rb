@@ -1,9 +1,8 @@
 class Candidature < ActiveRecord::Base
-  belongs_to :candidate
+  belongs_to :representative
   has_many :revenues
   has_many :expenditures
   has_many :patrimonies
-  has_many :proposals, dependent: :destroy
 
 #  scope :ano_2012, -> { where(election_year: "2012")}
 

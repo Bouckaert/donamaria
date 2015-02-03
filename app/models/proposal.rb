@@ -1,5 +1,5 @@
 class Proposal < ActiveRecord::Base
-  belongs_to :candidatura
+  belongs_to :representative
   has_many :comments
 
   acts_as_votable

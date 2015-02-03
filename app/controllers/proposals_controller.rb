@@ -14,10 +14,9 @@ class ProposalsController < ApplicationController
 
   def create
     if user_signed_in?
-      @candidate = Candidate.where(user_id: current_user.id).first
-      @candidature = Candidature.where(candidate_id: @candidate.id).first
+      @representative = Representative.where(user_id: current_user.id).first
       @proposal = Proposal.new(proposal_params)
-      @proposal.candidature_id = @candidature.id
+      @proposal.representative_id = @representative.id
       if @proposal.save
       redirect_to '/proposals'
       flash[:success] = "Proposta cadastrada com sucesso!"
@@ -73,6 +72,6 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :description, :candidatura_id)
+    params.require(:proposal).permit(:title, :description, :representative_id)
   end
 end

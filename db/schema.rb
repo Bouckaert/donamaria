@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20141205113954) do
 
   create_table "proposals", force: true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.integer  "representative_id"
     t.datetime "created_at"
     t.datetime "updated_at"

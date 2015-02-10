@@ -14,9 +14,11 @@ class RepresentativesController < ApplicationController
   end
 
   def show
-    @representative = type_class.find(params[:id])
-    if current_user.id == @representative.user_id
-      render 'profile'
+    @representative = type_class.find(params[:id]).decorate
+    if user_signed_in?
+      render 'profile' if current_user.id == @representative.user_id
+    else
+      render 'show'
     end
     @proposals = @representative.proposals
   end
@@ -32,7 +34,7 @@ class RepresentativesController < ApplicationController
     end
 
     def type
-        Representative.type.include?(params[:type]) ? params[:type] : "Representative"
+        Representative.types.include?(params[:type]) ? params[:type] : "Representative"
     end
 
     def type_class

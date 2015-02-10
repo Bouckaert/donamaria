@@ -13,7 +13,7 @@ class Representative < ActiveRecord::Base
     where("name like ?", "%#{name}%")
   end
 
-  def self.type
+  def self.types
     %w(Candidate Ambassador)
   end
 

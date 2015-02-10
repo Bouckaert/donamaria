@@ -1,21 +1,4 @@
 <div class='container'>
-  <div class="row infobox">
-      <div class=' col-md-4'>
-        <!-- <%=@patrimonio_masculino%> --> <label>Patrimonio Masculino</label> <b>R$ 1.918.003.634,98</b>
-        <!-- <%=@patrimonio_feminino%> --> <label>Patrimonio Feminino</label> <b>R$ 172.719.217,91</b>
-      </div>
-      <div class=' col-md-4'>
-        <!--<%=@receita_masculino%> --> <label>Receita Masculino</label> <b>R$ 124.690.971,72</b>
-        <!--<%=@receita_feminino%> --> <label>Receita Feminino</label> <b>R$ 15.372.761,6</b>
-      </div>
-      <div class=' col-md-4'>
-        <!--<%=@despesa_masculino%> --> <label>Despesa Masculino</label> <b>R$ 124.518.658,34</b>
-        <!--<%=@despesa_feminino%> --> <label>Despesa Feminino</label> <b>R$ 14.467.072,91</b>
-      </div>
-  </div>
-</div>
-<%= @representatives.all.count%>
-<div class='container'>
   <% @representatives.each do |representative| %>
     <div class="row box">
       <div class=' col-md-4 representative'>
@@ -26,17 +9,9 @@
             <% representative.candidatures.each do |candidature| %>
               <b><%= candidature.candidate_number %></b>
             <%end%>
-
-<%= link_to (image_tag("politica.png",size: "100x100")),representative_path(representative.id)%>
-
-<!--            <%= link_to (image_tag("politica.png",size: "100x100")), representatives_path(representative.type, representative) %> -->
-
-
-
-<!--            representative_path(representative.id)%> -->
-
-
+            <%= link_to (image_tag("politica.png",size: "100x100")),representative_path(representative.id)%>
             <label><%= representative.occupation %> <%= representative.gender %></label>
+            <label><%= link_to "Listar #{representative.type.pluralize}", sti_representative_path(representative.type) %></label>
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu<%= "#{(representative.id)}" %>" data-toggle="dropdown" aria-expanded="true">Ano Eleitoral
                 <span class="caret"></span>
@@ -55,11 +30,6 @@
           <%end%>
         </div>
       </div>
-      <div class='col-md-7 canvas-proposal'>
-        <% representative.proposals.each do |proposal| %>
-            <%= render partial: "proposal", locals: {proposal: proposal} %>
-        <% end %>
-      </div>
     </div>
   <%end%>
 </div>
@@ -67,5 +37,5 @@
 
 <%= paginate @representatives %>
 
-<td><%= link_to "See all #{representative.type.pluralize}", sti_representative_path(representative.type) %></td>
+<%= link_to 'Listar representantes', sti_representative_path %>
 

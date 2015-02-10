@@ -51,6 +51,8 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'draper', '~> 1.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

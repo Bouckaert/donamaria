@@ -44,6 +44,8 @@ gem 'acts_as_commentable_with_threading'
 
 gem 'pg'
 
+gem 'haml-rails', '~> 0.8'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false

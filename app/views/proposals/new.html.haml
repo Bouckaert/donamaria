@@ -1,0 +1,8 @@
+.container
+  .row.box
+    = form_for @proposal do |p|
+      = p.label :description
+      = p.text_area :description, placeholder: "Descreva sua proposta", |
+        class: "form-control"                                           |
+      = p.label :candidatura_id
+      = p.submit "Concluir", class: "btn btn-success"

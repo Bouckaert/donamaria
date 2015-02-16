@@ -1,0 +1,15 @@
+= flash[:notice]
+%h1 Loaded Patrimonios
+%table
+  %thead
+    %tr
+      %th Sequencial Candidato
+      %th Valor do Bem
+      %th Descrição do Bem
+  %tbody
+    - @patrimonies.each do |patrimony|
+      %tr
+        %td= patrimony.sequencial_candidato
+        %td= patrimony.price
+        %td= patrimony.description
+= paginate @patrimonies

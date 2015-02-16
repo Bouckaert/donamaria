@@ -1,0 +1,53 @@
+.container
+  .row.infobox
+    .col-md-4
+      / <haml_loud>@patrimonio_masculino</haml_loud>
+      %label Patrimonio Masculino
+      %b R$ 1.918.003.634,98
+      / <haml_loud>@patrimonio_feminino</haml_loud>
+      %label Patrimonio Feminino
+      %b R$ 172.719.217,91
+    .col-md-4
+      / <haml_loud>@receita_masculino</haml_loud>
+      %label Receita Masculino
+      %b R$ 124.690.971,72
+      / <haml_loud>@receita_feminino</haml_loud>
+      %label Receita Feminino
+      %b R$ 15.372.761,6
+    .col-md-4
+      / <haml_loud>@despesa_masculino</haml_loud>
+      %label Despesa Masculino
+      %b R$ 124.518.658,34
+      / <haml_loud>@despesa_feminino</haml_loud>
+      %label Despesa Feminino
+      %b R$ 14.467.072,91
+= @candidates.all.count
+.container
+  - @candidates.each do |candidate|
+    .row.box
+      .col-md-4.candidate
+        .row
+          .col-md-6
+            %b= candidate.name
+            / BUG::: <b><haml_silent></haml_silent></b>
+            - candidate.candidatures.each do |candidature|
+              %b= candidature.candidate_number
+            = link_to (image_tag("politica.png",size: "100x100")), candidate_path(candidate.id)
+            %label
+              = candidate.occupation
+              = candidate.gender
+            .dropdown
+              %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :id => "dropdownMenu#{"#{(candidate.id)}"}", :type => "button"}
+                Ano Eleitoral
+                %span.caret
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu#{"#{(candidate.id)}"}", :role => "menu"}
+                - candidate.candidatures.each do |candidature|
+                  %li{:role => "presentation"}= link_to candidature.election_year, "#AnoEleição-#{(candidature.id)}", id: candidature.id, :class => "btn"
+          - candidate.candidatures.each do |candidature|
+            .col-md-6.hide.candidature{:id => "candidature-#{(candidature.id)}"}
+              = render partial: "candidature", locals: {candidature: candidature}
+      .col-md-7.canvas-proposal
+        - candidate.candidatures.each do |candidature|
+          - candidature.proposals.each do |proposal|
+            = render partial: "proposal", locals: {proposal: proposal}
+= paginate @candidates

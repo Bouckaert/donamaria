@@ -1,0 +1,7 @@
+= form_for ([:proposal, @comment]) do |f|
+  .row
+    .large-1.columns
+    .large-11.columns.text-left
+      = f.text_area :body, placeholder: "Write a comment..."
+      .text-right
+        = f.submit "Send",  :class=>"pure-button pure-button-xsmall pure-button-primary"

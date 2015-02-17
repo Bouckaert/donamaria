@@ -47,6 +47,8 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false
+  gem 'webmock'
+  gem 'factory_girl_rails'
 end
 
 gem 'rails_12factor', group: :production

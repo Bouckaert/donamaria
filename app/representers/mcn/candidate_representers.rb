@@ -1,4 +1,4 @@
-module MCN
+module MCN::CandidateRepresenters
   class CandidateRepresenter < BaseDecorator
     property :voter_registration, as: :id
     property :name, as: :nomeCompleto
@@ -7,7 +7,7 @@ module MCN
   end
 
   class CandidatesRepresenter < BaseDecorator
-    collection :to_a, extend: MCN::CandidateRepresenter, class: Candidate,
-      as: :candidates
+    collection :to_a, extend: MCN::CandidateRepresenters::CandidateRepresenter,
+      class: Candidate, as: :candidates
   end
 end

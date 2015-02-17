@@ -7,7 +7,7 @@ shared_context 'with representable patrimony' do
   end
 end
 
-describe MCN::PatrimonyRepresenter do
+describe MCN::PatrimonyRepresenters::PatrimonyRepresenter do
   subject { described_class.new(patrimony).to_hash }
   include_context 'with representable patrimony'
 
@@ -20,7 +20,7 @@ describe MCN::PatrimonyRepresenter do
   end
 end
 
-describe MCN::PatrimoniesRepresenter do
+describe MCN::PatrimonyRepresenters::PatrimoniesRepresenter do
   subject { described_class.new(patrimonies).to_hash }
   include_context 'with representable patrimony'
 

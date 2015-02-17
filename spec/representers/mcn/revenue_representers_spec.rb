@@ -7,7 +7,7 @@ shared_context 'with representable revenue' do
   end
 end
 
-describe MCN::RevenueRepresenter do
+describe MCN::RevenueRepresenters::RevenueRepresenter do
   subject { described_class.new(revenue).to_hash }
   include_context 'with representable revenue'
 
@@ -24,7 +24,7 @@ describe MCN::RevenueRepresenter do
   end
 end
 
-describe MCN::RevenuesRepresenter do
+describe MCN::RevenueRepresenters::RevenuesRepresenter do
   subject { described_class.new(revenues).to_hash }
   include_context 'with representable revenue'
 

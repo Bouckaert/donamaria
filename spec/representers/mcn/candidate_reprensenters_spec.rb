@@ -7,7 +7,7 @@ shared_context 'with representable candidate' do
   end
 end
 
-describe MCN::CandidateRepresenter do
+describe MCN::CandidateRepresenters::CandidateRepresenter do
   subject { described_class.new(candidate).to_hash }
   include_context 'with representable candidate'
 
@@ -28,7 +28,7 @@ describe MCN::CandidateRepresenter do
   end
 end
 
-describe MCN::CandidatesRepresenter do
+describe MCN::CandidateRepresenters::CandidatesRepresenter do
   subject { described_class.new(candidates).to_hash }
   include_context 'with representable candidate'
 

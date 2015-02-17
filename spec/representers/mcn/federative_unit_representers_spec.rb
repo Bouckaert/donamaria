@@ -6,7 +6,7 @@ shared_context 'with representable federative unit' do
   end
 end
 
-describe MCN::FederativeUnitRepresenter do
+describe MCN::FederativeUnitRepresenters::FederativeUnitRepresenter do
   subject { described_class.new(federative_unit).to_hash }
   include_context 'with representable federative unit'
 
@@ -23,7 +23,7 @@ describe MCN::FederativeUnitRepresenter do
   end
 end
 
-describe MCN::FederativeUnitsRepresenter do
+describe MCN::FederativeUnitRepresenters::FederativeUnitsRepresenter do
   subject { described_class.new(federative_units).to_hash }
   include_context 'with representable federative unit'
 

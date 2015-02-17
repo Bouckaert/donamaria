@@ -1,4 +1,4 @@
-module MCN
+module MCN::RevenueRepresenters
   class RevenueRepresenter < BaseDecorator
     property :donator, as: :nomeDoador
     property :price, as: :valor
@@ -6,7 +6,7 @@ module MCN
   end
 
   class RevenuesRepresenter < BaseDecorator
-    collection :to_a, extend: MCN::RevenueRepresenter, class: Revenue,
-      as: :revenues
+    collection :to_a, extend: MCN::RevenueRepresenters::RevenueRepresenter,
+      class: Revenue, as: :revenues
   end
 end

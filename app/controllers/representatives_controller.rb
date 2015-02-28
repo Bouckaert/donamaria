@@ -1,7 +1,5 @@
 class RepresentativesController < ApplicationController
-
   before_action :set_representative, only: [:show, :edit, :update, :destroy]
-
   before_action :set_type
 
   def index
@@ -10,7 +8,6 @@ class RepresentativesController < ApplicationController
     else
       @representatives = type_class.all.with_gender("FEMININO").page(params[:page]).per(10)
     end
-
   end
 
   def show
@@ -23,26 +20,21 @@ class RepresentativesController < ApplicationController
     @proposals = @representative.proposals
   end
 
-  def representative_params
-    params.require(:representative).permit(:name, :occupation, :gender, :voter_registration)
-  end
-
   private
 
-    def set_type
-       @type = type
-    end
+  def set_type
+    @type = type
+  end
 
-    def type
-        Representative.types.include?(params[:type]) ? params[:type] : "Representative"
-    end
+  def type
+    Representative.types.include?(params[:type]) ? params[:type] : "Representative"
+  end
 
-    def type_class
-        type.constantize
-    end
+  def type_class
+    type.constantize
+  end
 
-    def set_representative
-      @representative = type_class.find(params[:id])
-    end
-
+  def set_representative
+    @representative = type_class.find(params[:id])
+  end
 end

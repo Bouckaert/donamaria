@@ -37,11 +37,11 @@
         </div><!-- Votos -->
       </div><!-- col-md-12 -->
       <div class ='col-md-12 comment'>
-        <%= render partial: "representatives/comments", locals: {proposal: proposal , comments: proposal.comments} %>
+        <%= render partial: "representatives/comments", locals: { proposal: proposal , comments: proposal.comments } %>
       </div>
       <div class='col-md-12'>
         <% if user_signed_in? %>
-          <%= render partial: "representatives/new_comment", locals: {proposal: proposal ,comments: proposal.comments} %>
+          <%= render partial: "representatives/new_comment", locals: { proposal: proposal ,comments: proposal.comments } %>
         <%else%>
           <textarea>
           <%=flash[:notice] = 'Faça Login para comentar'%>

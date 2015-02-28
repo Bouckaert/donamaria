@@ -10,10 +10,10 @@
             <nav class="pull-right nav-collapse collapse">
               <ul id="menu-main" class="nav landing">
                 <li>
-                  <%= form_tag representatives_path, class: 'navbar-form', :method => 'get' do %>
+                  <%= form_tag representatives_path, class: 'navbar-form', method: 'get' do %>
                     <div class="form-group">
                       <%= text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control" %>
-                      <%= button_tag(type: "submit", class: "btn btn-default", :name => nil) do %>
+                      <%= button_tag(type: "submit", class: "btn btn-default", name: nil) do %>
                         <i class="fa fa-search fa-lg"></i>
                       <% end %>
                     </div>
@@ -28,22 +28,18 @@
               <ul id='user-log'class="nav navbar-right">
                 <li class='dropdown'>
                   <% if user_signed_in? %>
-                    <%= link_to current_user.email, edit_user_registration_path, :data => {:toggle=>"dropdown"}, :class => '"dropdown-toggle" navbar-link' %>
+                    <%= link_to current_user.email, edit_user_registration_path, data: { :toggle=>"dropdown" }, class: '"dropdown-toggle" navbar-link' %>
                     <div class="dropdown-menu">
-                      <%= link_to 'Editar', edit_user_registration_path, :class => 'navbar-link' %><br>
-                      <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                      <%= link_to 'Editar', edit_user_registration_path, class: 'navbar-link' %><br>
+                      <%= link_to "Sair", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
                     </div>
                   <% else %>
-                    <%= link_to "Entrar", new_user_session_path, :class => 'navbar-link'  %>
+                    <%= link_to "Entrar", new_user_session_path, class: 'navbar-link'  %>
                   <% end %>
                 </li>
               </ul>
             </nav>
           </div>
-          <!-- /.container -->
         </div>
-        <!-- /.navbar-inner -->
       </div>
-      <!-- /.navbar -->
     </div>
-    <!-- /.navbar-wrapper -->

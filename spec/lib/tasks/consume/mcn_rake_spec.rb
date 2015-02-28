@@ -32,7 +32,7 @@ describe 'consume:mcn' do
 
   describe ':patrimonies' do
     let(:candidate) { FactoryGirl.create :candidate }
-    let(:candidature) { FactoryGirl.create :candidature, candidate: candidate }
+    let(:candidature) { FactoryGirl.create :candidature, representative: candidate }
     let(:request) { "candidato/2014/#{candidate.voter_registration}/bens" }
     let(:response) { patrimonies_response_body }
 
@@ -47,7 +47,7 @@ describe 'consume:mcn' do
 
   describe ':revenues' do
     let(:candidate) { FactoryGirl.create :candidate }
-    let(:candidature) { FactoryGirl.create :candidature, candidate: candidate }
+    let(:candidature) { FactoryGirl.create :candidature, representative: candidate }
     let(:request) { "candidato/2014/#{candidate.voter_registration}/doacoes" }
     let(:response) { revenues_response_body }
 

@@ -3,14 +3,10 @@ class RepresentativeDecorator < Draper::Decorator
 
   def supporters_count
     if self.proposals.count != 0
-      sum = 0
-      self.proposals.each do |p|
-        sum = sum + p.score
-      end
-      "Votos: #{sum}"
+      score = proposals.map(&:score).inject(:+)
+      "Votos: #{score}"
     else
-      "No proposals yet!"
+      "Nenhuma proposta ainda!"
     end
   end
-
 end

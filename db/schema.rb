@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20141205113954) do
     t.string   "occupation"
     t.string   "gender"
     t.string   "voter_registration"
+    t.string   "mcn_id"
     t.string   "type"
     t.integer  "user_id"
     t.datetime "created_at"

@@ -18,6 +18,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'webmock/rspec'
 require 'devise'
 
 RSpec.configure do |config|

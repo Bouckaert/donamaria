@@ -5,6 +5,7 @@ class CreateRepresentatives < ActiveRecord::Migration
       t.string :occupation
       t.string :gender
       t.string :voter_registration
+      t.string :mcn_id
       t.string :type
 
       t.references :user

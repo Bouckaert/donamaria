@@ -26,7 +26,6 @@ class Candidature < ActiveRecord::Base
   def patrimony_by_gender(gender)
     candidato_masculino = Candidate.all.with_gender(gender)
     @patrimony_by_gender = 0
-    puts candidato_masculino.count
     candidato_masculino.each do |cm|
       cm.candidatures.each do |cc|
         cc.patrimonies.each do |pp|

@@ -11,7 +11,7 @@ describe Candidature do
   it { should respond_to :political_party_symbol }
   it { should respond_to :political_caption }
   it { should respond_to :desc_sit_tot_turno }
-  it { should belong_to :candidate }
+  it { should belong_to :representative }
   it { should have_many :revenues }
   it { should have_many :expenditures }
   it { should have_many :patrimonies }

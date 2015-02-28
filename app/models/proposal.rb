@@ -5,6 +5,8 @@ class Proposal < ActiveRecord::Base
   acts_as_votable
   acts_as_commentable
 
+  validates :representative, presence: true
+
   scope :with_description, -> (description) { where("description like ?", "%#{description}%")}
 
   def self.search(description)

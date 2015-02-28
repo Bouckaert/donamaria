@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141205113954) do
     t.string   "political_party_symbol"
     t.string   "political_caption"
     t.string   "desc_sit_tot_turno"
-    t.integer  "candidate_id"
+    t.integer  "representative_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

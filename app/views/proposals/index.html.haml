@@ -31,10 +31,10 @@
         / Votos
       / col-md-12
       .col-md-12.comment
-        = render partial: "candidates/comments", locals: {proposal: proposal , comments: proposal.comments}
+        = render partial: "representatives/comments", locals: { proposal: proposal , comments: proposal.comments }
       .col-md-12
         - if user_signed_in?
-          = render partial: "candidates/new_comment", locals: {proposal: proposal ,comments: proposal.comments}
+          = render partial: "representatives/new_comment", locals: { proposal: proposal ,comments: proposal.comments }
         - else
           %textarea
             = flash[:notice] = 'Faça Login para comentar'

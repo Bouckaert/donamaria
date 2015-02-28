@@ -1,0 +1,24 @@
+.panel
+  .container
+    .row
+      .col-md-4
+        %h1
+          = @representative.type
+          \.
+        %p= @representative.name
+        %b= @representative.id
+        %br/
+        %b= @representative.user_id
+        %br/
+        %b= current_user.id
+        = image_tag("politica.png", size: "100x100")
+        %label
+          = @representative.occupation
+          = @representative.gender
+        %label= @representative.proposals.count
+        %label= @representative.supporters_count
+      .col-md-7
+        = render partial: "create", locals: { proposal: Proposal.new }
+  - @representative.proposals.each do |proposal|
+    .col-md-6
+      = render partial: "proposal", locals: { proposal: proposal }

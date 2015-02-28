@@ -48,6 +48,8 @@ gem 'factory_girl_rails'
 
 gem 'faker'
 
+gem 'haml-rails', '~> 0.8'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false

@@ -5,7 +5,6 @@ class ProposalsController < ApplicationController
     else
       @proposals = Proposal.all.page(params[:page]).per(10)
     end
-
   end
 
   def new
@@ -16,7 +15,7 @@ class ProposalsController < ApplicationController
     if user_signed_in?
       @representative = Representative.where(user_id: current_user.id).first
       @proposal = Proposal.new(proposal_params)
-      @proposal.representative_id = @representative.id
+      @proposal.representative = @representative
       if @proposal.save
       redirect_to '/proposals'
       flash[:success] = "Proposta cadastrada com sucesso!"

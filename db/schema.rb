@@ -16,16 +16,6 @@ ActiveRecord::Schema.define(version: 20141205113954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "candidates", force: true do |t|
-    t.string   "name"
-    t.string   "occupation"
-    t.string   "gender"
-    t.string   "voter_registration"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "candidatures", force: true do |t|
     t.string   "sequencial_candidato"
     t.integer  "election_year"
@@ -37,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141205113954) do
     t.string   "political_party_symbol"
     t.string   "political_caption"
     t.string   "desc_sit_tot_turno"
-    t.integer  "candidate_id"
+    t.integer  "representative_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,8 +74,19 @@ ActiveRecord::Schema.define(version: 20141205113954) do
 
   create_table "proposals", force: true do |t|
     t.string   "title"
-    t.string   "description"
-    t.integer  "candidature_id"
+    t.text     "description"
+    t.integer  "representative_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "representatives", force: true do |t|
+    t.string   "name"
+    t.string   "occupation"
+    t.string   "gender"
+    t.string   "voter_registration"
+    t.string   "type"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

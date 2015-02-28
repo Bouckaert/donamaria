@@ -12,7 +12,7 @@ class CreateCandidatures < ActiveRecord::Migration
       t.string :political_caption
       t.string :desc_sit_tot_turno
 
-      t.references :candidate
+      t.references :representative
 
       t.timestamps
     end

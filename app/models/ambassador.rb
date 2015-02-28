@@ -1,0 +1,3 @@
+class Ambassador < Representative
+
+end

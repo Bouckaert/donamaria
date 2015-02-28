@@ -1,9 +1,11 @@
 class Proposal < ActiveRecord::Base
-  belongs_to :candidatura
+  belongs_to :representative
   has_many :comments
 
   acts_as_votable
   acts_as_commentable
+
+  validates :representative, presence: true
 
   scope :with_description, -> (description) { where("description like ?", "%#{description}%")}
 

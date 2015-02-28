@@ -13,10 +13,10 @@
         %nav.pull-right.nav-collapse.collapse
           %ul#menu-main.nav.landing
             %li
-              = form_tag candidates_path, class: 'navbar-form', :method => 'get' do
+              = form_tag representatives_path, class: 'navbar-form', method: 'get' do
                 .form-group
                   = text_field_tag :search, params[:search], placeholder: "Pesquisar Candidato", class: "form-control"
-                  = button_tag(type: "submit", class: "btn btn-default", :name => nil) do
+                  = button_tag(type: "submit", class: "btn btn-default", name: nil) do
                     %i.fa.fa-search.fa-lg
             %li
             %li
@@ -25,14 +25,10 @@
           %ul#user-log.nav.navbar-right
             %li.dropdown
               - if user_signed_in?
-                = link_to current_user.email, edit_user_registration_path, :data => {:toggle=>"dropdown"}, :class => '"dropdown-toggle" navbar-link'
+                = link_to current_user.email, edit_user_registration_path, data: { :toggle=>"dropdown" }, class: '"dropdown-toggle" navbar-link'
                 .dropdown-menu
-                  = link_to 'Editar', edit_user_registration_path, :class => 'navbar-link'
+                  = link_to 'Editar', edit_user_registration_path, class: 'navbar-link'
                   %br/
-                  = link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+                  = link_to "Sair", destroy_user_session_path, method: :delete, class: 'navbar-link'
               - else
-                = link_to "Entrar", new_user_session_path, :class => 'navbar-link'
-      / /.container
-    / /.navbar-inner
-  / /.navbar
-/ /.navbar-wrapper
+                = link_to "Entrar", new_user_session_path, class: 'navbar-link'

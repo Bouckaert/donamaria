@@ -44,6 +44,10 @@ gem 'acts_as_commentable_with_threading'
 
 gem 'pg'
 
+gem 'factory_girl_rails'
+
+gem 'faker'
+
 gem 'haml-rails', '~> 0.8'
 
 group :development, :test do

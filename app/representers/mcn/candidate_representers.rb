@@ -1,6 +1,6 @@
 module MCN::CandidateRepresenters
   class CandidateRepresenter < BaseDecorator
-    property :voter_registration, as: :id
+    property :mcn_id, as: :id
     property :name, as: :nomeCompleto
     property :gender, as: :sexo
     property :occupation, as: :nomeOcupacao

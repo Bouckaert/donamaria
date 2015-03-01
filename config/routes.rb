@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  devise_for :users
+  root to: "welcome#index"
 
   resources :representatives
   resources :candidates, controller: 'representatives', type: 'Candidate'
@@ -14,22 +13,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :candidatures   do
-    collection { get :import }
-  end
-
-  resources :revenues do
-   collection { get :import }
-  end
-
-  resources :expenditures do
-    collection { get :import }
-  end
-
-  resources :patrimonies do
-   collection { get :import }
-  end
-
-  root to: "welcome#index"
-
+  devise_for :users
 end

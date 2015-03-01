@@ -11,12 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap_and_overrides
- *= require bootstrap
  *= require welcome
  *= require candidates.css
  *= require prettyPhoto
- *= require fontello
- *= require fontello-ie7
- *= require bootstrap-responsive
  *= require_self
-*/
+ */

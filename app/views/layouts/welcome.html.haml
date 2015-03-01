@@ -1,0 +1,138 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Donamaria
+    = stylesheet_link_tag    'welcome', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'welcome', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    / Google Web fonts
+    %link{:href => "//fonts.googleapis.com/css?family=Quattrocento:400,700", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//fonts.googleapis.com/css?family=Patua+One", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    :css
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    / Favicon
+    %link{:href => "favicon.ico", :rel => "shortcut icon"}/
+    / prettyPhoto Initialization
+    %script{:charset => "utf-8", :type => "text/javascript"}
+      :cdata
+        $(document).ready(function(){
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
+    %script{:src => "//www.google.com/jsapi", :type => "text/javascript"}
+    :javascript
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     16676],
+          ['Mulheres',      7654]
+        ]);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'}
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_candidatos'));
+
+        chart.draw(data, options);
+      }
+    :javascript
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     1404],
+          ['Mulheres',      171]
+        ]);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'}
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_eleitos'));
+
+        chart.draw(data, options);
+      }
+    :javascript
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Patrimônio total dos Homens',     14980600670.33],
+          ['Patrimônio total das Mulheres',      1267967077.89]
+        ]);
+
+      var formatter = new google.visualization.NumberFormat(
+        {prefix: 'R$'});
+        formatter.format(data, 1);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'},
+                pieSliceText: 'value'
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_patrimonio'));
+
+        chart.draw(data, options);
+      }
+    :javascript
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Candidaturas'],
+          ['Homens',     124690971.72],
+          ['Mulheres',      15372761.6]
+        ]);
+
+        var formatter = new google.visualization.NumberFormat(
+          {prefix: 'R$'});
+          formatter.format(data, 1);
+
+        var options = {backgroundColor: 'transparent',
+               'width':500,
+               'height':500,
+                'colors':['f0bf00','#746181'],
+                'legend':{position:'bottom'},
+                pieSliceText: 'value'
+             };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_recursos'));
+
+        chart.draw(data, options);
+      }
+  %body
+    = render 'layouts/header'
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
+    = yield

@@ -39,7 +39,7 @@ namespace :consume do
     desc 'Populate patrimonies'
     task patrimonies: :environment do
       Candidate.find_each do |candidate|
-        patrimonies = fetch_and_parse "candidato/2014/#{candidate.voter_registration}/bens",
+        patrimonies = fetch_and_parse "candidato/2014/#{candidate.mcn_id}/bens",
                                       'Patrimony'
         patrimonies.to_a.each do |patrimony|
           candidate.candidatures.first.patrimonies << patrimony
@@ -51,7 +51,7 @@ namespace :consume do
     desc 'Populate revenues'
     task revenues: :environment do
       Candidate.find_each do |candidate|
-        revenues = fetch_and_parse "candidato/2014/#{candidate.voter_registration}/doacoes",
+        revenues = fetch_and_parse "candidato/2014/#{candidate.mcn_id}/doacoes",
                                    'Revenue'
         revenues.to_a.try(:each) do |revenue|
           candidate.candidatures.first.revenues << revenue

@@ -1,0 +1,99 @@
+pt-BR:
+  welcome:
+    index:
+      introduction_html: |
+        Pretendemos conscientizar o eleitorado das desigualdades de genero
+        existentes no processo eleitoral. Por meio da %{transparency_law},
+        %{open_data} das eleições de 2014 disponibilizados pelo
+        Tribunal Superior Eleitoral, em parceria com o %{mcn}
+      representation:
+        title: Representação
+        body: |
+          As mulheres são sub-representadas no Congresso, nos sindicatos e nos
+          partidos políticos, a representação de 10,9% no Congresso não condiz
+          com o total de mulheres na população, que é de 52%. Na América Latina,
+          o Brasil é o segundo país com mais baixo índice de mulheres em cargos
+          legislativos federais. Ficando em situação pior do que a de alguns
+          países árabes, conhecidos por suas institucionalizadas segregação e
+          discriminação de gênero.
+        candidates:
+          title: Candidat@s
+          body: |
+            Objetivando o crescimento da representatividade feminina no congresso,
+            a legislação de cotas estabelece um percentual minimo de 30% de
+            candidaturas de cada sexo. Entretanto, alguns partidos desrespeitam
+            esta medida confiantes na ineficiência da justiça eleitoral  que não
+            aplica as devidas punições.
+        elected_candidates:
+          title: Candidat@s Eleit@s
+          body: |
+            As expectativas de que o aumento de candidaturas resultasse num
+            impacto sobre a elegibilidade não se concretizaram. O sistema de
+            representação proporcional de lista aberta, dificulta o acesso
+            político e o bom desempenho eleitoral daqueles candidatos com menores
+            recursos políticos e financeiros.
+      development: |
+        É consenso de que as chances de sucesso nas urnas está intimamente
+        relacionada à capacidade dos candidatos de arrecadarem recursos. Nas
+        candidaturas onde as mulheres obtiveram mais recursos seus desempenhos
+        são melhores;
+      campaign_funding:
+        title: Financiamento de Campanha
+        body: |
+          Os dados apresentados abaixo corroboram a suposição de que há de fato
+          um subfinanciamento das campanhas das mulheres em relação às campanhas
+          dos homens. Outra visão consensual é que os partidos discriminam as
+          mulheres na distribuição de recursos do fundo partidário, contribuindo,
+          portanto, para acentuar as desvantagens de financiamento que elas têm
+          em relação aos homens a partir de outras fontes de doação.
+        alleged_patrimony:
+          title: Patrimônio Declarado
+          body: |
+            A literatura elenca várias possíveis explicações, incluindo a hipótese
+            do desfavorecimento financeiro das mulheres na vida privada, que se
+            refletiria também na capacidade de aportar recursos próprios para as
+            campanhas. Outro fator é o baixo apoio financeiro de doadores da
+            iniciativa privada.
+        campaign_resources:
+          title: Recursos de Campanha
+          body: |
+            Do total de candidatos que declararam receitas da campanha superiores
+            a R$1 milhão, apenas 6% eram do sexo feminino. Esse dado reforça a
+            visão de que as mulheres têm acesso limitado a determinados tipos de
+            redes sociais e políticas que poderiam ser ativadas na arrecadação de
+            recursos.
+      conclusion_html: |
+        O %{donamaria} é uma ferramenta que promove o engajamento de eleitores na
+        construção de redes de apoiadores de campanhas. Nosso objetivo é criar um
+        canal de comunicação entre candidatas e apoiadores.
+      hands_on:
+        title: Participe!
+        registering: Cadastre-se;
+        looking_up: Encontre uma candidata;
+        contributing: Colabore na construção de um programa de governo com a sua cara;
+        creating: Crie uma rede de apoio que possa ajuda-la a arrecadar fundos;
+        promoting: Divulgue essa idéia;
+        footer: |
+          O empoderamento feminino passa pelo congresso. Ajude a eleger uma candidata
+          que te represente.
+      thanks:
+        title: Agradecimentos
+        to_hackathon_attendees: |
+          Aos participantes do hackathon pela experiencia compartilhada, sobretudo
+          ao Kellyton por ter disponibilizado a API do MCN.
+        to_the_house_of_representatives: |
+          A toda a equipe da camara dos deputados que esteve envolvida no Hackathon,
+          por possibilitarem a concepção dos projetos.
+        to_the_researchers: |
+          As pesquisadoras Teresa Sacchet e Clara Araújo, cujos trabalhos serviram
+          de inspiração ao projeto.
+      hackathon:
+        title: Hackathon de Gênero e Cidadania
+        body: |
+          O Hackathon é uma maratona que reúne hackers, programadores, desenvolvedores
+          e inventores para criar projetos que transformem informações de interesse
+          público em soluções digitais, acessíveis a todos os cidadãos. A maratona
+          ocorreu entre os dias 24 e 28 de novembro no Salão Branco da Câmara dos
+          Deputados. Os participantes tiveram o desafio de desenvolver aplicativos
+          que possam contribuir para reduzir a violência contra a mulher e fortalecer
+          as políticas de gênero. Esse é um dos projetos selecionados.

@@ -2,10 +2,10 @@ pt-BR:
   welcome:
     index:
       introduction_html: |
-        Pretendemos conscientizar o eleitorado das desigualdades de genero
-        existentes no processo eleitoral. Por meio da %{transparency_law},
-        %{open_data} das eleições de 2014 disponibilizados pelo
-        Tribunal Superior Eleitoral, em parceria com o %{mcn}
+        Pretendemos conscientizar o eleitorado das desigualdades de gênero
+        existentes no processo eleitoral por meio da %{transparency_law} e através
+        da utilização dos %{open_data} das eleições de 2014 do Tribunal Superior
+        Eleitoral disponibilizados pelo %{mcn}.
       representation:
         title: Representação
         body: |
@@ -85,7 +85,7 @@ pt-BR:
           A toda a equipe da camara dos deputados que esteve envolvida no Hackathon,
           por possibilitarem a concepção dos projetos.
         to_the_researchers: |
-          As pesquisadoras Teresa Sacchet e Clara Araújo, cujos trabalhos serviram
+          Às pesquisadoras Teresa Sacchet e Clara Araújo, cujos trabalhos serviram
           de inspiração ao projeto.
       hackathon:
         title: Hackathon de Gênero e Cidadania
@@ -95,5 +95,5 @@ pt-BR:
           público em soluções digitais, acessíveis a todos os cidadãos. A maratona
           ocorreu entre os dias 24 e 28 de novembro no Salão Branco da Câmara dos
           Deputados. Os participantes tiveram o desafio de desenvolver aplicativos
-          que possam contribuir para reduzir a violência contra a mulher e fortalecer
-          as políticas de gênero. Esse é um dos projetos selecionados.
+          que pudessem contribuir para reduzir a violência contra a mulher e fortalecer
+          as políticas de gênero. Este é um dos projetos selecionados.

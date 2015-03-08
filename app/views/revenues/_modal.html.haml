@@ -1,0 +1,24 @@
+.modal.bs-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "revenue-#{candidature.id}", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Detalhamento de receitas da candidature
+      .modal-body
+        %table
+          %thead
+            %tr
+              %th Doador
+              %th Valor
+              %th Descrição
+          - candidature.revenues.each do |revenue|
+            - if revenue.sequencial_candidato == candidature.sequencial_candidato
+              %tbody
+                %tr
+                  %td= revenue.donator
+                  %td= revenue.price
+                  %td= revenue.description
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

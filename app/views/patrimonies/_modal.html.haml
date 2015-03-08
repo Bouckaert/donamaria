@@ -1,0 +1,24 @@
+.modal.bs-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "patrimony-#{candidature.id}", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Detalhamento de Bens da candidature
+      .modal-body
+        %table
+          %thead
+            %tr
+              %th Candidato
+              %th Valor do bem
+              %th Descrição do bem
+          - candidature.patrimonies.each do |patrimony|
+            - if patrimony.sequencial_candidato == candidature.sequencial_candidato
+              %tbody
+                %tr
+                  %td= patrimony.sequencial_candidato
+                  %td= patrimony.price
+                  %td= patrimony.description
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

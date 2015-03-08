@@ -36,6 +36,6 @@
           %td.text-center
             = link_to number_to_currency(candidature.total_patrimony), "#patrimony-#{(candidature.id)}", class: 'btn btn-warning', data: { toggle: :modal }
 
-= render partial: 'revenues/modal', locals: { candidature: candidature }
-= render partial: 'expenditures/modal', locals: { candidature: candidature }
-= render partial: 'patrimonies/modal', locals: { candidature: candidature }
+= render partial: 'shared/modal', locals: { candidature: candidature, model: 'revenue' }
+= render partial: 'shared/modal', locals: { candidature: candidature, model: 'expenditure' }
+= render partial: 'shared/modal', locals: { candidature: candidature, model: 'patrimony' }

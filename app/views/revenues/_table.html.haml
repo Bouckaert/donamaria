@@ -1,0 +1,12 @@
+%table.table
+  %thead
+    %tr
+      %th Doador
+      %th Valor
+      %th Descrição
+  - revenues.each do |revenue|
+    %tbody
+      %tr
+        %td= revenue.donator
+        %td= number_to_currency revenue.price
+        %td= revenue.description

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      expenditure:
+        one: Despesa
+        other: Despesas
+      patrimony:
+        one: Patrimônio
+        other: Patrimônios
+      revenue:
+        one: Receita
+        other: Receitas

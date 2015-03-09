@@ -1,23 +1,25 @@
-.panel.col-md-8.col-md-offset-2
-  .row
-    .nav.col-md-12
-  .col-md-4.col-md-offset-1
+.container
+  .col-md-6.col-md-offset-1
+    %h2 Entrar no DonaMaria
+    %p
+      Basta informar seu e-mail e sua senha para iniciar uma nova sessão e poder contribuir para a construção de uma nova realidade política nacional! Caso ainda não tenha feito uma conta,
+      = link_to "clique aqui", new_registration_path(resource_name)
+      para criar uma.
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      %div
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      %div
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: "off"
+      .form-group
+        = f.label :email, 'E-mail'
+        = f.email_field :email, autofocus: true, placeholder: 'seu.email@exemplo.com', class: 'form-control'
+      .form-group
+        = f.label :password, 'Senha'
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
       - if devise_mapping.rememberable?
-        %div
+        %div.checkbox
           = f.check_box :remember_me
-          = f.label :remember_me
-      %div= f.submit "Entrar"
-  .col-md-4.col-md-offset-2
+          = f.label :remember_me, 'Lembrar dos meus dados'
+      .form-group
+        = link_to 'Esqueci minha senha!', new_password_path(resource_name)
+      .pull-right
+        = f.submit "Entrar", class: 'btn btn-primary'
+  .col-md-4.text-right
     %p "Deixemos que cada mulher faça saber que tipo de governo merece seu respeito e este já será um passo na direção de obtê-lo."
     %small Thoreau, H. D. (1849)
-  .col-md-12
-    = render "devise/shared/links"

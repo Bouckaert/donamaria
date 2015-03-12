@@ -11,7 +11,7 @@
             = link_to 'DonaMaria', '#top'
           %nav.pull-right.nav-collapse.collapse
             %ul#menu-main.nav
-              = ['Representação', 'Financiamento', 'Participe', 'Quem Somos', 'Hackathon'].each do |nav_item|
+              - ['Representação', 'Financiamento', 'Participe', 'Quem Somos', 'Hackathon'].each do |nav_item|
                 %li
                   = link_to nav_item, "##{nav_item.parameterize}"
             %ul#user-log.nav.navbar-right

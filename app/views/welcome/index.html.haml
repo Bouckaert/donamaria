@@ -3,146 +3,107 @@
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
-          / Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize.
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          = link_to '#', data: { target: '.nav-collapse', toggle: 'collapse' } do
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
           %h1.brand
-            %a{:href => "#top"} DonaMaria
-          / Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse.
+            = link_to 'DonaMaria', '#top'
           %nav.pull-right.nav-collapse.collapse
             %ul#menu-main.nav
-              %li
-                %a{:href => "#representacao", :title => "representação"} Representação
-              %li
-                %a{:href => "#financiamento", :title => "financiamento"} Financiamento
-              %li
-                %a{:href => "#participe", :title => "participe"} Participe
-              %li
-                %a{:href => "#team", :title => "team"} Quem Somos
-              %li
-                %a{:href => "#hackathon", :title => "hackathon"} Hackathon
+              - ['Representação', 'Financiamento', 'Participe', 'Quem Somos', 'Hackathon'].each do |nav_item|
+                %li
+                  = link_to nav_item, "##{nav_item.parameterize}"
             %ul#user-log.nav.navbar-right
               %li.dropdown
                 - if user_signed_in?
-                  = link_to current_user.email, edit_user_registration_path, :data => {:toggle=>"dropdown"}, :class => '"dropdown-toggle" navbar-link'
+                  = link_to current_user.email, edit_user_registration_path, data: { toggle: 'dropdown' }, class: 'dropdown-toggle navbar-link'
                   .dropdown-menu
-                    = link_to 'Editar', edit_user_registration_path, :class => 'navbar-link'
-                    %br/
-                    = link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+                    = link_to 'Editar', edit_user_registration_path, class: 'navbar-link'
+                    %br
+                    = link_to 'Sair', destroy_user_session_path, method: :delete, class: 'navbar-link'
                 - else
-                  = link_to "Entrar", new_user_session_path, :class => 'navbar-link'
-        / /.container
-      / /.navbar-inner
-    / /.navbar
-  / /.navbar-wrapper
+                  = link_to 'Entrar', new_user_session_path, class: 'navbar-link'
   #top
-  / ******************** HeaderWrap ********************
   #headerwrap
     %header.clearfix
       %h1
-        %span DonaMaria
-        Lugar de mulher é na política.
+        %span= t('donamaria.title')
+        = t('donamaria.headline')
       .container
         .row
           .span12
             %ul.icon
-              %li
-                %a{:href => "#", :target => "_blank"}= image_tag 'feminismopunho.png', size: "40"
-              %li
-                %a{:href => "#", :target => "_blank"}= image_tag 'justica-gender.png', size: "60"
-              %li
-                %a{:href => "#", :target => "_blank"}= image_tag 'hackathon.png', size: "50"
-              %li
-                %a{:href => "#", :target => "_blank"}= image_tag 'outubro-rosa.png', size: "45"
-  / ******************** Feature ********************
+              %li= image_tag 'feminismopunho.png', size: "40"
+              %li= image_tag 'justica-gender.png', size: "60"
+              %li= image_tag 'hackathon.png', size: "50"
+              %li= image_tag 'outubro-rosa.png', size: "45"
+
   .scrollblock
     %section#feature
       .container
         .row
           .span12
             %article
-              %p
-                Pretendemos conscientizar o eleitorado das desigualdades de genero existentes no processo eleitoral. Por meio da
-                = succeed "," do
-                  %a{:href => "http://www.acessoainformacao.gov.br/assuntos/conheca-seu-direito/a-lei-de-acesso-a-informacao"} Lei de Acesso à Informação
-                %a{:href => "http://dados.gov.br/dados-abertos/"} Dados Abertos
-                das eleições de 2014 disponibilizados pelo Tribunal Superior Eleitoral, em parceria com o
-                %a{:href => "http://meucongressonacional.com/api"} MCN
-          / ./span12
-        / .row
-      / ./container
-  %hr/
-  / ******************** Representação Section ********************
+              %p= t '.introduction_html',
+                transparency_law: link_to('Lei de Acesso à Informação', 'http://www.acessoainformacao.gov.br/assuntos/conheca-seu-direito/a-lei-de-acesso-a-informacao', target: '_blank'),
+                open_data: link_to('Dados Abertos', 'http://dados.gov.br/dados-abertos/', target: '_blank'),
+                mcn: link_to('Meu Congresso Nacional', 'http://meucongressonacional.com/api', target: '_blank')
+  %hr
+ 
   %section#representacao.single-page.scrollblock
     .container
       %article.post
-        %h1.folio-headline Representação
-        %p As mulheres são sub-representadas no Congresso, nos sindicatos e nos partidos políticos, a representação de 10,9% no Congresso não condiz com o total de mulheres na população, que é de 52%. Na América Latina, o Brasil é o segundo país com mais baixo índice de mulheres em cargos legislativos federais. Ficando em situação pior do que a de alguns países árabes, conhecidos por suas institucionalizadas segregação e discriminação de gênero.
+        %h1.folio-headline= t('.representation.title')
+        %p= t('.representation.body')
       #representacao-row.row
         .span5
           %article.post
             %hgroup
-              %h2 Candidat@s
+              %h2= t('.representation.candidates.title')
             .entry-content
-              %p Objetivando o crescimento da representatividade feminina no congresso, a legislação de cotas estabelece um percentual minimo de 30% de candidaturas de cada sexo. Entretanto, alguns partidos desrespeitam esta medida confiantes na ineficiência da justiça eleitoral  que não aplica as devidas punições.
+              %p= t('.representation.candidates.body')
             #piechart_candidatos
-          / /.article
-        / /.span4
         .span5
           %article.post
             %hgroup
-              %h2 Candiadt@s Eleit@s
+              %h2= t('.representation.elected_candidates.title')
             .entry-content
-              %p As expectativas de que o aumento de candidaturas resultasse num impacto sobre a elegibilidade não se concretizaram. O sistema de representação proporcional de lista aberta, dificulta o acesso político e o bom desempenho eleitoral daqueles candidatos com menores recursos políticos e financeiros.
+              %p= t('.representation.elected_candidates.body')
             #piechart_eleitos
-          / /.article
-        / /.span4
-      / /.row
-    / /.container
-  %hr/
-  / ******************** Feature ********************
+  %hr
+
   .scrollblock
     %section#feature
       .container
         .row
           .span12
             %article
-              %p É consenso de que as chances de sucesso nas urnas está intimamente relacionada à capacidade dos candidatos de arrecadarem recursos. Nas candidaturas onde as mulheres obtiveram mais recursos seus desempenhos são melhores;
-          / ./span12
-        / .row
-      / ./container
-  %hr/
-  / ******************** Financiamento Section ********************
+              %p= t('.development')
+  %hr
+  
   %section#financiamento.single-page.scrollblock
     .container
       %article.post
-        %h1.folio-headline Financiamento de campanha
-        %p Os dados apresentados abaixo corroboram a suposição de que há de fato um subfinanciamento das campanhas das mulheres em relação às campanhas dos homens. Outra visão consensual é que os partidos discriminam as mulheres na distribuição de recursos do fundo partidário, contribuindo, portanto, para acentuar as desvantagens de financiamento que elas têm em relação aos homens a partir de outras fontes de doação
+        %h1.folio-headline= t('.campaign_funding.title')
+        %p= t('.campaign_funding.body')
       #financiamento-row.row
         .span5
           %article.post
             %hgroup
-              %h2 Patrimonio Declarado
+              %h2= t('.campaign_funding.alleged_patrimony.title')
             .entry-content
-              %p A literatura elenca várias possíveis explicações, incluindo a hipótese do desfavorecimento financeiro das mulheres na vida privada, que se refletiria também na capacidade de aportar recursos próprios para as campanhas. Outro fator é o baixo apoio financeiro de doadores da iniciativa privada.
+              %p= t('.campaign_funding.alleged_patrimony.body')
             #piechart_patrimonio
-          / /.article
-        / /.span4
         .span5
           %article.post
             %hgroup
-              %h2 Recursos de campanha
+              %h2= t('.campaign_funding.campaign_resources.title')
             .entry-content
-              %p Do total de candidatos que declararam receitas da campanha superiores a R$1 milhão, apenas 6% eram do sexo feminino. Esse dado reforça a visão de que as mulheres têm acesso limitado a determinados tipos de redes sociais e políticas que poderiam ser ativadas na arrecadação de recursos
+              %p= t('.campaign_funding.campaign_resources.body')
             #piechart_recursos
-          / /.article
-        / /.span4
-      / /.row
-    / /.container
-  %hr/
-  / ******************** Feature Participe********************
+  %hr
+
   .scrollblock
     %section#feature
       .container
@@ -150,111 +111,83 @@
           .span12
             %article
               %p
-                O
-                %a{:href => "#top"} DonaMaria
-                é uma ferramenta que promove o engajamento de eleitores na construção de redes de apoiadores de campanhas. Nosso objetivo é criar um canal de comunicação entre candidatas e apoiadores.
-          / ./span12
-        / .row
-      / ./container
-  %hr/
-  / ******************** Participe Section ********************
+                = t '.conclusion_html',
+                    donamaria: link_to('DonaMaria', '#top')
+  %hr
+
   %section#participe.single-page.scrollblock
     .container.landing
       %article.post
-        %h1.folio-headline Participe
+        %h1.folio-headline= t('.hands_on.title')
         %p
-          %i.fa.fa-certificate.fa-2x
-          Cadastre-se;
-          %br/
-          %i.fa.fa-certificate.fa-2x
-          Encontre uma candidata;
-          %br/
-          %i.fa.fa-certificate.fa-2x
-          Colabore na construção de um programa de governo com a sua cara;
-          %br/
-          %i.fa.fa-certificate.fa-2x
-          Crie uma rede de apoio que possa ajuda-la a arrecadar fundos;
-          %br/
-          %i.fa.fa-certificate.fa-2x
-          Divulgue essa idéia
-          %br/
-        %p O empoderamento feminino passa pelo congresso. Ajude a eleger uma candidata que te represente.
-      / two columns
+          %i.fa.fa-certificate.fa= t('.hands_on.registering')
+          %br
+          %i.fa.fa-certificate.fa= t('.hands_on.looking_up')
+          %br
+          %i.fa.fa-certificate.fa= t('.hands_on.contributing')
+          %br
+          %i.fa.fa-certificate.fa= t('.hands_on.creating')
+          %br
+          %i.fa.fa-certificate.fa= t('.hands_on.promoting')
+          %br
+        %p= t('.hands_on.footer')
       #participe-row.row
         .span4
           .inside
-            = form_tag candidates_path, class: 'input-group', :method => 'get' do
+            = form_tag candidates_path, class: 'input-group', method: 'get' do
               .form-group
-                = text_field_tag :search, params[:search], placeholder: "Pesquisar Candidata", class: "form-control"
-                = button_tag(type: "submit", class: "btn btn-default", :name => nil) do
+                = text_field_tag :search, params[:search], placeholder: 'Pesquisar Candidata', class: 'form-control'
+                = button_tag type: 'submit', class: "btn btn-default", name: nil  do
                   %i.fa.fa-search.fa-lg
-          / /.inside
-        / /.span4
         .span4
           .inside
-            = form_tag candidates_path, class: 'input-group', :method => 'get' do
+            = form_tag candidates_path, class: 'input-group', method: 'get' do
               .form-group
-                = text_field_tag :search, params[:search], placeholder: "Pesquisar Proposta", class: "form-control"
-                = button_tag(type: "submit", class: "btn btn-default", :name => nil) do
+                = text_field_tag :search, params[:search], placeholder: 'Pesquisar Proposta', class: 'form-control'
+                = button_tag type: 'submit', class: 'btn btn-default', name: nil  do
                   %i.fa.fa-search.fa-lg
-          / /.inside
-        / /.span4
-      / /.row
       .row.listar
-        = link_to "Listar Candidatas", candidates_path, class: 'btn', data: { no_turbolink: true }
-    / /.container
-  %hr/
-  / ******************** Quem Somos Section ********************
-  %section#team.single-page.scrollblock
+        = link_to 'Listar Candidatas', candidates_path, class: 'btn', data: { no_turbolink: true }
+  %hr
+
+  %section#quem-somos.single-page.scrollblock
     .container
       .align
         %i.fa.fa-users
       %h1 Quem Somos
       .row
         .span2.offset3
-          .teamalign= image_tag("isadora.jpg", size: "60x60")
+          .teamalign= image_tag 'isadora.jpg', size: '60x60'
           %h3 Isadora
           .job-position Desenvolvedora
-        / ./span2
         .span2
-          .teamalign= image_tag("embs.jpg", size: "60x60")
+          .teamalign= image_tag 'embs.jpg', size: '60x60'
           %h3 Matheus
           .job-position Desenvolvedor
-        / ./span2
         .span2
-          .teamalign= image_tag("yves.jpg", size: "60x60")
+          .teamalign= image_tag 'yves.jpg', size: '60x60'
           %h3 Yves
           .job-position Desenvolvedor
-        / ./span2
-      / /.row
       .row
         .span10.offset1
-          %hr.featurette-divider/
+          %hr.featurette-divider
           .featurette
-            %h2.featurette-heading Agradecimentos
-            %p Aos participantes do hackathon pela experiencia compartilhada, sobretudo ao Kellyton por ter disponibilizado a API do MCN.
-            %p A toda a equipe da camara dos deputados que esteve envolvida no Hackathon, por possibilitarem a concepção dos projetos .
-            %p As pesquisadoras Teresa Sacchet e Clara Araújo, cujos trabalhos serviram de inspiração ao projeto.
-          / /.featurette
-          %hr.featurette-divider/
-        / .span10
-      / /.row
-    / /.container
-  / ******************** Hackathon Section ********************
+            %h2.featurette-heading= t('.thanks.title')
+            %p= t('.thanks.to_hackathon_attendees') 
+            %p= t('.thanks.to_the_house_of_representatives') 
+            %p= t('.thanks.to_the_researchers') 
+          %hr.featurette-divider
+
   %section#hackathon.single-page.scrollblock
     .container
       .align
-      %h1 Hackathon de Gênero e Cidadania
+      %h1= t('.hackathon.title')
       .row
         .span12
           #theme-form.cform
-            %p O Hackathon é uma maratona que reúne hackers, programadores, desenvolvedores e inventores para criar projetos que transformem informações de interesse público em soluções digitais, acessíveis a todos os cidadãos. A maratona ocorreu entre os dias 24 e 28 de novembro no Salão Branco da Câmara dos Deputados. Os participantes tiveram o desafio de desenvolver aplicativos que possam contribuir para reduzir a violência contra a mulher e fortalecer as políticas de gênero. Esse é um dos projetos selecionados.
-        / ./span12
-      / /.row
-    / /.container
-  %hr/
+            %p= t('.hackathon.body')
+  %hr
   .footer-wrapper
     .container
       %footer
         %small Desenvolvido por BuriTi.
-    / ./container

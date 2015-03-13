@@ -10,3 +10,6 @@ pt-BR:
       revenue:
         one: Receita
         other: Receitas
+      user:
+        one: Usuário
+        other: Usuários

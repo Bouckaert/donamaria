@@ -1,9 +1,16 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div= f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.container
+  .col-md-6.col-md-offset-1
+    %h2 Redefinir senha de acesso
+    %p
+      Preencha o campo abaixo com o e-mail da conta cuja senha foi esquecida para definir uma nova senha. Se você lembra sua senha,
+      = link_to 'clique aqui', new_session_path(resource_name)
+      para entrar no DonaMaria -- ou
+      = link_to 'aqui', new_registration_path(resource_name)
+      se quiser criar uma nova conta.
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label :email, 'E-mail'
+        = f.email_field :email, autofocus: true, placeholder: 'seu.email@exemplo.com', class: 'form-control'
+      .pull-right
+        = f.submit 'Enviar e-mail para redefinição de senha', class: 'btn btn-primary'

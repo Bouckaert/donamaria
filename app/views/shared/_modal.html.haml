@@ -1,0 +1,21 @@
+.modal{ aria: { hidden: true }, id: "#{model}-#{candidature.id}", role: "dialog", tabindex: "-1" }
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{ data: { dismiss: 'modal' }, type: 'button' }
+          %span{ aria: { hidden: true } } ×
+          %span.sr-only Close
+        %h4.modal-title
+          - model_constant = model.capitalize.constantize
+          - association_name = model_constant.model_name.human(count:2).downcase
+          = "Detalhamento de #{association_name} da candidatura"
+      .modal-body
+        - association = model.pluralize.to_sym #=> revenues, expenditures, patrimonies
+        - collection = candidature.public_send(association)
+        - if collection.any?
+          = render partial: "#{association}/table", locals: { association => collection }
+        - else
+          .alert.alert-warning
+            = "Não há registros de #{association_name} para este candidato nesta candidatura."
+      .modal-footer
+        %button.btn.btn-primary{ data: { dismiss: 'modal' }, type: 'button' } Fechar

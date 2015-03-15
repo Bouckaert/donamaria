@@ -1,0 +1,33 @@
+.row.box-proposal
+  .col-md-12
+    .col-md-9
+      .col-md-12
+        %b
+          = proposal.title
+        %label
+          = proposal.description
+    .col-md-1.pull-right
+      .row
+        = link_to '<i class="fa fa-usd"></i>'.html_safe, 'https://pagseguro.uol.com.br/registration/activate.jhtml', method: :put
+      .row
+        %b= number_to_currency(rand(10..1000), precision: 2, unit: "R$", separator: ",")
+    .col-md-1
+      .row
+        = link_to '<i class="fa fa-comment"></i>'.html_safe, proposal_comments_path(proposal)
+      .row
+        %b= proposal.comments.count
+    .col-md-1
+      .row
+        = link_to '<i class="fa fa-chevron-up"></i> '.html_safe, like_proposal_path(proposal), method: :put
+      .row
+        %b= proposal.score
+      .row
+        = link_to '<i class="fa fa-chevron-down"></i>'.html_safe, dislike_proposal_path(proposal), method: :put
+  .col-md-12.comment
+    = render proposal.comments
+  .col-md-12
+    - if user_signed_in?
+      = render partial: 'comments/form', locals: { proposal: proposal }
+    - else
+      %textarea
+        = flash[:notice] = 'Faça Login para comentar'

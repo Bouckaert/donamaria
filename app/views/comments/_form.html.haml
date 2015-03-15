@@ -1,0 +1,6 @@
+.row
+  = form_for :comment, url: proposal_comments_path(proposal) do |f|
+    .col-md-10
+      = f.text_area :body, placeholder: 'Escreva críticas, sugestões, observações ou quaisquer outros tipos de mensagens relacionadas à proposta'
+    .col-md-1
+      = f.submit 'Enviar',  class: "btn btn-primary pull-right"

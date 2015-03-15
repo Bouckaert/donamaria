@@ -1,0 +1,12 @@
+%table.table
+  %thead
+    %tr
+      %th Fornecedor
+      %th Valor
+      %th Descrição
+  - expenditures.each do |expenditure|
+    %tbody
+      %tr
+        %td= expenditure.seller
+        %td= number_to_currency expenditure.price
+        %td= expenditure.description

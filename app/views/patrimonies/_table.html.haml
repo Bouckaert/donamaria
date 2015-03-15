@@ -1,0 +1,10 @@
+%table.table
+  %thead
+    %tr
+      %th Valor do bem
+      %th Descrição do bem
+  - patrimonies.each do |patrimony|
+    %tbody
+      %tr
+        %td= number_to_currency patrimony.price
+        %td= patrimony.description

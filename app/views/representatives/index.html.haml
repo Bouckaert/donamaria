@@ -1,27 +1,4 @@
 .container
-  - @representatives.each do |representative|
-    .row.box
-      .col-md-4.representative
-        .row
-          .col-md-6
-            %b= representative.name
-            / BUG::: <b><haml_silent></haml_silent></b>
-            - representative.candidatures.each do |candidature|
-              %b= candidature.candidate_number
-            = link_to (image_tag("politica.png",size: "100x100")),representative_path(representative.id)
-            %label
-              = representative.occupation
-              = representative.gender
-            %label= link_to "Listar #{representative.type.pluralize}", sti_representative_path(representative.type)
-            .dropdown
-              %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :id => "dropdownMenu#{"#{(representative.id)}"}", :type => "button"}
-                Ano Eleitoral
-                %span.caret
-              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu#{"#{(representative.id)}"}", :role => "menu"}
-                - representative.candidatures.each do |candidature|
-                  %li{:role => "presentation"}= link_to candidature.election_year, "#AnoEleição-#{(candidature.id)}", id: candidature.id, :class => "btn"
-          - representative.candidatures.each do |candidature|
-            .col-md-6.hide.candidature{:id => "candidature-#{candidature.id}"}
-              = render partial: "candidature", locals: { candidature: candidature }
-= paginate @representatives
-= link_to 'Listar representantes', sti_representative_path
+  = render @representatives
+.text-center
+  = paginate @representatives

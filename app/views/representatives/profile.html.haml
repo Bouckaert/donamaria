@@ -18,7 +18,6 @@
         %label= @representative.proposals.count
         %label= @representative.supporters_count
       .col-md-7
-        = render partial: "create", locals: { proposal: Proposal.new }
-  - @representative.proposals.each do |proposal|
-    .col-md-6
-      = render partial: "proposal", locals: { proposal: proposal }
+        = render 'proposals/form'
+
+  = render @representative.proposals

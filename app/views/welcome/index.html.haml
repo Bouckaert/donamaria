@@ -14,16 +14,6 @@
               - ['Representação', 'Financiamento', 'Participe', 'Quem Somos', 'Hackathon'].each do |nav_item|
                 %li
                   = link_to nav_item, "##{nav_item.parameterize}"
-            %ul#user-log.nav.navbar-right
-              %li.dropdown
-                - if user_signed_in?
-                  = link_to current_user.email, edit_user_registration_path, data: { toggle: 'dropdown' }, class: 'dropdown-toggle navbar-link'
-                  .dropdown-menu
-                    = link_to 'Editar', edit_user_registration_path, class: 'navbar-link'
-                    %br
-                    = link_to 'Sair', destroy_user_session_path, method: :delete, class: 'navbar-link'
-                - else
-                  = link_to 'Entrar', new_user_session_path, class: 'navbar-link'
   #top
   #headerwrap
     %header.clearfix
@@ -131,23 +121,13 @@
           %i.fa.fa-certificate.fa= t('.hands_on.promoting')
           %br
         %p= t('.hands_on.footer')
-      #participe-row.row
-        .span4
-          .inside
-            = form_tag candidates_path, class: 'input-group', method: 'get' do
-              .form-group
-                = text_field_tag :search, params[:search], placeholder: 'Pesquisar Candidata', class: 'form-control'
-                = button_tag type: 'submit', class: "btn btn-default", name: nil  do
-                  %i.fa.fa-search.fa-lg
-        .span4
-          .inside
-            = form_tag candidates_path, class: 'input-group', method: 'get' do
-              .form-group
-                = text_field_tag :search, params[:search], placeholder: 'Pesquisar Proposta', class: 'form-control'
-                = button_tag type: 'submit', class: 'btn btn-default', name: nil  do
-                  %i.fa.fa-search.fa-lg
-      .row.listar
-        = link_to 'Listar Candidatas', candidates_path, class: 'btn', data: { no_turbolink: true }
+      .row.text-center
+        = form_tag candidates_path, class: 'form-search', method: 'get' do
+          = text_field_tag :search, params[:search], placeholder: 'Pesquisar Candidata', class: 'search-query'
+          = button_tag type: 'submit', name: nil, class: 'btn' do
+            %i.fa.fa-search.fa-lg
+      .row
+        = link_to 'Listar Candidatas', candidates_path, class: 'legend btn', data: { no_turbolink: true }
   %hr
 
   %section#quem-somos.single-page.scrollblock

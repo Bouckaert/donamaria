@@ -14,7 +14,4 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require jquery.scrollTo-1.4.2-min
-//= require jquery.localscroll-1.2.7-min
-//= require jquery.prettyPhoto
-//= require site
+//= require smooth_scroll

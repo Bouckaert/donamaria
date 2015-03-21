@@ -1,5 +1,7 @@
 # Dona Maria
 
+O DonaMaria foi um projeto criado com o intuito de conscientizar a população brasileira das desigualdades de gênero existentes no processo eleitoral e criar ferramentas que possibilitem uma melhoria nesse cenário. O principal ponto atacado foi a desigualdade na arrecadação de fundos para campanha, que é um fator crucial no resultado eleitoral. Para isso nos propomos, através da página www.donamaria.net.br, a aproximar eleitores e candidatas criando redes de apoiadores de campanhas de forma a permitir que estes apoiadores façam contribuições financeiras diretas às propostas das candidatas e criando ferramentas que ajudem na criação de lideranças femininas.
+
 ### Traduções
 
 `pt-BR` -> `en`

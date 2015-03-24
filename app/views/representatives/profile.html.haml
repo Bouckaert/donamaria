@@ -1,23 +1,3 @@
-.panel
-  .container
-    .row
-      .col-md-4
-        %h1
-          = @representative.type
-          \.
-        %p= @representative.name
-        %b= @representative.id
-        %br/
-        %b= @representative.user_id
-        %br/
-        %b= current_user.id
-        = image_tag("politica.png", size: "100x100")
-        %label
-          = @representative.occupation
-          = @representative.gender
-        %label= @representative.proposals.count
-        %label= @representative.supporters_count
-      .col-md-7
-        = render 'proposals/form'
-
-  = render @representative.proposals
+.container
+  .row
+    = render "#{@representative.type.pluralize.downcase}/profile", representative: @representative

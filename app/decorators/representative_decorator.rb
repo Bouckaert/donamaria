@@ -4,7 +4,15 @@ class RepresentativeDecorator < Draper::Decorator
   def supporters_count
     if self.proposals.count != 0
       score = proposals.map(&:score).inject(:+)
-      "Votos: #{score}"
+      "#{score}"
+    else
+      "Nenhuma proposta ainda!"
+    end
+  end
+
+  def proposals_titles
+    if self.proposals.count != 0
+      hashtags = proposals.map { |p| p.title  }
     else
       "Nenhuma proposta ainda!"
     end

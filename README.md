@@ -1,73 +1,18 @@
 # Dona Maria
 
-### Traduções
+Seja bem vindo ao repositório do DonaMaria no GitHub!
 
-`pt-BR` -> `en`
+Este texto contém algumas informações básicas sobre o projeto. Caso não tenha
+encontrado o que procura aqui, você pode procurar na nossa [wiki](https://github.com/Bouckaert/donamaria/wiki)
+ou entrar em contato com [@embs](https://github.com/embs), [@isabarros](https://github.com/isabarros)
+ou [@Bouckaert](https://github.com/Bouckaert).
 
-```yml
-models:
-  candidato: candidate
-  candidatura: candidature
-  despesa: expenditure
-  doação: donation
-  patrimônio: patrimony
-  proposta: proposal
-  receita: revenue
+## O que é o DonaMaria?
 
-attributes:
-  candidate:
-    nome_candidato: name
-    descricao_ocupacao: occupation
-    descricao_sexo: gender
-    numero_titulo_eleitor: voter_registration
-  candidatura:
-    sequencial_candidato: ?
-    ano_eleicao: election_year
-    descricao_eleicao: election_description
-    sigla_UF: federative_unit_symbol
-    descricao_UE: federative_unit_description
-    descricao_cargo: job_title
-    numero_candidato: candidate_number
-    sigla_partido: political_party_symbol
-    composicao_legenda: political_caption
-    desc_sit_tot_turno: ?
-  despesa:
-    sequencial_candidato: ?
-    nome_fornecedor: seller
-    valor_despesa: price
-    descricao_despesa: description
-  doação:
-    #TODO
-  patrimônio:
-    sequencial_candidato: ?
-    detalhe_bem: description
-    valor_bem: price
-  proposta:
-    #TODO
-  receita:
-    sequencial_candidato: ?
-    numero_recibo_eleitoral: receipt_title
-    nome_doador: donator
-    valor_receita: price
-    descricao_da_receita: description
+O DonaMaria é uma ferramenta que promove o engajamento de eleitores na construção
+de redes de apoiadores de campanhas. Nosso objetivo é criar um canal de comunicação
+entre candidatas e apoiadores.
 
-associations:
-  candidate:
-    user: user
-    candidaturas: candidatures
-  candidature:
-    candidato: candidate
-    receitas: revenues
-    despesas: expenditures
-    patrimonios: patrimonies
-  expenditure:
-    candidatura: candidature
-  donation:
-    #TODO
-  patrimony:
-    candidatura: candidature
-  proposal:
-    #TODO
-  revenue:
-    candidatura: candidature
-```
+Pretendemos conscientizar o eleitorado das desigualdades de gênero existentes no
+processo eleitoral. É consenso de que as chances de sucesso nas urnas está
+intimamente relacionada à capacidade dos candidatos de arrecadarem recursos.

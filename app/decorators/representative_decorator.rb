@@ -1,15 +1,6 @@
 class RepresentativeDecorator < Draper::Decorator
   delegate_all
 
-  def up_votes_count
-    if self.proposals.count != 0
-      score = proposals.map(&:score).inject(:+)
-      "#{score}"
-    else
-      "Nenhuma proposta ainda!"
-    end
-  end
-
   def supporters_count
     if self.proposals.count != 0
           supporters = []

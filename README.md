@@ -16,3 +16,13 @@ entre candidatas e apoiadores.
 Pretendemos conscientizar o eleitorado das desigualdades de gênero existentes no
 processo eleitoral. É consenso de que as chances de sucesso nas urnas está
 intimamente relacionada à capacidade dos candidatos de arrecadarem recursos.
+
+## Como surgiu o projeto
+
+O DonaMaria participou em 2014 da maratona hacker promovida pela Câmara dos Deputados -- o [Hackathon de Gênero e Cidadania](http://www2.camara.leg.br/responsabilidade-social/edulegislativa/educacao-legislativa-1/educacao-para-a-democracia-1/hackathon/2014). O projeto teve a felicidade de ser o escolhido entre os finalistas e os membros do time núcleo de desenvolvimento (foto) ganharam uma viagem a Washington D.C. para conhecer as iniciativas de e-cidadania do Banco Mundial.
+
+![equipe](https://trello-attachments.s3.amazonaws.com/54e1ff078c3db720300ede44/1253x834/e796b7f9054e3c2e80837c702c732421/unnamed.jpg)
+
+## Colabore!
+
+Há diversas maneiras de colaborar: envolva-se!

@@ -20,18 +20,6 @@ describe CommentsController, type: :controller do
     end
   end
 
-  describe "GET 'new'" do
-    before { get :new, proposal_id: proposal }
-
-    it 'returns http success' do
-      expect(response).to be_success
-    end
-
-    it 'assigns a new comment' do
-      expect(assigns(:comment)).to be
-    end
-  end
-
   describe "POST 'create'" do
     let(:comment_attributes) { FactoryGirl.attributes_for :comment }
 

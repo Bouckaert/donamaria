@@ -8,10 +8,6 @@ class CommentsController < ApplicationController
     @candidature = Candidature.new #Candidature.find(@proposal.candidature_id)
   end
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @proposal = Proposal.find(params[:proposal_id])
     @user = current_user

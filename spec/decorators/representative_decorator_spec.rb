@@ -18,12 +18,14 @@ describe RepresentativeDecorator do
       let(:proposals) do
         FactoryGirl.create_list :proposal, 2, representative: representative
       end
+      let(:supporters_count) do
+        proposals.flat_map(&:get_upvotes).map(&:voter_id).uniq.count
+      end
 
       before { proposals.each { |p| p.upvote_by user } }
 
-      it 'returns text with sum of all representative proposals score' do
-        score = proposals.map(&:score).inject(:+)
-        expect(subject.supporters_count).to eq "Votos: #{score}"
+      it 'returns sum of all representative proposals score' do
+        expect(subject.supporters_count).to eq supporters_count
       end
     end
   end

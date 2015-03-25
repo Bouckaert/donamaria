@@ -41,8 +41,7 @@
                 = 'Propostas:'
                 = representative.proposals.count
           .panel-body
-            - representative.proposals_titles.each do |hashtag|
-              = link_to hashtag, proposals_path, class: 'btn btn-default'
+            = representative.proposals_titles.html_safe
         .panel.panel-default
           .panel-heading
             .panel-title

@@ -12,7 +12,12 @@ class RepresentativeDecorator < Draper::Decorator
 
   def proposals_titles
     if self.proposals.count != 0
-      hashtags = proposals.map { |p| p.title  }
+      hashtags = proposals.map(&:title)
+      links = []
+      self.proposals.each do |proposal|
+        links << h.link_to(proposal.title, h.proposal_path(proposal), class: 'btn btn-default')
+      end
+      links.join(' ').html_safe
     else
       "Nenhuma proposta ainda!"
     end

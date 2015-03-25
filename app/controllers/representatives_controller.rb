@@ -20,6 +20,18 @@ class RepresentativesController < ApplicationController
     @proposals = @representative.proposals
   end
 
+  def create
+    @representative = Representative.new(ambassador_params)
+    @representative.type = 'Ambassador'
+    if @representative.save
+      redirect_to @representative
+      flash[:success] = "Embaixadora cadastrada com sucesso!"
+    else
+      flash[:error] = @representative.errors.full_messages_for(@representative.errors.first.first)
+    end
+  end
+
+
   private
 
   def set_type
@@ -37,4 +49,9 @@ class RepresentativesController < ApplicationController
   def set_representative
     @representative = type_class.find(params[:id])
   end
+
+  def ambassador_params
+    params.require(:representative).permit(:name, :occupation, :gender, :voter_registration, :web_page, :social_network, :phone_number, :presentation)
+  end
+
 end

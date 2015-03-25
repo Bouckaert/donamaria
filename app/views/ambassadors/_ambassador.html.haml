@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = ambassador.name
+  .panel-body
+    .row
+      .col-md-2
+        .text-center
+          = link_to (image_tag('politica.png',size: '100x100')), ambassador_path(ambassador.id)
+      .col-md-4
+        %table.table
+          %tr
+            %td Profissão
+            %td= ambassador.occupation
+          %tr
+            %td WebPage
+            %td= ambassador.web_page
+          %tr
+            %td RedesSociais
+            %td= ambassador.social_network
+          %tr
+            %td Telefone
+            %td= ambassador.phone_number
+

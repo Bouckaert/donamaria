@@ -12,7 +12,7 @@ describe RepresentativeDecorator do
 
     context 'when representative has no proposals' do
       it 'returns no proposals yet text' do
-        expect(subject.supporters_count).to eq "Nenhuma proposta ainda!"
+        expect(subject.supporters_count).to eq "Nenhum apoiador ainda!"
       end
     end
 
@@ -34,7 +34,7 @@ describe RepresentativeDecorator do
 
     context 'when representative has no proposals' do
       it 'returns no proposals yet text' do
-        expect(subject.supporters_count).to eq "Nenhuma proposta ainda!"
+        expect(subject.proposals_titles).to eq "Nenhuma proposta ainda!"
       end
     end
 
@@ -60,7 +60,7 @@ describe RepresentativeDecorator do
 
     context 'when representative has no proposals' do
       it 'returns no proposals yet text' do
-        expect(subject.supporters_id).to eq "Nenhum apopiador ainda!"
+        expect(subject.supporters_id).to eq "Nenhum apoiador ainda!"
       end
     end
 

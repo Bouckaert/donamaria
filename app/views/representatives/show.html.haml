@@ -1,5 +1,3 @@
 .container
   .row
-    = render @representative
-
-  = render @representative.proposals
+    = render "#{@representative.type.pluralize.downcase}/profile", representative: @representative

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 shared_context 'with representable candidate' do
   let(:candidate) do
-    Representable::Candidate.new(voter_registration: 1, name: 'Dona Maria',
+    Representable::Candidate.new(mcn_id: 1, name: 'Dona Maria',
       gender: 'FEMININO', occupation: 'Jornalista')
   end
 end
@@ -11,7 +11,7 @@ describe MCN::CandidateRepresenters::CandidateRepresenter do
   subject { described_class.new(candidate).to_hash }
   include_context 'with representable candidate'
 
-  it 'includes key id' do
+  it 'includes key mcn_id' do
     expect(subject).to have_key('id')
   end
 

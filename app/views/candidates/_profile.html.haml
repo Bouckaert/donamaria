@@ -1,0 +1,61 @@
+- candidature = representative.candidatures.first.decorate
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = representative.name
+  .panel-body
+    .row
+      .col-md-4
+        .text-center
+          = link_to (image_tag('politica.png',size: '100x100')), representative_path(representative.id)
+      .col-md-8
+        = representative.presentation
+    .row
+      .col-md-4
+        %table.table
+          %tr
+            %td Profissão
+            %td= representative.occupation
+          %tr
+            %td Cargo
+            %td= candidature.job_title
+          %tr
+            %td Partido
+            %td= candidature.political_party_symbol
+          %tr
+            %td Coligação
+            %td= candidature.political_caption
+          %tr
+            %td WebPage
+            %td= representative.web_page
+          %tr
+            %td RedesSociais
+            %td= representative.social_network
+          %tr
+            %td Telefone
+            %td= representative.phone_number
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %label
+                = 'Propostas:'
+                = representative.proposals.count
+          .panel-body
+            = representative.proposals_titles.html_safe
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %label
+                = 'Financiamento:'
+                = number_to_currency(rand(100..10000), precision: 2, unit: "R$", separator: ",")
+          .panel-body
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %label
+                = 'Apoiadores:'
+                = representative.supporters_count
+          .panel-body
+            = representative.supporters_id
+      .col-md-8
+        = render @representative.proposals

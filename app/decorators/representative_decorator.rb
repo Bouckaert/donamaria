@@ -11,7 +11,7 @@ class RepresentativeDecorator < Draper::Decorator
       end
       supporters.count
     else
-      "Nenhuma proposta ainda!"
+      "Nenhum apoiador ainda!"
     end
   end
 
@@ -41,7 +41,7 @@ class RepresentativeDecorator < Draper::Decorator
       end
       sid.join(' ').html_safe
     else
-      "Nenhum apopiador ainda!"
+      "Nenhum apoiador ainda!"
     end
   end
 

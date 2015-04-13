@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RepresentativeDecorator do
   let(:representative) { FactoryGirl.create :representative }

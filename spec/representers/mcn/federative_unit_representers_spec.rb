@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 shared_context 'with representable federative unit' do
   let(:federative_unit) do

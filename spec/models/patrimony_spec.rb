@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Patrimony do
   it { should respond_to :sequencial_candidato }

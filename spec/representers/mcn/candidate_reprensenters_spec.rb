@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 shared_context 'with representable candidate' do
   let(:candidate) do

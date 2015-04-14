@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require smooth_scroll
+//= require load_welcome_charts

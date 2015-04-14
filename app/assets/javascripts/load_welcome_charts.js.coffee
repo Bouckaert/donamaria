@@ -1,6 +1,4 @@
 $.fn.loadChart = (header, data1, data2, options, format) ->
-  google.load('visualization', '1', { packages:['corechart'] });
-  google.setOnLoadCallback(drawChart);
   drawChart = (element, header, data1, data2, options, format) ->
     parsed_data = google.visualization.arrayToDataTable([
       header

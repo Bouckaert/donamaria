@@ -65,11 +65,11 @@ jQuery ->
       'Candidaturas'
     ]
     [
-      'Patrimônio total dos Homens'
+      'Homens'
       14980600670.33
     ]
     [
-      'Patrimônio total das Mulheres'
+      'Mulheres'
       1267967077.89
     ]
     $.extend({}, commonOptions, { pieSliceText: 'value' })

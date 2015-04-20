@@ -19,3 +19,40 @@
 .collapse {
   display: block;
 }
+
+.icons-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 42%;
+}
+
+.login-btn-wrapper {
+  margin-left: 20px;
+}
+.login.btn {
+  font-family: 'Patua One', cursive;
+  color: #fff;
+  width: 85px;
+  height: 20px;
+  text-shadow: none;
+  font-size: 1.3125em; /* 21px */
+  padding: 1em 0.5em;
+  letter-spacing: 0.05em;
+  margin: auto 0;
+  display: block;
+  border: 0;
+  text-transform: none;
+  background: #f0bf00 !important;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.login.btn:link, .btn:visited {
+  color: #fff;
+}
+.login.btn:hover {
+  background: #312A1E !important;
+}

@@ -20,12 +20,6 @@
   display: block;
 }
 
-.icons-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 42%;
-}
-
 .login-btn-wrapper {
   margin-left: 20px;
 }

@@ -19,3 +19,12 @@
 .collapse {
   display: block;
 }
+
+.login-btn-wrapper {
+  margin-left: 20px;
+}
+
+.login.btn {
+  width: 85px;
+  margin: auto 0;
+}

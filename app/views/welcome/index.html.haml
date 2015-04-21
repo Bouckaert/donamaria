@@ -14,20 +14,20 @@
               - ['Representação', 'Financiamento', 'Participe', 'Quem Somos', 'Hackathon'].each do |nav_item|
                 %li
                   = link_to nav_item, "##{nav_item.parameterize}"
+              %li.login-btn-wrapper
+                = link_to 'Entrar', new_user_session_path, class: 'btn legend login', data: { no_turbolink: true }
   #top
   #headerwrap
     %header.clearfix
       %h1
         %span= t('donamaria.title')
         = t('donamaria.headline')
-      .container
-        .row
-          .span12
-            %ul.icon
-              %li= image_tag 'feminismopunho.png', size: "40"
-              %li= image_tag 'justica-gender.png', size: "60"
-              %li= image_tag 'hackathon.png', size: "50"
-              %li= image_tag 'outubro-rosa.png', size: "45"
+
+      %ul.icon
+        %li= image_tag 'feminismopunho.png', size: "40"
+        %li= image_tag 'justica-gender.png', size: "60"
+        %li= image_tag 'hackathon.png', size: "50"
+        %li= image_tag 'outubro-rosa.png', size: "45"
 
   .scrollblock
     %section#feature

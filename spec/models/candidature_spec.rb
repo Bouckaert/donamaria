@@ -15,4 +15,5 @@ describe Candidature do
   it { should have_many :revenues }
   it { should have_many :expenditures }
   it { should have_many :patrimonies }
+  it { is_expected.to enumerize(:result).in(:unelected, :elected, :draw) }
 end

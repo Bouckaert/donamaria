@@ -1,8 +1,12 @@
 class Candidature < ActiveRecord::Base
+  extend Enumerize
+
   belongs_to :representative
   has_many :revenues
   has_many :expenditures
   has_many :patrimonies
+
+  enumerize :result, in: [:unelected, :elected, :draw]
 
   def total_revenue; sum(revenues); end
 

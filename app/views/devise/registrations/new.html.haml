@@ -22,3 +22,6 @@
           Repita a senha anterior
       .pull-right
         = f.submit "Cadastrar", class: 'btn btn-primary'
+      .link-wrapper
+        .pull-left
+          = link_to "Acesse sua conta aqui", new_session_path(resource_name)

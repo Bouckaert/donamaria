@@ -20,6 +20,8 @@
         = link_to 'Esqueci minha senha!', new_password_path(resource_name)
       .pull-right
         = f.submit "Entrar", class: 'btn btn-primary'
+      .pull-left
+        = link_to " | Entrar com Facebook", user_omniauth_authorize_path(:facebook), class: 'fa fa-facebook-square btn btn-primary'
   .col-md-4.text-right
     %p "Deixemos que cada mulher faça saber que tipo de governo merece seu respeito e este já será um passo na direção de obtê-lo."
     %small Thoreau, H. D. (1849)

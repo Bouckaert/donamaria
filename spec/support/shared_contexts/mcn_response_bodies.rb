@@ -48,4 +48,14 @@ shared_context "MCN response bodies" do
       }
     ].to_json
   end
+
+  let(:candidature_result_response_body) do
+    {
+      candidatoId: 2014280000000083,
+      votos: 43267668,
+      votosTotais: 104023802,
+      percentual: 0.41593998670578003,
+      resultado: 2,
+    }.to_json
+  end
 end

@@ -59,4 +59,20 @@ describe 'consume:mcn' do
       }.to change(candidature.revenues, :count).by(1)
     end
   end
+
+  describe ':results' do
+    let(:candidate) { FactoryGirl.create :candidate, mcn_id: 1 }
+    let(:candidature) { FactoryGirl.create :candidature, representative: candidate }
+    let(:election_year) { candidature.election_year }
+    let(:request) { "candidato/#{election_year}/#{candidate.mcn_id}/votacao" }
+    let(:response) { candidature_result_response_body }
+    let(:status) { [200, 'Ok'] }
+
+    before { stub_request(:get, url).to_return(body: response, status: status) }
+
+    it 'updates candidature' do
+      subject.invoke
+      expect(candidature.reload.result).to be
+    end
+  end
 end

@@ -60,6 +60,31 @@ namespace :consume do
       end
     end
 
+    desc 'Update candidatures result'
+    task results: :environment do
+      Candidature.find_each do |candidature|
+        year = candidature.election_year
+        id = candidature.representative.mcn_id
+        url = "candidato/#{year}/#{id}/votacao"
+
+        #FIXME é necessário checar se a candidatura foi deferida
+        begin
+          results = get url
+          results = JSON.parse results
+          candidature.result = case results['resultado']
+                               when 0
+                                 :unelected
+                               when 1
+                                 :elected
+                               when 2
+                                 :draw
+                               end
+          candidature.save
+        rescue RestClient::BadRequest
+        end
+      end
+    end
+
     desc "Run all population tasks"
     task all: [:candidates, :candidatures, :patrimonies, :revenues]
   end

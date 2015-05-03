@@ -7,7 +7,8 @@ class Proposal < ActiveRecord::Base
 
   validates :representative, presence: true
 
-  scope :with_description, -> (description) { where("description like ?", "%#{description}%")}
+  scope :recent, -> { order(created_at: :desc).limit(10)}
+  scope :pop, -> { Proposal.all.where(id: Proposal.all.map(&:id)).to_a.sort_by(&:score).reverse}
 
   def self.search(description)
     where("description like ?", "%#{description}%")

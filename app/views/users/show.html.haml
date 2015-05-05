@@ -1,0 +1,60 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = @user.name
+    .panel-body
+      .row
+        .col-md-4
+          .text-center
+            = link_to (image_tag(@user.image, size: '100x100')), user_path(@user.id)
+        .col-md-8
+          %h3
+            = link_to 'Seguindo', user_path(@user)
+            = link_to 'Novas', user_path(@user, recent: true)
+            = link_to 'Populares', user_path(@user, pop: true)
+      .row
+        .col-md-4
+          %table.table
+            %tr
+              %td= @user.provider
+              %td= link_to @user.name,"http://facebook.com/profile.php?id=<#{@user.uid}>", class: 'fa fa-facebook-square btn btn-primary'
+            %tr
+              %td e-mail
+              %td= @user.email
+          .panel.panel-default
+            .panel-heading
+              .panel-title
+                %label
+                  = 'Propostas:'
+                  = 'Favorável'
+                  = @user.supporting_count(@support)
+                  = 'Contra'
+                  = @user.votes.down.count
+            .panel-body
+              = 'Favorável'
+              = @user.supporting_proposals(@support)
+              = 'Contra'
+              = @user.against_proposals(@against)
+          .panel.panel-default
+            .panel-heading
+              .panel-title
+                %label
+                  = 'Financiou:'
+                  = number_to_currency(rand(100..10000), precision: 2, unit: "R$", separator: ",")
+            .panel-body
+          .panel.panel-default
+            .panel-heading
+              .panel-title
+                %label
+                  = 'Representantes:'
+                  = @representatives.count
+                  = 'Opositores'
+                  = @unrepresentatives.count
+            .panel-body
+              = 'Representantes'
+              = @user.representatives_id(@representatives)
+              = 'Opositores'
+              = @user.unrepresentatives_id(@unrepresentatives)
+        .col-md-8
+          = render partial: "proposals"

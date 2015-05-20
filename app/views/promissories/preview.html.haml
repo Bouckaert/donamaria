@@ -1,0 +1,49 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h4.modal-title
+        = "Nota promissoria"
+    .modal-body
+      .row
+        .col-md-12
+          %label
+            = 'Nota promissória 1 /'
+            = @promissory.installment
+      .row
+        .col-md-12.col-md-offset-8
+          %label
+            = 'Vencimento:'
+            = @promissory.expiration_day
+      .row
+        .col-md-12.col-md-offset-8
+          %label
+            = 'Valor:'
+            = number_to_currency(@promissory.amount)
+      .row
+        .col-md-12
+          %label
+            = "Aos #{@promissory.expiration_day} dias do mês de #{@current_month} de #{@current_year}, pagarei por essa unica via de nota promissória à #{@user.name} - CPF: #{@user.cpf}"
+      .row
+        .col-md-12
+          %label
+            = "Ou a sua ordem a quantia de: *** #{@promissory.amount} ***"
+      .row
+        .col-md-12
+          %label
+            = "Em moeda corrente nacional."
+      .row
+        .col-md-12
+          %label
+            = "Pagavel em: #{@user.address.full_address}"
+      .row
+        .col-md-12
+          %label
+            = "Emitente: #{@user.name}"
+    .modal-footer
+      = link_to 'Voltar', :back, class: 'btn btn-danger pull-left'
+      = form_for :promissory, url: proposal_promissories_path do |p|
+        = p.hidden_field :amount
+        = p.hidden_field :installment
+        = p.hidden_field :expiration_day
+        = p.submit 'Confirmar', class: 'btn btn-success pull-right'
+

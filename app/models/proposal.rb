@@ -1,6 +1,8 @@
 class Proposal < ActiveRecord::Base
   belongs_to :representative
   has_many :comments
+  has_many :promissories
+  has_many :users, through: :promissories
 
   acts_as_votable
   acts_as_commentable

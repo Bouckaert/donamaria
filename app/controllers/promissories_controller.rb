@@ -5,7 +5,7 @@ class PromissoriesController < ApplicationController
     @promissory.user = current_user
     @proposal = Proposal.find(params[:proposal_id])
     @promissory.proposal = @proposal
-    @representative = Representative.find(@proposal.representative_id)
+    @representative = @proposal.representative
   end
 
   def create

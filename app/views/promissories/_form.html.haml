@@ -1,35 +1,11 @@
 = form_for :promissory, url: proposal_promissories_path do |p|
-  .row
-    .col-md-12
-      = p.label :doantion_amount, 'Valor da doação:'
-  .row
-    .col-md-4
-      = p.radio_button :amount, '5'
-      = p.label :amount5, 'R$5'
-    .col-md-4
-      = p.radio_button :amount, '15'
-      = p.label :amount15, 'R$15'
-    .col-md-4
-      = p.label :amountX, 'Outro:'
-      = p.text_field :amount
-  .row
-    .col-md-12
-      = p.label :expiration_day, 'Vencimento da promissoria:'
-  .row
-    .col-md-3
-      = p.radio_button :expiration_day, '7'
-      = p.label :expiration_day7, '7'
-    .col-md-3
-      = p.radio_button :expiration_day, '14'
-      = p.label :expiration_day14, '14'
-    .col-md-3
-      = p.radio_button :expiration_day, '21'
-      = p.label :expiration_day21, '21'
-    .col-md-3
-      = p.radio_button :expiration_day, '28'
-      = p.label :expiration_day28, '28'
-  .row
-    .col-md-12
-      = p.label :installment, 'Numero de doações:'
-      = p.text_field :installment
-  = p.submit 'Avançar', class: 'btn btn-success pull-right'
+  .modal-body
+    .form-group
+      = p.label :amount, 'Valor da doação'
+      .input-group
+        %span.input-group-addon
+          R$
+        = p.text_field :amount, class: 'form-control'
+  .modal-footer
+    = link_to 'Voltar', :back, class: 'btn btn-danger pull-left'
+    = p.submit 'Avançar', class: 'btn btn-success pull-right'

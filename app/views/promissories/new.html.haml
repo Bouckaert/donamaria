@@ -1,9 +1,6 @@
-.modal-dialog.modal-lg
+.modal-dialog.modal-sm
   .modal-content
     .modal-header
       %h4.modal-title
         = "Você gostaria de financiar #{@proposal.title} da embaixadora #{@representative.name}?"
-    .modal-body
-      = render 'form'
-    .modal-footer
-      = link_to 'Voltar', :back, class: 'btn btn-danger pull-left'
+    = render 'form'

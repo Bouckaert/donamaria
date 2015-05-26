@@ -18,11 +18,9 @@ class PromissoriesController < ApplicationController
       @proposal = Proposal.find(params[:proposal_id])
       @promissory.proposal = @proposal
       @representative = Representative.find(@proposal.representative_id)
-      @user = User.find(@representative.user_id)
-      @address = @user.address
       if @promissory.valid?
         render :preview
-        flash[:success] = "Confirme os dados da promissoria"
+        flash[:success] = "Confirme os dados da promissória"
       else
         redirect_to @promissory.user
         flash[:error] = @promissory.errors.full_messages_for(@promissory.errors.first.first)

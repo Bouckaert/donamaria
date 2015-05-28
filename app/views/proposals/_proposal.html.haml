@@ -8,9 +8,9 @@
           = proposal.description
     .col-md-1.pull-right
       .row
-        = link_to '<i class="fa fa-usd"></i>'.html_safe, 'https://pagseguro.uol.com.br/registration/activate.jhtml', method: :put
+        = link_to '<i class="fa fa-usd"></i>'.html_safe, new_proposal_promissory_path(proposal)
       .row
-        %b= number_to_currency(rand(10..1000), precision: 2, unit: "R$", separator: ",")
+        %b= number_to_currency(proposal.promissories.sum(:amount), precision: 2, unit: "R$", separator: ",")
     .col-md-1
       .row
         = link_to '<i class="fa fa-comment"></i>'.html_safe, proposal_comments_path(proposal)

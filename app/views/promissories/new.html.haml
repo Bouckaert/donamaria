@@ -1,0 +1,6 @@
+.modal-dialog.modal-sm
+  .modal-content
+    .modal-header
+      %h4.modal-title
+        = "Você gostaria de financiar #{@proposal.title} da embaixadora #{@representative.name}?"
+    = render 'form'

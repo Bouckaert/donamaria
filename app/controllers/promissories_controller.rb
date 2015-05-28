@@ -20,8 +20,8 @@ class PromissoriesController < ApplicationController
     if @promissory.valid?
       flash[:success] = "Confirme os dados da promissória"
     else
-      redirect_to @promissory.user
       flash[:error] = @promissory.errors.full_messages_for(@promissory.errors.first.first)
+      render :new
     end
   end
 

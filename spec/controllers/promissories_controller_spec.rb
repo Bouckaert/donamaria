@@ -43,4 +43,45 @@ describe PromissoriesController, type: :controller do
       end
     end
   end
+
+  describe 'GET preview' do
+    let(:promissory) { FactoryGirl.attributes_for :promissory }
+
+    before { get :preview, proposal_id: proposal, promissory: promissory }
+
+    it 'responds with success' do
+      expect(response).to be_success
+    end
+
+    it 'renders preview' do
+      expect(response).to render_template(:preview)
+    end
+  end
+
+  describe 'POST create' do
+    let(:params) { Hash(proposal_id: proposal, promissory: promissory) }
+    let(:promissory) { FactoryGirl.attributes_for :promissory, amount: amount }
+    let(:amount) { Faker::Number.decimal(2) }
+
+    it 'responds redirects to user page' do
+      post :create, params
+      expect(response).to redirect_to user
+    end
+
+    it 'creates a new promissory' do
+      expect {
+        post :create, params
+      }.to change(Promissory, :count).by(1)
+    end
+
+    context 'with invalid amount' do
+      let(:amount) { nil }
+
+      it 'does not create a new promissory' do
+        expect {
+          post :create, params
+        }.to change(Promissory, :count).by(0)
+      end
+    end
+  end
 end

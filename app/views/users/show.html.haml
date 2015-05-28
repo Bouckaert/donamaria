@@ -43,6 +43,11 @@
                   = 'Financiou:'
                   = number_to_currency(rand(100..10000), precision: 2, unit: "R$", separator: ",")
             .panel-body
+              .donations
+                - @representatives.each do |representative|
+                  %div{ data: { id: "#{representative}", total: 100 } }
+              #user-donations-graph
+
           .panel.panel-default
             .panel-heading
               .panel-title

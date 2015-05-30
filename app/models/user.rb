@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :comments
+  has_many :promissories
+  has_many :proposals, through: :promissories
+  has_one  :address
 
   acts_as_voter
 

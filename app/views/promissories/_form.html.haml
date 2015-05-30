@@ -1,0 +1,12 @@
+= form_for :promissory, url: preview_proposal_promissories_path(@proposal.id),
+  method: :get do |p|
+  .modal-body
+    .form-group
+      = p.label :amount, 'Valor da doação'
+      .input-group
+        %span.input-group-addon
+          R$
+        = p.text_field :amount, class: 'form-control'
+  .modal-footer
+    = link_to 'Voltar', :back, class: 'btn btn-danger pull-left'
+    = p.submit 'Avançar', class: 'btn btn-success pull-right'

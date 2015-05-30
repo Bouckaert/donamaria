@@ -19,16 +19,10 @@ namespace :stats do
              .count
   end
 
-  def patrimonies_by_gender(gender)
-    Candidate.joins(candidatures: :patrimonies)
+  def resources_by_gender(resource, gender)
+    Candidate.joins(candidatures: resource)
              .where(gender: gender)
-             .sum('patrimonies.price').to_f
-  end
-
-  def revenues_by_gender(gender)
-    Candidate.joins(candidatures: :revenues)
-             .where(gender: gender)
-             .sum('revenues.price').to_f
+             .sum("#{resource}.price").to_f
   end
 
   desc 'Candidates gender statistics'
@@ -52,7 +46,8 @@ namespace :stats do
   desc 'Patrimonies by gender statistics'
   task patrimonies_by_gender: :environment do
     [:women_patrimonies, :men_patrimonies].each do |var|
-      stats.mapping[var] = patrimonies_by_gender(gender_by_variable(var))
+      stats.mapping[var] = resources_by_gender(:patrimonies,
+                                               gender_by_variable(var))
     end
 
     stats.save
@@ -61,7 +56,8 @@ namespace :stats do
   desc 'Revenues by gender statistics'
   task revenues_by_gender: :environment do
     [:women_revenues, :men_revenues].each do |var|
-      stats.mapping[var] = revenues_by_gender(gender_by_variable(var))
+      stats.mapping[var] = resources_by_gender(:revenues,
+                                               gender_by_variable(var))
     end
 
     stats.save

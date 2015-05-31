@@ -135,6 +135,13 @@ ActiveRecord::Schema.define(version: 20150516142534) do
     t.decimal  "price"
   end
 
+  create_table "stats", force: true do |t|
+    t.string   "name"
+    t.string   "mapping"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "image"

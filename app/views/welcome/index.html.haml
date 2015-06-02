@@ -53,6 +53,7 @@
               %h2= t('.representation.candidates.title')
             .entry-content
               %p= t('.representation.candidates.body')
+            #candidates-statistics{ data: { men: @statistics.men_candidates, women: @statistics.women_candidates } }
             #piechart_candidatos
         .span5
           %article.post
@@ -60,6 +61,7 @@
               %h2= t('.representation.elected_candidates.title')
             .entry-content
               %p= t('.representation.elected_candidates.body')
+            #elected-candidates-statistics{ data: { men: @statistics.men_elected, women: @statistics.women_elected } }
             #piechart_eleitos
   %hr
 
@@ -84,6 +86,7 @@
               %h2= t('.campaign_funding.alleged_patrimony.title')
             .entry-content
               %p= t('.campaign_funding.alleged_patrimony.body')
+            #patrimonies-statistics{ data: { men: @statistics.men_patrimonies, women: @statistics.women_patrimonies } }
             #piechart_patrimonio
         .span5
           %article.post
@@ -91,6 +94,7 @@
               %h2= t('.campaign_funding.campaign_resources.title')
             .entry-content
               %p= t('.campaign_funding.campaign_resources.body')
+            #revenues-statistics{ data: { men: @statistics.men_revenues, women: @statistics.women_revenues } }
             #piechart_recursos
   %hr
 

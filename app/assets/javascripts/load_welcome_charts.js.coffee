@@ -34,11 +34,11 @@ jQuery ->
     ]
     [
       'Homens'
-      16676
+      $('#candidates-statistics').data('men')
     ]
     [
       'Mulheres'
-      7654
+      $('#candidates-statistics').data('women')
     ]
     commonOptions
   )
@@ -50,11 +50,11 @@ jQuery ->
     ]
     [
       'Homens'
-      1404
+      $('#elected-candidates-statistics').data('men')
     ]
     [
       'Mulheres'
-      171
+      $('#elected-candidates-statistics').data('women')
     ]
     commonOptions
   )
@@ -66,11 +66,11 @@ jQuery ->
     ]
     [
       'Homens'
-      14980600670.33
+      $('#patrimonies-statistics').data('men')
     ]
     [
       'Mulheres'
-      1267967077.89
+      $('#patrimonies-statistics').data('women')
     ]
     $.extend({}, commonOptions, { pieSliceText: 'value' })
     true
@@ -83,11 +83,11 @@ jQuery ->
     ]
     [
       'Homens'
-      124690971.72
+      $('#revenues-statistics').data('men')
     ]
     [
       'Mulheres'
-      15372761.6
+      $('#revenues-statistics').data('women')
     ]
     $.extend({}, commonOptions, { pieSliceText: 'value' })
     true

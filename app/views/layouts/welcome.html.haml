@@ -24,12 +24,6 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     / Favicon
     %link{:href => "favicon.ico", :rel => "shortcut icon"}/
-    / prettyPhoto Initialization
-    %script{:charset => "utf-8", :type => "text/javascript"}
-      :cdata
-        $(document).ready(function(){
-        $("a[rel^='prettyPhoto']").prettyPhoto();
-        });
     %script{:src => "//www.google.com/jsapi", :type => "text/javascript"}
     :javascript
       google.load("visualization", "1", {packages:["corechart"]});

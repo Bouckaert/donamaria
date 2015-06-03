@@ -18,7 +18,7 @@ jQuery ->
       '#ae81ff'
     ]
     hAxis:
-      textPosition: 'none'
+      minValue: 0
     legend :'none'
   $('#user-donations-graph').loadChart(
     google.visualization.BarChart

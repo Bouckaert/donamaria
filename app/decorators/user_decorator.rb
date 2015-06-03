@@ -17,7 +17,7 @@ class UserDecorator < Draper::Decorator
     if support.count != 0
       links = []
       support.each do |proposal|
-        links << h.link_to(proposal, h.proposal_path(proposal), class: 'btn btn-default')
+        links << h.link_to(proposal.title, h.proposal_path(proposal.id), class: 'btn btn-default')
       end
       links.join(' ').html_safe
     else
@@ -41,7 +41,7 @@ class UserDecorator < Draper::Decorator
     if against.count != 0
       links = []
       against.each do |proposal|
-        links << h.link_to(proposal, h.proposal_path(proposal), class: 'btn btn-default')
+        links << h.link_to(proposal.title, h.proposal_path(proposal.id), class: 'btn btn-default')
       end
       links.join(' ').html_safe
     else
@@ -49,35 +49,27 @@ class UserDecorator < Draper::Decorator
     end
   end
 
-  def representatives_id(representatives)
+  def representatives(representatives)
     if representatives.count != 0
       sid = []
-      supporters = []
-      representatives.each do |proposal|
-        supporters << proposal unless supporters.include?(proposal)
-      end
-      supporters.each do |supporter|
-        sid << h.link_to(supporter, 'h.user_path(user)', class: 'btn btn-default')
+      representatives.each do |representative|
+        sid << h.link_to(h.image_tag(representative.user.image, size: '34x34'), h.representative_path(representative.id))
       end
       sid.join(' ').html_safe
     else
-      "Nenhum apoiador ainda!"
+      "Ainda não apoiou nenhum representante!"
     end
   end
 
-  def unrepresentatives_id(unrepresentatives)
+  def unrepresentatives(unrepresentatives)
     if unrepresentatives.count != 0
       sid = []
-      supporters = []
-      unrepresentatives.each do |proposal|
-          supporters << proposal unless supporters.include?(proposal)
-      end
-      supporters.each do |supporter|
-        sid << h.link_to(supporter, 'h.user_path(user)', class: 'btn btn-default')
+      unrepresentatives.each do |unrepresentative|
+        sid << h.link_to(h.image_tag(unrepresentative.user.image, size: '34x34'), h.representative_path(unrepresentative.id))
       end
       sid.join(' ').html_safe
     else
-      "Nenhum apoiador ainda!"
+      "Ainda não discordou de nenhum representante!"
     end
   end
 end

@@ -9,10 +9,10 @@
           .text-center
             = link_to (image_tag(@user.image, size: '100x100')), user_path(@user.id)
         .col-md-8
-          %h3
-            = link_to 'Seguindo', user_path(@user)
-            = link_to 'Novas', user_path(@user, recent: true)
-            = link_to 'Populares', user_path(@user, pop: true)
+          %h1.text-center
+            = link_to 'Seguindo', user_path(@user), class: 'btn'
+            = link_to 'Novas', user_path(@user, recent: true), class: 'btn'
+            = link_to 'Populares', user_path(@user, pop: true), class: 'btn'
       .row
         .col-md-4
           %table.table
@@ -25,36 +25,63 @@
           .panel.panel-default
             .panel-heading
               .panel-title
-                %label
-                  = 'Propostas:'
-                  = 'Favorável'
-                  = @user.supporting_count(@support)
-                  = 'Contra'
-                  = @user.votes.down.count
+                .row
+                  .col-md-6
+                    %label
+                      = 'Propostas:'
+                  .col-md-3
+                    = '<i class="fa fa-thumbs-up"></i>'.html_safe
+                    = @user.supporting_count(@support)
+                  .col-md-3
+                    = '<i class="fa fa-thumbs-down"></i>'.html_safe
+                    = @user.votes.down.count
             .panel-body
-              = 'Favorável'
-              = @user.supporting_proposals(@support)
-              = 'Contra'
-              = @user.against_proposals(@against)
+              .row
+                .col-md-1
+                  = '<i class="fa fa-thumbs-up"></i>'.html_safe
+                .col-md-10
+                  = @user.supporting_proposals(@support)
+              %hr
+              .row
+                .col-md-1
+                  = '<i class="fa fa-thumbs-down"></i>'.html_safe
+                .col-md-10
+                  = @user.against_proposals(@against)
           .panel.panel-default
             .panel-heading
               .panel-title
                 %label
                   = 'Financiou:'
-                  = number_to_currency(rand(100..10000), precision: 2, unit: "R$", separator: ",")
+                  = number_to_currency(@user.total_donated, precision: 2, unit: "R$", separator: ",")
             .panel-body
+              .donations
+                - @recipients.each do |recipient|
+                  %div{ data: { id: "#{recipient.name}", total: @user.donated(recipient) } }
+              #user-donations-graph
           .panel.panel-default
             .panel-heading
               .panel-title
-                %label
-                  = 'Representantes:'
-                  = @representatives.count
-                  = 'Opositores'
-                  = @unrepresentatives.count
+                .row
+                  .col-md-6
+                    %label
+                      = 'Representantes:'
+                  .col-md-3
+                    = '<i class="fa fa-thumbs-up"></i>'.html_safe
+                    = @representatives.count
+                  .col-md-3
+                    = '<i class="fa fa-thumbs-down"></i>'.html_safe
+                    = @unrepresentatives.count
             .panel-body
-              = 'Representantes'
-              = @user.representatives_id(@representatives)
-              = 'Opositores'
-              = @user.unrepresentatives_id(@unrepresentatives)
+              .row
+                .col-md-1
+                  = '<i class="fa fa-thumbs-up"></i>'.html_safe
+                .col-md-10
+                  = @user.representatives(@representatives)
+              %hr
+              .row
+                .col-md-1
+                  = '<i class="fa fa-thumbs-down"></i>'.html_safe
+                .col-md-10
+                  = @user.unrepresentatives(@unrepresentatives)
         .col-md-8
           = render partial: "proposals"

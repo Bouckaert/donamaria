@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :proposals, through: :promissories
   has_one  :address
 
+  accepts_nested_attributes_for :address
+
   acts_as_voter
 
   def self.from_omniauth(auth)

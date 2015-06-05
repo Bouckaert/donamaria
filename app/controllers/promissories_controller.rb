@@ -1,11 +1,16 @@
 class PromissoriesController < ApplicationController
 
   def new
-    @promissory = Promissory.new
-    @promissory.user = current_user
-    @proposal = Proposal.find(params[:proposal_id])
-    @promissory.proposal = @proposal
-    @representative = @proposal.representative
+    if current_user_has_no_address_or_phone?
+      redirect_to edit_user_path(current_user)
+      flash[:error] = "É necessario completar os dados do seu perfil antes de realizar uma doação"
+    else
+      @promissory = Promissory.new
+      @promissory.user = current_user
+      @proposal = Proposal.find(params[:proposal_id])
+      @promissory.proposal = @proposal
+      @representative = @proposal.representative
+    end
   end
 
   def preview
@@ -49,5 +54,11 @@ class PromissoriesController < ApplicationController
   def promissory_params
     params.require(:promissory)
       .permit(:installment, :amount, :expiration_day, :proposal_id, :user_id)
+  end
+
+  def current_user_has_no_address_or_phone?
+    return true unless current_user
+
+    current_user.address.nil? or current_user.address.zip_code.blank? or current_user.phone.blank?
   end
 end

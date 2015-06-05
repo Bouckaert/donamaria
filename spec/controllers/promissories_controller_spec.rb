@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe PromissoriesController, type: :controller do
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { FactoryGirl.create :user, phone: phone }
   let(:proposal) { FactoryGirl.create :proposal }
+  let!(:address) { FactoryGirl.create :address, user: user }
+  let(:phone) { Faker::PhoneNumber.phone_number }
 
   before { sign_in user }
 
@@ -39,6 +41,25 @@ describe PromissoriesController, type: :controller do
 
         it 'matches assigned proposal' do
           expect(promissory.proposal).to eq proposal
+        end
+      end
+    end
+
+    context 'when current user has no' do
+
+      context 'address' do
+        let(:address) { nil }
+
+        it 'redirects to edit user page' do
+          expect(response).to redirect_to(edit_user_path(user))
+        end
+      end
+
+      context 'phone' do
+        let(:phone) { nil }
+
+        it 'redirects to edit user page' do
+          expect(response).to redirect_to(edit_user_path(user))
         end
       end
     end

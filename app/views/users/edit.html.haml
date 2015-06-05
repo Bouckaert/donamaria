@@ -1,0 +1,56 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = "Atualizar Perfil"
+    .panel-body
+      .row
+        .col-md-12
+          .text-center.col-md-2
+            = image_tag(current_user.image, size: '100x100')
+          = form_for(@user) do |f|
+            .col-md-4
+              %table.table
+                %tr
+                  %td= f.label :nome
+                  %td= f.text_field :name
+                %tr
+                  %td= f.label :cpf
+                  %td= f.text_field :cpf
+                %tr
+                  %td= f.label :telefone
+                  %td= f.text_field :phone
+                %tr
+                  %td= f.label :rede_social, current_user.provider
+                  %td= link_to current_user.name,"http://facebook.com/profile.php?id=<#{current_user.uid}>", class: 'fa fa-facebook-square btn btn-primary'
+                %tr
+                  %td= f.label :email
+                  %td= current_user.email
+                %tr
+                  %td= link_to 'Alterar senha', edit_user_registration_path
+                  %td=''
+            .col-md-4.col-md-offset-1
+              = f.fields_for :address do |a|
+                %table.table
+                  %tr
+                    %td= a.label :logradouro
+                    %td= a.text_field :street
+                  %tr
+                    %td= a.label :complemento
+                    %td= a.text_field :complement
+                  %tr
+                    %td= a.label :bairro
+                    %td= a.text_field :district
+                  %tr
+                    %td= a.label :cidade
+                    %td= a.text_field :city
+                  %tr
+                    %td= a.label :uf
+                    %td= a.text_field :state
+                  %tr
+                    %td= a.label :cep
+                    %td= a.text_field :zip_code
+            .row
+              .col-md-2.col-md-offset-9
+                = link_to 'Voltar', :back, class: 'btn btn-danger pull-left'
+                = f.submit 'Confirmar', class: 'btn btn-success pull-right'

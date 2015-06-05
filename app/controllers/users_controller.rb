@@ -20,4 +20,31 @@ class UsersController < ApplicationController
       @proposals = Proposal.where(id: @moot)
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+    @user.build_address if @user.address.nil?
+    if current_user == @user
+      render 'edit'
+    else
+      redirect_to user_path
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Perfil atualizado"
+      redirect_to @user
+    else
+      flash[:error] = @user.errors.full_messages
+      redirect_to edit_user_path
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :cpf, :phone, address_attributes: [:id, :street, :complement, :district, :city, :state, :zip_code ])
+  end
 end
